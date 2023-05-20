@@ -12,12 +12,14 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         healthPoints = defaultHealtPoints;
+        transform.GetComponentInChildren<HealthBar>().setMaxHealth(healthPoints);
     }
 
     public void takeDamage(int damageAmount)
     {
         Debug.Log("Enemy health: " + healthPoints + " -> " + (healthPoints - damageAmount));
         healthPoints -= damageAmount;
+        transform.GetComponentInChildren<HealthBar>().setHealth(healthPoints);
 
         if (healthPoints <= 0)
         {
