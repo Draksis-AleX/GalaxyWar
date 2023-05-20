@@ -16,7 +16,7 @@ public class CoinManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<CoinManager>();
-                if (_instance == null) Debug.LogError("No PlayerInput in scene");
+                if (_instance == null) Debug.LogError("No Coin Manager");
             }
             return _instance;
         }
