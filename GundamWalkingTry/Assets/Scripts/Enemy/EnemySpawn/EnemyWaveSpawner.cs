@@ -20,6 +20,7 @@ public class EnemyWaveSpawner : MonoBehaviour
     [SerializeField][NonReorderable] Wave[] waves;
     [SerializeField] GameObject _EnemySpawnPoints;
     private static EnemyWaveSpawner _instance;
+    [SerializeField] private GameObject effect;
 
 
     int currentWave = 0;
@@ -48,7 +49,13 @@ public class EnemyWaveSpawner : MonoBehaviour
 
             spawnStatus[propID] = true;
 
+            Vector3 effecLoc = _EnemySpawnPoints.transform.GetChild(propID).transform.position;
+            effecLoc.y = effecLoc.y+1;
+            effecLoc.z = effecLoc.z + -1;
+
+            Instantiate(effect, effecLoc , Quaternion.identity);
             Instantiate(waves[currentWave].getEnemySpawnList()[i], _EnemySpawnPoints.transform.GetChild(propID).transform.position, Quaternion.identity);
+            
         }
 
     }
