@@ -32,11 +32,11 @@ public class EnemyHealth : MonoBehaviour
         int variability = Mathf.CeilToInt(min_n_coins / 2);
         int n_coins = Random.Range(min_n_coins, min_n_coins + variability);
 
-        Debug.Log("Coins to drop: " + n_coins);
+        Debug.Log("Coins Dropped: " + n_coins);
 
         for(int i = 0; i < n_coins; i++)
         {
-            var coin = Instantiate(coinPrefab, transform.position + new Vector3(0, Random.Range(0, 2)), Quaternion.identity);
+            var coin = Instantiate(coinPrefab, transform.position + new Vector3(Random.Range(-2,2), Random.Range(-2, 2), Random.Range(-2, 2)), Quaternion.identity);
             coin.GetComponent<CoinFollow>().setTarget(PlayerManager.Instance.transform.Find("AimScope"));
         }
     }
