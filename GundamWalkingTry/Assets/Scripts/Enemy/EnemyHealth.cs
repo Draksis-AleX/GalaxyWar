@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
         if (healthPoints <= 0)
         {
             Destroy(this.gameObject);
+            EnemyWaveSpawner.Instance.EnemyDeath();
         }
     }
 }
