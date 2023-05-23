@@ -21,6 +21,8 @@ public class EnemyHealth : MonoBehaviour
         healthPoints -= damageAmount;
         transform.GetComponentInChildren<HealthBar>().setHealth(healthPoints);
 
+        GetComponent<EnemySimpleMovement>().setTriggered();
+
         if (healthPoints <= 0)
         {
             dropCoins();

@@ -43,4 +43,6 @@ public class EnemySimpleMovement : MonoBehaviour
         rb.MovePosition(transform.position + transform.forward * speed * Time.deltaTime); ;
     }
 
+    public void setTriggered() { triggered = true;  }
+
 }
