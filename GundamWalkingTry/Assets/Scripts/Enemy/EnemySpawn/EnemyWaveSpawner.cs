@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyWaveSpawner : MonoBehaviour
 {
@@ -38,23 +39,24 @@ public class EnemyWaveSpawner : MonoBehaviour
         Debug.Log("PropsSP Counter: " + SpawnCounter);
 
         bool[] spawnStatus = new bool[SpawnCounter];
-        int propID = 0;
+        int enemyID = 0;
 
         for (int i = 0; i < waves[currentWave].getEnemySpawnList().Length; i++){
 
             do
             {
-                propID = Random.Range(0, SpawnCounter);
-            } while (spawnStatus[propID] == true);
+                enemyID = Random.Range(0, SpawnCounter);
+            } while (spawnStatus[enemyID] == true && Vector2.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position) <= 5);
 
-            spawnStatus[propID] = true;
+            spawnStatus[enemyID] = true;
 
-            Vector3 effecLoc = _EnemySpawnPoints.transform.GetChild(propID).transform.position;
+            Vector3 effecLoc = _EnemySpawnPoints.transform.GetChild(enemyID).transform.position;
             effecLoc.y = effecLoc.y+1;
             effecLoc.z = effecLoc.z + -1;
 
             Instantiate(effect, effecLoc , Quaternion.identity);
-            Instantiate(waves[currentWave].getEnemySpawnList()[i], _EnemySpawnPoints.transform.GetChild(propID).transform.position, Quaternion.identity);
+            Instantiate(waves[currentWave].getEnemySpawnList()[i], _EnemySpawnPoints.transform.GetChild(enemyID).transform.position, Quaternion.identity);
+            Debug.Log("distanza:" + Vector2.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position));
             
         }
 
