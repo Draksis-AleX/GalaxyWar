@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour, IInteractable
+public abstract class PowerUp : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string _prompt;
-
-    public string InteractionPrompt => _prompt;
+    public string InteractionPrompt => "Press E";
+    protected string InfoPowerUp;
     public bool Interact(Interactor interactor) {
 
         Debug.Log("take powerUp");
+        this.gameObject.SetActive(false);
+
+        interactor.takePowerUp(this);
+        //mettere qualche effetto
+
         return true;  
 
     }
+
+    abstract public void SetPowerUp();
 }
