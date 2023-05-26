@@ -10,7 +10,7 @@ public class EnemySimpleMovement : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] float minDistance;
     Rigidbody rb;
-    bool triggered = false;
+    public bool triggered = false;
 
     private void Start()
     {
@@ -42,5 +42,7 @@ public class EnemySimpleMovement : MonoBehaviour
         animator.SetFloat("Speed", speed);
         rb.MovePosition(transform.position + transform.forward * speed * Time.deltaTime); ;
     }
+
+    public void setTriggered() { triggered = true;  }
 
 }
