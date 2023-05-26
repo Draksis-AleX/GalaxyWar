@@ -26,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
         if (healthPoints <= 0)
         {
             dropCoins();
+            EnemyWaveSpawner.Instance.EnemyDeath();
             Destroy(this.gameObject);
         }
     }

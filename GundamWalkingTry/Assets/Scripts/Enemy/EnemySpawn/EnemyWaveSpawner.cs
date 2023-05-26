@@ -92,7 +92,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
         enemyKilled++;
 
-        if (enemyKilled >= waves[currentWave].getEnemySpawnList().Length)
+        if (enemyKilled >= waves[currentWave].getEnemySpawnList().Length && currentWave < waves.Length - 1)
         {
             enemyKilled = 0;
             currentWave++;
