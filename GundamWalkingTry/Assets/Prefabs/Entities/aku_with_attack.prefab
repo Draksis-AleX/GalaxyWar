@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 2420328171795279037}
   - component: {fileID: 2420328171795279036}
   - component: {fileID: 2420328171795279039}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: HitArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -783,8 +783,8 @@ VisualEffect:
   m_GameObject: {fileID: 2420328172552554381}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: e5c0151b2b90afa469a27106034dd08a, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_ResourceVersion: 1
@@ -2220,6 +2220,7 @@ MonoBehaviour:
   slashVFX: {fileID: 2420328172552554368}
   hitDistance: 1.5
   coolDownTime: 1
+  damage: 50
 --- !u!1 &5126741040750782151
 GameObject:
   m_ObjectHideFlags: 0
