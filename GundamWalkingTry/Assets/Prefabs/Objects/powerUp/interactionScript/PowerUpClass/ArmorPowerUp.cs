@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArmorPowerUp : PowerUp
 {
 
     private void Start()
     {
-        InfoPowerUp = "More Armor";
+        titlePowerUp = "ARMOR BONUS";
+        infoPowerUp = "Hai trovato un PowerUp della corazza, ora potrai supire più danni senza che la tua vita diminuisca.";
+        iconaPowerUp = Resources.Load<Sprite>("Image/armor-sprite");
     }
 
     override public void SetPowerUp() {
-        Debug.Log("Armor +50");
+        int value = Random.Range(5, 50);
+        SetPanel(value, "Armor");
+
     }
 }

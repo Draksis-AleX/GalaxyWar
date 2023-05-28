@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BulletPowerUp : PowerUp
 {
     private void Start()
     {
-        InfoPowerUp = "More dmg";
+        titlePowerUp = "BULLET BONUS";
+        infoPowerUp = "Hai trovato un PowerUp per i tuoi proiettili, ora potrai infliggere più danni ai tuoi nemici.";
+        iconaPowerUp = Resources.Load<Sprite>("Image/bullet-sprite");
     }
 
     override public void SetPowerUp()
     {
-        Debug.Log("dmg +10"); //settarlo con un random 
+        int value = Random.Range(5, 50);
+        SetPanel(value, "Dmg");
     }
+
+
 }

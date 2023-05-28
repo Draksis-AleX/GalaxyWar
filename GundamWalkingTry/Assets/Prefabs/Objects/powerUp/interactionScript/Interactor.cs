@@ -59,7 +59,6 @@ public class Interactor : MonoBehaviour
         //inventory.Add(powerUp);  
 
         powerUp.SetPowerUp();   //implementare modifiche reali 
-        
         Debug.Log("powerUpAggiunto");
         
     }
