@@ -7,8 +7,6 @@ public class BulletCollision : MonoBehaviour
 
     [SerializeField] GameObject fireParticlePrefab;
 
-    [SerializeField] int damage = 50;
-
     private void OnTriggerEnter(Collider other)
     {
         Instantiate(fireParticlePrefab, this.transform.position, this.transform.rotation);
@@ -18,7 +16,13 @@ public class BulletCollision : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<EnemyHealth>().takeDamage(damage);
+            Shooting playerShooting = PlayerManager.Instance.GetComponent<Shooting>();
+            other.gameObject.GetComponent<EnemyHealth>().takeDamage(playerShooting.getDamage());
+            if(playerShooting.getVampirismPercentage() > 0)
+            {
+                int amount = Mathf.CeilToInt((float)playerShooting.getDamage() * playerShooting.getVampirismPercentage());
+                PlayerManager.Instance.GetComponent<PlayerHealthManager>().heal(amount);
+            }
         }
     }
 
