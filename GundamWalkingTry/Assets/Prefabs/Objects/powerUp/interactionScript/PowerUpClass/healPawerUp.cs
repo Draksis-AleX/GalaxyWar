@@ -16,7 +16,6 @@ public class healPawerUp : PowerUp
     override public void SetPowerUp() {
 
         SetPanel(value,"HP");
-        
         //PlayerInputManager.setHeal(Random.Range(5, 50));
     }
 
