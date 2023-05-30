@@ -981,6 +981,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &576827015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2367523451036765447, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
+  m_PrefabInstance: {fileID: 605613435775243486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &593218034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1390,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -219110202349224909, guid: f990af99fac3fe9409cacda46eeeac24, type: 3}
   m_PrefabInstance: {fileID: 138392647}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1209182209
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209182205}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9112983980897165610, guid: f990af99fac3fe9409cacda46eeeac24, type: 3}
 --- !u!1 &1529808706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,7 +2249,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3586650991103528382, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
 --- !u!1 &919132147530242799 stripped
 GameObject:
@@ -2252,6 +2272,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3139275728122828733, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
   m_PrefabInstance: {fileID: 605613435775243486}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2591646292573815661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576827015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6186e08894cbd9479eed56a0c94c2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHealth: 200
+  healthBar: {fileID: 0}
 --- !u!1 &4131713007334603168 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4131713005709270558, guid: 47c8cf85140a46541954f9189fe3cc39, type: 3}
