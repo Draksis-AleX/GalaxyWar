@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0044c574ef41f7441b0ea5a7af2a1e89, type: 3}
   m_Name: Vampirism
   m_EditorClassIdentifier: 
-  percentage: 0
+  percentage: 0.1

@@ -263,11 +263,11 @@ GameObject:
   - component: {fileID: 687181020720066410}
   - component: {fileID: 1009899240183100628}
   - component: {fileID: 1009899240183100634}
-  - component: {fileID: 1009899240183100629}
-  - component: {fileID: 3311415181702841272}
-  - component: {fileID: 3311415181702841276}
   - component: {fileID: 3311415181702841221}
   - component: {fileID: 3311415181702841217}
+  - component: {fileID: 3311415181702841276}
+  - component: {fileID: 1009899240183100629}
+  - component: {fileID: 3311415181702841272}
   - component: {fileID: 687181020720066394}
   m_Layer: 6
   m_Name: Player_with_health
@@ -365,54 +365,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1009899240183100629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198875075248174544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcbe30e27e2c3fd40a366848f2f5eefe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  default_speed: 7
-  smoothTime: 0.05
-  gravityMultiplier: 3
-  aimScope: {fileID: 3061950686136557365}
---- !u!114 &3311415181702841272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198875075248174544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbb3da03a903a174d87cb6260e4c05dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3311415181702841276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198875075248174544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dad55042748e514438d6a646f168a4b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePointSX: {fileID: 3061950686850369331}
-  firePointDX: {fileID: 3061950687124841582}
-  bulletPrefab: {fileID: 800719003254433203, guid: 677dbb55bd213c84994f82198ac3913c, type: 3}
-  bulletList: []
-  bulletLength: 20
-  bulletForce: 20
-  coolDown: 1
-  despawnTime: 5
 --- !u!120 &3311415181702841221
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -626,6 +578,56 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &3311415181702841276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198875075248174544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad55042748e514438d6a646f168a4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePointSX: {fileID: 3061950686850369331}
+  firePointDX: {fileID: 3061950687124841582}
+  bulletPrefab: {fileID: 800719003254433203, guid: 677dbb55bd213c84994f82198ac3913c, type: 3}
+  bulletList: []
+  bulletLength: 20
+  bulletForce: 20
+  coolDown: 1
+  despawnTime: 5
+  playerDamage: 50
+  vampirismPercentage: 0
+--- !u!114 &1009899240183100629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198875075248174544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcbe30e27e2c3fd40a366848f2f5eefe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  default_speed: 7
+  smoothTime: 0.05
+  gravityMultiplier: 3
+  aimScope: {fileID: 3061950686136557365}
+--- !u!114 &3311415181702841272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198875075248174544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb3da03a903a174d87cb6260e4c05dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &687181020720066394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -640,6 +642,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultHealth: 200
   healthBar: {fileID: 0}
+  PU_effect_multiplier: 1
+  damageIgnoreProbability: 0
 --- !u!1 &230310352476693896
 GameObject:
   m_ObjectHideFlags: 0
