@@ -14,7 +14,6 @@ public class ArmorPowerUp : PowerUp
     }
 
     override public void SetPowerUp() {
-        int value = Random.Range(5, 50);
         SetPanel(value, "Armor");
 
     }

@@ -16,9 +16,30 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
     //[SerializeField] protected TextMeshProUGUI info;
     [SerializeField] protected TextMeshProUGUI typeValue;
     [SerializeField] protected GameObject _UIImage;
+    [SerializeField] protected GameObject _base;
+
+    protected int value;
+
+    private void Awake()
+    {
+        value = Random.Range(1, 10) * 5;
+
+        Material matCommon = Resources.Load<Material>("matirialCode/Common");
+        Material matEpic = Resources.Load<Material>("matirialCode/Epic");
+        Material matLegend = Resources.Load<Material>("matirialCode/Legend");
+
+        Material[] _materials = _base.GetComponent<Renderer>().materials;
+
+        if (value <= 15) _materials[2] = matCommon;
+        else if (value > 15 && value <= 40) _materials[2] = matEpic;
+        else if (value > 40 && value <= 50) _materials[2] = matLegend;
+         
+
+        _base.GetComponent<Renderer>().materials = _materials; 
 
 
-    [SerializeField] 
+
+    }
 
     public bool Interact(Interactor interactor) {
 
@@ -40,5 +61,7 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
         typeValue.text = type + " +" + value;
         _UIImage.GetComponent<Image>().sprite = this.iconaPowerUp;
         panel.SetActive(true);
+
+        PowerUpManager.Instance.LockPowerUp();
     }
 }
