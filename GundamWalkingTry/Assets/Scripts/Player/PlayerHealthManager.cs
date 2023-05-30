@@ -7,10 +7,11 @@ public class PlayerHealthManager : MonoBehaviour
     
     [SerializeField] int defaultHealth = 200;
     [SerializeField] GameObject healthBar;
+    [SerializeField] float PU_effect_multiplier = 1;
+    [SerializeField] int damageIgnoreProbability = 0;
     int currentHealth;
 
     float maxVignetteIntensity = 0.4f;
-    float minVignetteIntensity = 0f;
 
     private void Start()
     {
@@ -22,6 +23,12 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void takeDamage(int damage)
     {
+        if(damageIgnoreProbability != 0)
+        {
+            int extractedNumber = Random.Range(0, 100);
+            if (extractedNumber < damageIgnoreProbability) return;
+        }
+
         currentHealth -= damage;
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
         if(currentHealth <= defaultHealth / 2)
@@ -31,4 +38,19 @@ public class PlayerHealthManager : MonoBehaviour
             VolumeManager.Instance.setVignetteIntensity((float)vignette_intensity);
         }
     }
+
+    public void addMaxHealth(int health)
+    {
+        defaultHealth += health;
+        healthBar.GetComponent<HealthBar>().setMaxHealth(defaultHealth);
+    }
+
+    public void heal(int health)
+    {
+        currentHealth += health;
+        if (currentHealth > defaultHealth) currentHealth = defaultHealth;
+    }
+
+    public void setPUMultiplier(float multiplier){ this.PU_effect_multiplier = multiplier; }
+    public void addDIProbability(int prob) { damageIgnoreProbability += prob; }
 }

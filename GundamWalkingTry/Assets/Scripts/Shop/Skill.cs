@@ -9,12 +9,10 @@ public class Skill : MonoBehaviour
     [SerializeField] string title;
     [SerializeField] string description;
     [SerializeField] int cost;
-    [SerializeField] int skillType;
-    [SerializeField] int skillEffect;
-    [SerializeField] int skillEffectValue;
     [SerializeField] int[] connected_skills;
-    [SerializeField] Image icon;
     [SerializeField] bool owned;
+    [SerializeField] SkillEffect effect;
+    [SerializeField] int alternativeSkill = -1;
 
     public Skill(int id, string title, string description, int cost, int skillType, int skillEffect, int skillEffectValue)
     {
@@ -22,17 +20,15 @@ public class Skill : MonoBehaviour
         this.title = title;
         this.description = description;
         this.cost = cost;
-        this.skillType = skillType;
-        this.skillEffect = skillEffect;
-        this.skillEffectValue = skillEffectValue;
     }
 
     public int getId() { return this.id; }
     public string getTitle() { return this.title; }
     public string getDescription() { return this.description; }
     public int getCost() { return this.cost; }
-    public int getSkillType() { return this.skillType; }
-    public int getSkillEffect() { return this.skillEffect; }
-    public int geSkillEffectValue() { return this.skillEffectValue; }
+    public int[] getConnectedSkills() { return this.connected_skills;  }
+    public SkillEffect getSkillEffect() { return this.effect; }
+    public bool isOwned() { return owned; }
 
+    public void setOwned(bool tf) { this.owned = tf; }
 }

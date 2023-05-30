@@ -20,6 +20,9 @@ public class Shooting : MonoBehaviour
     [SerializeField] float despawnTime = 5;
     bool canShoot = true;
 
+    [SerializeField] int playerDamage = 50;
+    [SerializeField] float vampirismPercentage = 0f;
+
     private void Awake()
     {
         firePoint = firePointSX;
@@ -95,4 +98,14 @@ public class Shooting : MonoBehaviour
             firePoint = firePointDX;
         else firePoint = firePointSX;
     }
+
+    public void addDamage(int amount) { this.playerDamage += amount; }
+
+    public int getDamage() { return this.playerDamage; }
+
+    public void reduceCooldown(float percentage){ coolDown -= coolDown * percentage; }
+
+    public float getVampirismPercentage() { return this.vampirismPercentage; }
+
+    public void addVampirismPercentage(float percentage) { this.vampirismPercentage += percentage; }
 }
