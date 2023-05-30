@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1428556288571522334}
   - component: {fileID: 8349300687601124573}
   - component: {fileID: 3367091708078195861}
+  - component: {fileID: 850582160}
   m_Layer: 0
   m_Name: trigger
   m_TagString: Untagged
@@ -129,6 +130,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000006, y: 1.0000001, z: 1.0000006}
   m_Center: {x: 0.000007629399, y: -0.0000038146977, z: -0.0000004768374}
+--- !u!114 &850582160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507810302097015414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a518f866778f94a4bb06f713454ce109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upperDoor: {fileID: 1998137475}
+  lowerDoor: {fileID: 142182019}
 --- !u!1 &2827051797528417022
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,12 +155,12 @@ GameObject:
   - component: {fileID: 8654977259510188484}
   - component: {fileID: 2662117559692222241}
   - component: {fileID: 1518576723262830825}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outer Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8654977259510188484
 Transform:
@@ -190,7 +205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bac31129d03f15f46b1d1329e7a6168f, type: 2}
+  - {fileID: 2100000, guid: 6a4040e022499da49845da0b9ff68a95, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,7 +239,7 @@ GameObject:
   - component: {fileID: 7114592955426029410}
   - component: {fileID: 625128207301027630}
   - component: {fileID: 7256241241525892217}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +347,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4218221710740983370}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 51.764183, y: 8.2511, z: -49.913914}
   m_LocalScale: {x: 2.0175812, y: 2.0175812, z: 2.0175812}
   m_ConstrainProportionsScale: 0
@@ -357,12 +372,12 @@ GameObject:
   - component: {fileID: 1528152543373165323}
   - component: {fileID: 1942744585460521720}
   - component: {fileID: 155063915971374758}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cornice Esterna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1528152543373165323
 Transform:
@@ -407,8 +422,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dc6a78d02390e4344afccf423dccc978, type: 2}
-  - {fileID: 2100000, guid: 2e046b0f38526c447b3e47f1da131db8, type: 2}
+  - {fileID: 2100000, guid: bf7c5af2fa8555640b236b87bee42f83, type: 2}
+  - {fileID: 2100000, guid: 62e12ca813434034795163cbe8f50a7f, type: 2}
   - {fileID: 2100000, guid: 6a4040e022499da49845da0b9ff68a95, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -442,7 +457,8 @@ GameObject:
   - component: {fileID: 1175196926241151649}
   - component: {fileID: 3503845408132489432}
   - component: {fileID: 1224018533918558121}
-  m_Layer: 0
+  - component: {fileID: 142182019}
+  m_Layer: 9
   m_Name: inner door down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5947985756948589826}
   m_LocalRotation: {x: -0.7049185, y: 0.00000008245917, z: 0.7092883, w: -0.00000019290223}
-  m_LocalPosition: {x: -0.020073859, y: -1.0246508, z: -0.11625898}
+  m_LocalPosition: {x: -0.020073859, y: -1.023, z: -0.11625898}
   m_LocalScale: {x: 134.37695, y: 39.167492, z: 29.365007}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -492,7 +508,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dc6a78d02390e4344afccf423dccc978, type: 2}
+  - {fileID: 2100000, guid: bf7c5af2fa8555640b236b87bee42f83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -514,6 +530,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &142182019
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947985756948589826}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c6d135250f5db1a4382a06d9cf823bac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6011814148891489752
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +562,8 @@ GameObject:
   - component: {fileID: 2720231797542269418}
   - component: {fileID: 867309691726061207}
   - component: {fileID: 6845218995840152862}
-  m_Layer: 0
+  - component: {fileID: 1998137475}
+  m_Layer: 9
   m_Name: inner door up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6011814148891489752}
   m_LocalRotation: {x: 0.00000005777876, y: -0.7049185, z: 0.000000057422792, w: 0.7092883}
-  m_LocalPosition: {x: -0.07280438, y: -0.31890887, z: -0.11593188}
+  m_LocalPosition: {x: -0.07280438, y: -0.316, z: -0.11593188}
   m_LocalScale: {x: 134.37695, y: 39.167492, z: 53.64969}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -575,7 +613,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dc6a78d02390e4344afccf423dccc978, type: 2}
+  - {fileID: 2100000, guid: bf7c5af2fa8555640b236b87bee42f83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -597,3 +635,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1998137475
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011814148891489752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c710ab5f036cf9f4ebe79ddb02530156, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

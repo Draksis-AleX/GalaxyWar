@@ -22,6 +22,7 @@ public class EnemyWaveSpawner : MonoBehaviour
     [SerializeField] GameObject _EnemySpawnPoints;
     private static EnemyWaveSpawner _instance;
     [SerializeField] private GameObject effect;
+    [SerializeField] float dist;
 
 
     int currentWave = 0;
@@ -46,7 +47,7 @@ public class EnemyWaveSpawner : MonoBehaviour
             do
             {
                 enemyID = Random.Range(0, SpawnCounter);
-            } while (spawnStatus[enemyID] == true && Vector2.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position) <= 5);
+            } while (spawnStatus[enemyID] == true || Vector3.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position) <= dist);
 
             spawnStatus[enemyID] = true;
 
@@ -56,7 +57,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
             Instantiate(effect, effecLoc , Quaternion.identity);
             Instantiate(waves[currentWave].getEnemySpawnList()[i], _EnemySpawnPoints.transform.GetChild(enemyID).transform.position, Quaternion.identity);
-            Debug.Log("distanza:" + Vector2.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position));
+            Debug.Log("distanza:" + Vector3.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position));
             
         }
 
