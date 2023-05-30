@@ -12,6 +12,7 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
     protected string titlePowerUp;
     protected Sprite iconaPowerUp;
     [SerializeField] protected GameObject panel;
+    [SerializeField] protected GameObject blurPanel;
     [SerializeField] protected TextMeshProUGUI title;
     //[SerializeField] protected TextMeshProUGUI info;
     [SerializeField] protected TextMeshProUGUI typeValue;
@@ -61,6 +62,7 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
         typeValue.text = type + " +" + value;
         _UIImage.GetComponent<Image>().sprite = this.iconaPowerUp;
         panel.SetActive(true);
+        blurPanel.SetActive(true);
 
         PowerUpManager.Instance.LockPowerUp();
     }

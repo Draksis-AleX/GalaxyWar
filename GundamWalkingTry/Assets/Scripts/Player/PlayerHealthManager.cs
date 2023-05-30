@@ -47,7 +47,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void heal(int health)
     {
-        currentHealth += health;
+        currentHealth += Mathf.CeilToInt(health * PU_effect_multiplier);
         if (currentHealth > defaultHealth) currentHealth = defaultHealth;
     }
 
