@@ -54,12 +54,12 @@ public class Interactor : MonoBehaviour
         Gizmos.DrawWireSphere(_interactionPoint.position, _interactionPointRadius);
     }
 
-    public void takePowerUp(PowerUp powerUp){
-
-        //inventory.Add(powerUp);  
-
-        powerUp.SetPowerUp();   //implementare modifiche reali 
-        Debug.Log("powerUpAggiunto");
+    public void takePowerUp(PowerUp powerUp){  
+        powerUp.Action();   
         
+    }
+
+    public void OpenShop(Shop _shop) {
+        _shop.Action();
     }
 }

@@ -53,6 +53,11 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
 
     }
 
+    public void Action()
+    {
+        SetPowerUp();
+    }
+
     abstract public void SetPowerUp();
 
     public void SetPanel(string type)

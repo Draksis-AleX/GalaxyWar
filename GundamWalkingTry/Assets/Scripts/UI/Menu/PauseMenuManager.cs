@@ -8,6 +8,8 @@ public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField] private static PauseMenuManager _instance;
 
+    public bool active => false;
+
     public static PauseMenuManager Instance
     {
         get
@@ -48,6 +50,7 @@ public class PauseMenuManager : MonoBehaviour
         this.gameObject.SetActive(false);
         Time.timeScale = 1f;
         PlayerManager.Instance.GetComponent<PlayerInput>().enabled = true;
+        WindowManager.Instance.setDiplayEmpty(true);
     }
 
     public void goMenu()
@@ -59,4 +62,22 @@ public class PauseMenuManager : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    public void Escape(InputAction.CallbackContext context)
+    {
+
+        Debug.Log(WindowManager.Instance.canShow() + " " + this.gameObject.activeSelf + " " + context.started);
+
+        if (WindowManager.Instance.canShow() && this.gameObject.activeSelf == false && context.started)
+        {
+            WindowManager.Instance.setDiplayEmpty(false);
+            Pause();
+        }
+        else if (this.gameObject.activeSelf == true && context.started) {
+            //WindowManager.Instance.setDiplayEmpty(true);
+            Resume();
+        }
+        
+
+
+    }
 }
