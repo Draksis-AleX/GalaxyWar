@@ -55,7 +55,7 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
 
     abstract public void SetPowerUp();
 
-    public void SetPanel(int value, string type)
+    public void SetPanel(string type)
     {
         title.text = titlePowerUp;
         //info.text = infoPowerUp;

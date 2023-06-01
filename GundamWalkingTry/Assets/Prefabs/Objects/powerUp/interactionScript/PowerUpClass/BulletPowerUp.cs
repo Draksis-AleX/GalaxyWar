@@ -14,7 +14,8 @@ public class BulletPowerUp : PowerUp
 
     override public void SetPowerUp()
     {
-        SetPanel(value, "Dmg");
+        SetPanel("Dmg");
+        PlayerManager.Instance.GetComponent<Shooting>().addCurrentDamage(value);
     }
 
 
