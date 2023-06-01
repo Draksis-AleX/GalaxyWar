@@ -40,7 +40,7 @@ public class EnemyAttack : MonoBehaviour
         bool hitted = transform.GetComponentInChildren<EnemyHitCheck>().checkHit();
         if (hitted)
         {
-            PlayerManager.Instance.GetComponent<PlayerHealthManager>().takeDamage(damage);
+            PlayerManager.Instance.GetComponent<PlayerShieldManager>().takeDamage(damage);
         }
     }
 
