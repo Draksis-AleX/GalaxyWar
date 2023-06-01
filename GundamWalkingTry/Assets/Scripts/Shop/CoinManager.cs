@@ -42,4 +42,5 @@ public class CoinManager : MonoBehaviour
     public int getCoins() { return my_coins; }
     public void setCoins(int coins) { my_coins = coins; }
     public void addCoins(int coins) { my_coins += coins; }
+    public void pay(int coins) { my_coins -= coins; }
 }

@@ -20,6 +20,24 @@ public class PlayerShieldManager : MonoBehaviour
         shieldBar.GetComponent<ShieldBar>().setShield(maxShield);
     }
 
+    public void addMaxShield(int amount)
+    {
+        maxShield += amount;
+        shieldBar.GetComponent<ShieldBar>().setMaxShield(maxShield);
+        if (latestShieldCooldown != null) StopCoroutine(latestShieldCooldown);
+        latestShieldCooldown = StartCoroutine(shieldCooldown());
+    }
+
+    public void reduceRegenerationTime(float percentage)
+    {
+        regenerationTime = regenerationTime - (regenerationTime * percentage);
+    }
+
+    public void reduceCooldownTime(float percentage)
+    {
+        shieldCooldownTime = shieldCooldownTime - (shieldCooldownTime * percentage);
+    }
+
     public void takeDamage(int damage)
     {
         if(currentShield > 0)

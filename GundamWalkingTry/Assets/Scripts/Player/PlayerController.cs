@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _input, mouseLook;
     private Vector3 _direction;
     private Vector3 skewedInput;
-    private float speed;
+    [SerializeField] float speed;
     [SerializeField] float default_speed;
 
     // ======================================  ROTATION  ===================================================
@@ -99,6 +99,13 @@ public class PlayerController : MonoBehaviour
         motion = skewedInput * speed;
         _characterController.Move(motion * Time.deltaTime);
         _animator.SetFloat("Speed", motion.magnitude - speed);
+    }
+
+    public void increaseDefaultSpeed(float percentage)
+    {
+        default_speed = default_speed + (float)(default_speed * (float) percentage);
+        Debug.Log("Increased default_speed to " + default_speed);
+        speed = default_speed;
     }
 
     // ======================================  GRAVITY  ===================================================

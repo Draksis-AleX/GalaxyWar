@@ -27,6 +27,7 @@ public class Skill : MonoBehaviour
     public string getDescription() { return this.description; }
     public int getCost() { return this.cost; }
     public int[] getConnectedSkills() { return this.connected_skills;  }
+    public int getAlternativeSkill() { return alternativeSkill; }
     public SkillEffect getSkillEffect() { return this.effect; }
     public bool isOwned() { return owned; }
 
