@@ -11,6 +11,7 @@ public class EnemySimpleMovement : MonoBehaviour
     [SerializeField] float minDistance;
     Rigidbody rb;
     public bool triggered = false;
+    public bool isAttacking = false;
 
     private void Start()
     {
@@ -25,9 +26,10 @@ public class EnemySimpleMovement : MonoBehaviour
         
         if (triggered)
         {
-            ApplyMovement();
+            if(!isAttacking) ApplyMovement();
+            ApplyRotation();
         }
-
+        
     }
 
     void checkDistance()
@@ -36,9 +38,13 @@ public class EnemySimpleMovement : MonoBehaviour
         if (distance <= minDistance) triggered = true;
     }
 
-    void ApplyMovement()
+    void ApplyRotation()
     {
         transform.LookAt(playerPosition);
+    }
+
+    void ApplyMovement()
+    {
         animator.SetFloat("Speed", speed);
         rb.MovePosition(transform.position + transform.forward * speed * Time.deltaTime); ;
     }
