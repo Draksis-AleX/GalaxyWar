@@ -40,8 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void runRestart()
     {
-        SceneManager.LoadScene(1);
-        GameObject.Find("SceneInitier").GetComponent<FirstSceneInit>().Init();
+        StartCoroutine(LoadScene(1));
         resetLife();
     }
 
@@ -52,4 +51,13 @@ public class GameManager : MonoBehaviour
         VolumeManager.Instance.setVignetteIntensity((float)0);
     }
 
+    private IEnumerator LoadScene(int sceneIndex)
+    {
+        // Start loading the scene
+        AsyncOperation asyncLoadLevel = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Single);
+        // Wait until the level finish loading
+        while (!asyncLoadLevel.isDone)
+            yield return null;
+        GameObject.Find("SceneInitier").GetComponent<FirstSceneInit>().Init();
+    }
 }
