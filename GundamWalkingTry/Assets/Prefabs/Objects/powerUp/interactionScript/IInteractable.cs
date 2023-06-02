@@ -7,5 +7,5 @@ public interface IInteractable
     string InteractionPrompt { get;}
 
     public bool Interact(Interactor interactor);
-    void SetPowerUp();
+    public void Action();
 }

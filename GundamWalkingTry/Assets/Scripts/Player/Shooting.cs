@@ -20,12 +20,14 @@ public class Shooting : MonoBehaviour
     [SerializeField] float despawnTime = 5;
     bool canShoot = true;
 
-    [SerializeField] int playerDamage = 50;
+    [SerializeField] int playerDamage = 0;
+    [SerializeField] int playerCurrentDamage = 50;
     [SerializeField] float vampirismPercentage = 0f;
 
     private void Awake()
     {
         firePoint = firePointSX;
+        playerCurrentDamage = 50;
         initBulletArray();
     }
 
@@ -100,8 +102,9 @@ public class Shooting : MonoBehaviour
     }
 
     public void addDamage(int amount) { this.playerDamage += amount; }
+    public void addCurrentDamage(int amount) { this.playerCurrentDamage += amount; }
 
-    public int getDamage() { return this.playerDamage; }
+    public int getDamage() { return this.playerDamage + this.playerCurrentDamage; }
 
     public void reduceCooldown(float percentage){ coolDown -= coolDown * percentage; }
 

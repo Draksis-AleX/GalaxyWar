@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 487988487}
   - component: {fileID: 487988486}
   - component: {fileID: 487988485}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: HitArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2888,6 +2888,7 @@ MonoBehaviour:
   slashVFX: {fileID: 1316091450}
   hitDistance: 1.5
   coolDownTime: 1
+  damage: 50
 --- !u!1 &7495272096527028661
 GameObject:
   m_ObjectHideFlags: 0

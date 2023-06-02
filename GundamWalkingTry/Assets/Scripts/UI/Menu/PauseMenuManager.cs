@@ -8,6 +8,8 @@ public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField] private static PauseMenuManager _instance;
 
+    public bool active => false;
+
     public static PauseMenuManager Instance
     {
         get
@@ -37,6 +39,7 @@ public class PauseMenuManager : MonoBehaviour
     public void Pause()
     {
         Debug.Log("Pause");
+        WindowManager.Instance.setDiplayEmpty(false);
         this.gameObject.SetActive(true);
         Time.timeScale = 0f;
         PlayerManager.Instance.GetComponent<PlayerInput>().enabled = false;
@@ -45,6 +48,7 @@ public class PauseMenuManager : MonoBehaviour
     public void Resume()
     {
         Debug.Log("Resume");
+        WindowManager.Instance.setDiplayEmpty(true);
         this.gameObject.SetActive(false);
         Time.timeScale = 1f;
         PlayerManager.Instance.GetComponent<PlayerInput>().enabled = true;
@@ -59,4 +63,21 @@ public class PauseMenuManager : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+
+    public void Escape()
+    {
+
+        //Debug.Log(WindowManager.Instance.canShow() + " " + this.gameObject.activeSelf + " " + context.started);
+
+        if (WindowManager.Instance.canShow() && this.gameObject.activeSelf == false)
+        {
+            Pause();
+        }
+        else if (this.gameObject.activeSelf == true) {
+            Resume();
+        }
+        
+
+
+    }
 }

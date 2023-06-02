@@ -9,7 +9,7 @@ public class PlayerHealthManager : MonoBehaviour
     [SerializeField] GameObject healthBar;
     [SerializeField] float PU_effect_multiplier = 1;
     [SerializeField] int damageIgnoreProbability = 0;
-    int currentHealth;
+    [SerializeField] int currentHealth;
 
     float maxVignetteIntensity = 0.4f;
 
@@ -53,6 +53,8 @@ public class PlayerHealthManager : MonoBehaviour
     {
         currentHealth += Mathf.CeilToInt(health * PU_effect_multiplier);
         if (currentHealth > defaultHealth) currentHealth = defaultHealth;
+
+        healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
     }
 
     public void setPUMultiplier(float multiplier){ this.PU_effect_multiplier = multiplier; }

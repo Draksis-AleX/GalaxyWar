@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-//da rendere singleton ??
-
 public class Interactor : MonoBehaviour
 {
     [SerializeField] private Transform _interactionPoint;
@@ -14,7 +12,6 @@ public class Interactor : MonoBehaviour
     [SerializeField] private InteractionPrompt _InteractionPrompt;
 
     //private List<IInteractable> inventory = new List<IInteractable>();
-
 
     private readonly Collider[] _colliders = new Collider[3];
 
@@ -54,12 +51,12 @@ public class Interactor : MonoBehaviour
         Gizmos.DrawWireSphere(_interactionPoint.position, _interactionPointRadius);
     }
 
-    public void takePowerUp(PowerUp powerUp){
-
-        //inventory.Add(powerUp);  
-
-        powerUp.SetPowerUp();   //implementare modifiche reali 
-        Debug.Log("powerUpAggiunto");
+    public void takePowerUp(PowerUp powerUp){  
+        powerUp.Action();   
         
+    }
+
+    public void OpenShop(Shop _shop) {
+        _shop.Action();
     }
 }

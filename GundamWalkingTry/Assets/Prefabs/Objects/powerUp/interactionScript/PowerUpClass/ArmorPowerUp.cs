@@ -14,7 +14,7 @@ public class ArmorPowerUp : PowerUp
     }
 
     override public void SetPowerUp() {
-        SetPanel(value, "Armor");
+        SetPanel("Armor");
 
     }
 }

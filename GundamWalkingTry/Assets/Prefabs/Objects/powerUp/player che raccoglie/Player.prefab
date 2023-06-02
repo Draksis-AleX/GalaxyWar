@@ -252,7 +252,7 @@ Transform:
   m_GameObject: {fileID: 605613436051642526}
   m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 4.2, z: 1.96}
-  m_LocalScale: {x: 0.99620026, y: 0.99620026, z: 0.99620026}
+  m_LocalScale: {x: 0.8112955, y: 0.8112955, z: 0.8112955}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3139275728122828733}
@@ -1752,6 +1752,7 @@ GameObject:
   - component: {fileID: 1147621081567689554}
   - component: {fileID: 1147621081567689558}
   - component: {fileID: 605613437020344226}
+  - component: {fileID: 1644292468}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1768,7 +1769,7 @@ Transform:
   m_GameObject: {fileID: 2367523451036765447}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -20.28, y: 9.17, z: 40.02}
-  m_LocalScale: {x: 0.42328283, y: 0.42328283, z: 0.42328283}
+  m_LocalScale: {x: 0.23786628, y: 0.23786628, z: 0.23786628}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6278061820560246563}
@@ -1898,6 +1899,9 @@ MonoBehaviour:
   bulletForce: 20
   coolDown: 1
   despawnTime: 5
+  playerDamage: 50
+  playerCurrentDamage: 50
+  vampirismPercentage: 0
 --- !u!120 &1147621081567689554
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2124,12 +2128,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionPoint: {fileID: 605613436051642527}
-  _interactionPointRadius: 1.5
+  _interactionPointRadius: 1
   _interactableMask:
     serializedVersion: 2
     m_Bits: 4096
   _InteractionPrompt: {fileID: 605613435662504180}
   _numFound: 0
+--- !u!114 &1644292468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367523451036765447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6186e08894cbd9479eed56a0c94c2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHealth: 200
+  healthBar: {fileID: 0}
+  PU_effect_multiplier: 1
+  damageIgnoreProbability: 0
+  currentHealth: 0
 --- !u!1 &2390166551595277663
 GameObject:
   m_ObjectHideFlags: 0
