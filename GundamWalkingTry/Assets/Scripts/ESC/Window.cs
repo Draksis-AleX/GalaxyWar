@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+public abstract class Window : MonoBehaviour
+{
+
+    public void Update() {
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && this.gameObject.activeSelf == true)
+        {
+            this.gameObject.SetActive(false);
+            other();
+            //TimeStop(true);
+            Debug.Log("pause update dentro");
+        }
+
+    }
+
+
+    private void OnEnable()
+    {
+        WindowManager.Instance.setDiplayEmpty(false);
+        Time.timeScale = 0f;
+    }
+
+
+    private void OnDisable()
+    {
+        WindowManager.Instance.setDiplayEmpty(true);
+        Time.timeScale = 1f;
+    }
+
+    abstract public void other();
+
+    public void TimeStop(bool stopped) {
+        if(stopped) Time.timeScale = 0f;
+        else Time.timeScale = 1f;
+    }
+   
+}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WindowManager : MonoBehaviour
 {
@@ -33,6 +34,18 @@ public class WindowManager : MonoBehaviour
         DisplayEmpty = true;
      }
 
+    private void Update()
+    {
+
+        Debug.Log("pause update fuori");
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            PauseMenuManager.Instance.Escape();
+            Debug.Log("pause update dentro");
+        }
+       
+    }
 
     public void setDiplayEmpty(bool empty) { DisplayEmpty = empty; }
 

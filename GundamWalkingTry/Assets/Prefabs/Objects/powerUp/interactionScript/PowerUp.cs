@@ -18,6 +18,8 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
     [SerializeField] protected TextMeshProUGUI typeValue;
     [SerializeField] protected GameObject _UIImage;
     [SerializeField] protected GameObject _base;
+    [SerializeField] protected GameObject rarityUi;
+
 
     protected int value;
 
@@ -31,8 +33,8 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
 
         Material[] _materials = _base.GetComponent<Renderer>().materials;
 
-        if (value <= 15) _materials[2] = matCommon;
-        else if (value > 15 && value <= 40) _materials[2] = matEpic;
+        if (value <= 20) _materials[2] = matCommon;
+        else if (value > 20 && value <= 40) _materials[2] = matEpic;
         else if (value > 40 && value <= 50) _materials[2] = matLegend;
          
 
@@ -66,9 +68,13 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
         //info.text = infoPowerUp;
         typeValue.text = type + " +" + value;
         _UIImage.GetComponent<Image>().sprite = this.iconaPowerUp;
+
+        rarityUi.GetComponent<Image>().color = _base.GetComponent<Renderer>().materials[2].GetColor("_EmissionColor");
+
         panel.SetActive(true);
         blurPanel.SetActive(true);
 
         PowerUpManager.Instance.LockPowerUp();
+
     }
 }

@@ -39,6 +39,7 @@ public class PauseMenuManager : MonoBehaviour
     public void Pause()
     {
         Debug.Log("Pause");
+        WindowManager.Instance.setDiplayEmpty(false);
         this.gameObject.SetActive(true);
         Time.timeScale = 0f;
         PlayerManager.Instance.GetComponent<PlayerInput>().enabled = false;
@@ -47,10 +48,10 @@ public class PauseMenuManager : MonoBehaviour
     public void Resume()
     {
         Debug.Log("Resume");
+        WindowManager.Instance.setDiplayEmpty(true);
         this.gameObject.SetActive(false);
         Time.timeScale = 1f;
         PlayerManager.Instance.GetComponent<PlayerInput>().enabled = true;
-        WindowManager.Instance.setDiplayEmpty(true);
     }
 
     public void goMenu()
@@ -62,18 +63,17 @@ public class PauseMenuManager : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void Escape(InputAction.CallbackContext context)
+
+    public void Escape()
     {
 
-        Debug.Log(WindowManager.Instance.canShow() + " " + this.gameObject.activeSelf + " " + context.started);
+        //Debug.Log(WindowManager.Instance.canShow() + " " + this.gameObject.activeSelf + " " + context.started);
 
-        if (WindowManager.Instance.canShow() && this.gameObject.activeSelf == false && context.started)
+        if (WindowManager.Instance.canShow() && this.gameObject.activeSelf == false)
         {
-            WindowManager.Instance.setDiplayEmpty(false);
             Pause();
         }
-        else if (this.gameObject.activeSelf == true && context.started) {
-            //WindowManager.Instance.setDiplayEmpty(true);
+        else if (this.gameObject.activeSelf == true) {
             Resume();
         }
         

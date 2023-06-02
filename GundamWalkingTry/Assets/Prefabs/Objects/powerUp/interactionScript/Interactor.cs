@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-//da rendere singleton ??
-
 public class Interactor : MonoBehaviour
 {
     [SerializeField] private Transform _interactionPoint;
@@ -14,7 +12,6 @@ public class Interactor : MonoBehaviour
     [SerializeField] private InteractionPrompt _InteractionPrompt;
 
     //private List<IInteractable> inventory = new List<IInteractable>();
-
 
     private readonly Collider[] _colliders = new Collider[3];
 
