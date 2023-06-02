@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class FirstSceneInit : MonoBehaviour
 {
     [SerializeField] Transform spawnPoint;
+    PauseMenuManager pauseMenu;
 
     private void Start()
     {
@@ -15,8 +16,9 @@ public class FirstSceneInit : MonoBehaviour
     public void Init()
     {
         Debug.Log("SceneInit...");
-        //PauseMenuManager.Instance.gameObject.SetActive(true);
-        //PauseMenuManager.Instance.gameObject.SetActive(false);
+        pauseMenu = GameObject.FindObjectOfType<PauseMenuManager>(true);
+        pauseMenu.gameObject.SetActive(true);
+        pauseMenu.gameObject.SetActive(false);
         PlayerManager.Instance.gameObject.SetActive(true);
         PlayerManager.Instance.GetComponent<Shooting>().initBulletArray();
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;

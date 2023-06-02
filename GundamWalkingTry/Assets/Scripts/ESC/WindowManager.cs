@@ -16,7 +16,7 @@ public class WindowManager : MonoBehaviour
               if (_instance == null)
               {
                   _instance = GameObject.FindObjectOfType<WindowManager>();
-                  if (_instance == null) Debug.LogError("No PauseMenu in scene");
+                  if (_instance == null) Debug.LogError("No WindowManager in scene");
               }
                return _instance;
           }
@@ -37,12 +37,9 @@ public class WindowManager : MonoBehaviour
     private void Update()
     {
 
-        Debug.Log("pause update fuori");
-
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             PauseMenuManager.Instance.Escape();
-            Debug.Log("pause update dentro");
         }
        
     }

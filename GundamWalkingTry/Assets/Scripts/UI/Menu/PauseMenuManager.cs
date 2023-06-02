@@ -16,7 +16,7 @@ public class PauseMenuManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType<PauseMenuManager>();
+                _instance = GameObject.FindObjectOfType<PauseMenuManager>(true);
                 if (_instance == null) Debug.LogError("No PauseMenu in scene");
             }
             return _instance;
@@ -28,6 +28,7 @@ public class PauseMenuManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
+            Debug.Log("SetInstance");
             GameObject.DontDestroyOnLoad(this.gameObject);
         }
         else
