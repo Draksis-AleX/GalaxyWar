@@ -36,6 +36,10 @@ public class PlayerHealthManager : MonoBehaviour
             double vignette_intensity = maxVignetteIntensity - ((((float)currentHealth)/((float)(defaultHealth+1)/2f))*maxVignetteIntensity);
             Debug.Log(maxVignetteIntensity + " - (" + currentHealth + " / " + defaultHealth / 2 + ") * 0.4 = " + vignette_intensity);
             VolumeManager.Instance.setVignetteIntensity((float)vignette_intensity);
+            if(currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -53,4 +57,15 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void setPUMultiplier(float multiplier){ this.PU_effect_multiplier = multiplier; }
     public void addDIProbability(int prob) { damageIgnoreProbability += prob; }
+
+    private void Die()
+    {
+        GameManager.Instance.runRestart();
+    }
+
+    public void reset()
+    {
+        currentHealth = defaultHealth;
+        healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
+    }
 }

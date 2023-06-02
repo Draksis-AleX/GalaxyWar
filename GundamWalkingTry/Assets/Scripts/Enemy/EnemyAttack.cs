@@ -22,6 +22,7 @@ public class EnemyAttack : MonoBehaviour
         if((Vector3.Distance(playerPosition.position, transform.position) < hitDistance) && canAttack)
         {
             canAttack = false;
+            GetComponent<EnemySimpleMovement>().triggered = false;
             slashVFX.Play();
             StartCoroutine(checkHit(slashVFX.GetFloat("duration")));
             StartCoroutine(coolDown());
@@ -42,6 +43,8 @@ public class EnemyAttack : MonoBehaviour
         {
             PlayerManager.Instance.GetComponent<PlayerShieldManager>().takeDamage(damage);
         }
+        yield return new WaitForSeconds(VFXDuration / 2);
+        GetComponent<EnemySimpleMovement>().triggered = true;
     }
 
 }

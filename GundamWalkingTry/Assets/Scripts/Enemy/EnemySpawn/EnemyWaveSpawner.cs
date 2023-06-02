@@ -5,9 +5,34 @@ using UnityEngine.UI;
 
 public class EnemyWaveSpawner : MonoBehaviour
 {
+    //================================== SINGLETON ========================================
+    public static EnemyWaveSpawner Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<EnemyWaveSpawner>();
+                if (_instance == null) Debug.LogError("No EnemyManager in scene");
+            }
+            return _instance;
+        }
+    }
 
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            GameObject.Destroy(this.gameObject);
+        }
+    }
+
+    //================================ WAVE CLASS ======================================
     [System.Serializable]
-
     public class Wave{
         [SerializeField][NonReorderable] GameObject[] enemySpawner;
 
@@ -16,7 +41,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         }
     }
 
-    //main class 
+    //============================== MAIN CLASS =========================================
 
     [SerializeField][NonReorderable] Wave[] waves;
     [SerializeField] GameObject _EnemySpawnPoints;
@@ -61,32 +86,6 @@ public class EnemyWaveSpawner : MonoBehaviour
             
         }
 
-    }
-
-
-    public static EnemyWaveSpawner Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<EnemyWaveSpawner>();
-                if (_instance == null) Debug.LogError("No EnemyManager in scene");
-            }
-            return _instance;
-        }
-    }
-
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-        else
-        {
-            GameObject.Destroy(this.gameObject);
-        }
     }
 
     public void EnemyDeath() {

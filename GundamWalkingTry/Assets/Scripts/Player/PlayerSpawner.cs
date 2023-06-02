@@ -16,4 +16,11 @@ public class PlayerSpawner : MonoBehaviour
      
     }
 
+    public void Respawn()
+    {
+        PlayerManager.Instance.transform.position = spawnPoint.position;
+        PlayerManager.Instance.transform.rotation = spawnPoint.rotation;
+        Debug.Log("Player position: " + PlayerManager.Instance.transform.position);
+    }
+
 }

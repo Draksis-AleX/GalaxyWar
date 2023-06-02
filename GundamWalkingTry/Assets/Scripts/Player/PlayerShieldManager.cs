@@ -20,6 +20,12 @@ public class PlayerShieldManager : MonoBehaviour
         shieldBar.GetComponent<ShieldBar>().setShield(maxShield);
     }
 
+    public void reset()
+    {
+        currentShield = maxShield;
+        shieldBar.GetComponent<ShieldBar>().setShield(maxShield);
+    }
+
     public void addMaxShield(int amount)
     {
         maxShield += amount;
@@ -28,24 +34,15 @@ public class PlayerShieldManager : MonoBehaviour
         latestShieldCooldown = StartCoroutine(shieldCooldown());
     }
 
-    public void reduceRegenerationTime(float percentage)
-    {
-        regenerationTime = regenerationTime - (regenerationTime * percentage);
-    }
-
-    public void reduceCooldownTime(float percentage)
-    {
-        shieldCooldownTime = shieldCooldownTime - (shieldCooldownTime * percentage);
-    }
-
     public void takeDamage(int damage)
     {
-        if(currentShield > 0)
+        if (currentShield > 0)
         {
             currentShield -= damage;
-            if(currentShield <= 0)
+            if (currentShield <= 0)
             {
-                if (currentShield < 0) { 
+                if (currentShield < 0)
+                {
                     this.GetComponent<PlayerHealthManager>().takeDamage(Mathf.Abs(currentShield));
                     currentShield = 0;
                 }
@@ -59,6 +56,20 @@ public class PlayerShieldManager : MonoBehaviour
         if (latestShieldCooldown != null) StopCoroutine(latestShieldCooldown);
         latestShieldCooldown = StartCoroutine(shieldCooldown());
     }
+
+    //============================== SKILLS PARAMETERS ======================================
+
+    public void reduceRegenerationTime(float percentage)
+    {
+        regenerationTime = regenerationTime - (regenerationTime * percentage);
+    }
+
+    public void reduceCooldownTime(float percentage)
+    {
+        shieldCooldownTime = shieldCooldownTime - (shieldCooldownTime * percentage);
+    }
+
+    //============================ REGEN COROUTINES ===========================================
 
     public IEnumerator shieldCooldown()
     {
