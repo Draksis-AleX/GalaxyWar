@@ -29,15 +29,21 @@ public class ShopManager : MonoBehaviour
     public void updateDescription(GameObject invoker)
     {
         Debug.Log("updateDescription");
+
         currentSkillGO = invoker;
         if (lastSkillGO != null) { 
             if(lastSkillGO.GetComponent<Image>().color != Color.white) updateSkillColor(lastSkillGO, Color.black);
             Debug.Log(lastSkillGO.ToString());
         }
-        Color selectColor = new Color(1f, 0, 0.2156863f);
-        updateSkillColor(currentSkillGO, selectColor);
+        
         lastSkillGO = currentSkillGO;
         currentSkill = invoker.transform.parent.gameObject.GetComponent<Skill>();
+
+        Color selectColor;
+        if (CoinManager.Instance.getCoins() >= currentSkill.getCost()) selectColor = new Color(0, 1, 1);
+        else selectColor = new Color(1f, 0, 0.2156863f);
+        updateSkillColor(currentSkillGO, selectColor);
+
         title.text = currentSkill.getTitle();
         description.text = currentSkill.getDescription();
         price.text = currentSkill.getCost().ToString();
@@ -53,7 +59,7 @@ public class ShopManager : MonoBehaviour
         if(currentSkill != null)
         {
             Debug.Log("Try Buy - Skill ID:" + currentSkill.getId());
-            //--------------- Check if skills is unlocked ------------------------
+            //--------------- Check if skill is unlocked ------------------------
             bool unlocked = false;
             if(currentSkill.getConnectedSkills().Length == 0)
             {
