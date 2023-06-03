@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.AI;
 
 public class InitScene : MonoBehaviour
 {
@@ -10,13 +11,18 @@ public class InitScene : MonoBehaviour
     [SerializeField] GameObject PropSpawnPoints;
     [SerializeField] GameObject PropPrefab;
     [SerializeField] int activePropsCount;
+    [SerializeField] NavMeshSurface navSurface;
 
     private void Start()
     {
         Debug.Log("ChangeSceneCoroutine::Start");
         StartCoroutine("Init");
         if (PropSpawnPoints != null)
+        {
             SpawnProps();
+            navSurface.BuildNavMesh();
+        }
+            
     }
 
     [SerializeField] Animator upperDoor;
