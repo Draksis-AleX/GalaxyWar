@@ -11,35 +11,52 @@ public class EnemyNavMeshMovement : MonoBehaviour
     [SerializeField] Animator animator;
     public bool triggered;
     [SerializeField] int minDistance = 10;
+    [SerializeField] float updateRate = 0.1f;
     public bool isAttacking;
+
+    private const string isWalking = "isWalking"; 
 
     private void Start()
     {
         isAttacking = false;
         triggered = false;
+        agent.avoidancePriority = Random.Range(0, 100);
     }
 
     private void Update()
     {
 
-        playerPosition = PlayerManager.Instance.gameObject.transform.GetChild(0).transform.position;
         if (!triggered) checkDistance();
-
-        if (triggered && !isAttacking)
-        {
-            agent.SetDestination(playerPosition);
-            animator.SetFloat("Speed", agent.speed);
-        }
-        else
-        {
-            animator.SetFloat("Speed", 0);
-        }
+        animator.SetBool(isWalking, agent.velocity.magnitude > 0.01f);
     }
 
     void checkDistance()
     {
+        playerPosition = PlayerManager.Instance.gameObject.transform.GetChild(0).transform.position;
         float distance = Vector3.Distance(playerPosition, transform.position);
-        Debug.Log("Distance: " + distance);
-        if (distance <= minDistance) triggered = true;
+        //Debug.Log("Distance: " + distance);
+        if (distance <= minDistance) 
+        {
+            triggered = true;
+            StartCoroutine(FollowPlayer());
+        }
+        
+    }
+
+    private IEnumerator FollowPlayer()
+    {
+        WaitForSeconds Wait = new WaitForSeconds(updateRate);
+
+        while (enabled)
+        {
+            if (!isAttacking)
+            {
+                playerPosition = PlayerManager.Instance.gameObject.transform.GetChild(0).transform.position;
+                Vector3 destination = playerPosition - (playerPosition - transform.position).normalized * 0.5f;
+                Debug.Log(this.gameObject.name.ToString() + " :: " + destination);
+                agent.SetDestination(destination);
+            }
+            yield return Wait;
+        }
     }
 }

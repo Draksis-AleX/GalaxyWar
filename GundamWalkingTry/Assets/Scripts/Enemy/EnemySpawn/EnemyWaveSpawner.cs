@@ -35,6 +35,8 @@ public class EnemyWaveSpawner : MonoBehaviour
     [System.Serializable]
     public class Wave{
         [SerializeField][NonReorderable] GameObject[] enemySpawner;
+        [SerializeField] GameObject[] enemyTypes;
+        [SerializeField] int waveSize;
 
         public GameObject[] getEnemySpawnList(){
             return enemySpawner;
