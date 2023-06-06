@@ -34,8 +34,20 @@ public class EnemyWaveSpawner : MonoBehaviour
     //================================ WAVE CLASS ======================================
     [System.Serializable]
     public class Wave{
-        [SerializeField][NonReorderable] GameObject[] enemySpawner;
+        [SerializeField] [NonReorderable] GameObject[] enemyType;
+        [SerializeField] [NonReorderable] GameObject[] enemySpawner;
 
+        public void Start() {
+           
+
+            for (int i = 0; i < enemySpawner.Length; i++) {
+                //Random.Range(0, enemyType.Length);
+                Debug.Log(enemyType[Random.Range(0, enemyType.Length -1)]);
+                enemySpawner[i] = enemyType[0];
+
+            }
+            
+        }
         public GameObject[] getEnemySpawnList(){
             return enemySpawner;
         }
@@ -54,7 +66,8 @@ public class EnemyWaveSpawner : MonoBehaviour
     int enemyKilled = 0;
 
     void Start()
-    {   
+    {
+        SetWaves();
         spawnWaves();
     }
 
@@ -86,6 +99,11 @@ public class EnemyWaveSpawner : MonoBehaviour
             
         }
 
+    }
+
+    void SetWaves() {
+        for (int i = 0; i < waves.Length; i++) waves[i].Start();
+   
     }
 
     public void EnemyDeath() {

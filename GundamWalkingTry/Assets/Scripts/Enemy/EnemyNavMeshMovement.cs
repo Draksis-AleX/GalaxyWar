@@ -39,7 +39,7 @@ public class EnemyNavMeshMovement : MonoBehaviour
     void checkDistance()
     {
         float distance = Vector3.Distance(playerPosition, transform.position);
-        Debug.Log("Distance: " + distance);
+        //Debug.Log("Distance: " + distance);
         if (distance <= minDistance) triggered = true;
     }
 }
