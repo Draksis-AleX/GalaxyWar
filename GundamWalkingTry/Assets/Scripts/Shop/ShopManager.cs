@@ -42,7 +42,7 @@ public class ShopManager : MonoBehaviour
         Color selectColor;
         if (CoinManager.Instance.getCoins() >= currentSkill.getCost()) selectColor = new Color(0, 1, 1);
         else selectColor = new Color(1f, 0, 0.2156863f);
-        updateSkillColor(currentSkillGO, selectColor);
+        if(currentSkillGO.GetComponent<Image>().color != Color.white) updateSkillColor(currentSkillGO, selectColor);
 
         title.text = currentSkill.getTitle();
         description.text = currentSkill.getDescription();
