@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] Transform firePointDX;
     Transform firePoint;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject CdBar;
 
     [SerializeField] GameObject[] bulletList;
     [SerializeField] int bulletLength;
@@ -106,7 +107,7 @@ public class Shooting : MonoBehaviour
 
     public int getDamage() { return this.playerDamage + this.playerCurrentDamage; }
 
-    public void reduceCooldown(float percentage){ coolDown -= coolDown * percentage; }
+    public void reduceCooldown(float percentage){ coolDown -= coolDown * percentage;}
 
     public float getVampirismPercentage() { return this.vampirismPercentage; }
 

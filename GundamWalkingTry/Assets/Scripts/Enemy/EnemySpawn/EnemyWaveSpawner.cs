@@ -38,8 +38,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         [SerializeField] [NonReorderable] GameObject[] enemySpawner;
 
         public void Start() {
-           
-
+        
             for (int i = 0; i < enemySpawner.Length; i++) {
                 //Random.Range(0, enemyType.Length);
                 Debug.Log(enemyType[Random.Range(0, enemyType.Length -1)]);
