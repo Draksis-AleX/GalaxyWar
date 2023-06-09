@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CoinManager : MonoBehaviour
     //====================================  SINGLETON  ==========================================
 
     private static CoinManager _instance;
+    [SerializeField] TextMeshProUGUI coinGui;
 
     public static CoinManager Instance
     {
@@ -35,12 +37,18 @@ public class CoinManager : MonoBehaviour
         }
     }
 
+
     //===========================================================================================
 
     [SerializeField] int my_coins = 0;
 
+    private void Start()
+    {
+        coinGui.text = "" + my_coins;
+    }
+
     public int getCoins() { return my_coins; }
-    public void setCoins(int coins) { my_coins = coins; }
-    public void addCoins(int coins) { my_coins += coins; }
-    public void pay(int coins) { my_coins -= coins; }
+    public void setCoins(int coins) { my_coins = coins; coinGui.text = "" + my_coins; }
+    public void addCoins(int coins) { my_coins += coins; coinGui.text = "" + my_coins; }
+    public void pay(int coins) { my_coins -= coins; coinGui.text = "" + my_coins; }
 }
