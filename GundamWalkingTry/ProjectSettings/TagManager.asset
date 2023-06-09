@@ -8,6 +8,7 @@ TagManager:
   - EnterDoor
   - World
   - Enemy
+  - CoinMagnet
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,13 @@ TagManager:
   - World
   - CameraRotationPlane
   - Invisible
+<<<<<<< Updated upstream
   - 
   - 
+=======
+  - Interactable
+  - Coins
+>>>>>>> Stashed changes
   - 
   - 
   - 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 518102275}
   - component: {fileID: 518102276}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a393d875acc3fd4687217c5bc5f4498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  dropPoint: {x: 0, y: 0, z: 0}
   minTimeModifier: 25
   maxTimeModifier: 30
 --- !u!1001 &8943592479633149958
@@ -280,6 +281,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 09ce2432b0da5c744a730f83c9cca9fd, type: 3}
       propertyPath: m_Name
       value: StarCoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09ce2432b0da5c744a730f83c9cca9fd, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09ce2432b0da5c744a730f83c9cca9fd, type: 3}
