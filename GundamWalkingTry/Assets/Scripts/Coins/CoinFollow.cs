@@ -16,10 +16,10 @@ public class CoinFollow : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Player Distance from coin: " + Vector3.Distance(PlayerManager.Instance.transform.position, this.transform.position) + " < " + lootDistance + " -> " + (Vector3.Distance(PlayerManager.Instance.transform.position, this.transform.position) < lootDistance));
+        //Debug.Log("Player Distance from coin: " + Vector3.Distance(PlayerManager.Instance.transform.position, this.transform.position) + " < " + lootDistance + " -> " + (Vector3.Distance(PlayerManager.Instance.transform.position, this.transform.position) < lootDistance));
         if (Vector3.Distance(PlayerManager.Instance.transform.position, this.transform.position) < lootDistance)
         {
-            Debug.Log("StartFollowing");
+            //Debug.Log("StartFollowing");
             isFollowing = true;
         }
 
@@ -43,13 +43,5 @@ public class CoinFollow : MonoBehaviour
         this.dropPoint.z += Random.Range(-2f, 2f);
         Debug.Log("DropPointRandom: " + this.dropPoint);
         isDropping = true;
-    }
-
-    public void setTarget(Transform target)
-    {
-        this.target = target.position;
-        this.target.y -= 0.5f;
-        this.target.x += Random.Range(-0.5f, 0.5f);
-        this.target.z += Random.Range(-0.5f, 0.5f);
     }
 }
