@@ -41,8 +41,8 @@ public class EnemyHealth : MonoBehaviour
 
         for(int i = 0; i < n_coins; i++)
         {
-            var coin = Instantiate(coinPrefab, transform.position + new Vector3(Random.Range(-2,2), Random.Range(-2, 2), Random.Range(-2, 2)), Quaternion.identity);
-            coin.GetComponent<CoinFollow>().setTarget(PlayerManager.Instance.transform.Find("AimScope"));
+            var coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+            coin.GetComponent<CoinFollow>().dropCoins(this.transform.position);
         }
     }
 }
