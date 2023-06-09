@@ -41,6 +41,7 @@ public class CoinManager : MonoBehaviour
     //===========================================================================================
 
     [SerializeField] int my_coins = 0;
+    [SerializeField] int MaxCoin = 999999999;
 
     private void Start()
     {
@@ -49,6 +50,10 @@ public class CoinManager : MonoBehaviour
 
     public int getCoins() { return my_coins; }
     public void setCoins(int coins) { my_coins = coins; coinGui.text = "" + my_coins; }
-    public void addCoins(int coins) { my_coins += coins; coinGui.text = "" + my_coins; }
+    public void addCoins(int coins) {
+        if (my_coins + coins > MaxCoin) return;
+        my_coins += coins;
+        coinGui.text = "" + my_coins; 
+    }
     public void pay(int coins) { my_coins -= coins; coinGui.text = "" + my_coins; }
 }
