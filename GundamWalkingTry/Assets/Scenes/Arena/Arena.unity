@@ -2452,7 +2452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781817805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.794888, y: -4.06, z: 11.32373}
+  m_LocalPosition: {x: -30.794888, y: -4.5282135, z: 11.32373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3207,11 +3207,6 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4335580962016536148, guid: fd7a54aca91453340a34be770efe11ea, type: 3}
   m_PrefabInstance: {fileID: 286602254}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1141832134 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-  m_PrefabInstance: {fileID: 1858133144}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1151301481
 GameObject:
@@ -4098,33 +4093,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemySpawner:
+  - enemyType:
     - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
     - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
+    enemySpawner:
+    - {fileID: 0}
+  - enemyType:
     - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
     - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    enemyTypes:
-    - {fileID: 1141832134}
-    waveSize: 10
-  - enemySpawner:
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    - {fileID: 7441034748914222885, guid: bc1d4aea619f0b0418882384917b62e2, type: 3}
-    enemyTypes: []
-    waveSize: 0
+    enemySpawner:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   _EnemySpawnPoints: {fileID: 781817805}
   effect: {fileID: 2042203657108287710, guid: d2ad5b0e38c9c7e468e918b3331ceb9a, type: 3}
   dist: 10
