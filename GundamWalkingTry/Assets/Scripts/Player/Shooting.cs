@@ -10,7 +10,6 @@ public class Shooting : MonoBehaviour
     [SerializeField] Transform firePointDX;
     Transform firePoint;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] GameObject CdBar;
 
     [SerializeField] GameObject[] bulletList;
     [SerializeField] int bulletLength;
