@@ -15,8 +15,16 @@ public class ChangeScene : MonoBehaviour
         {
             PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = false;
             PlayerManager.Instance.gameObject.SetActive(false);
+            //StartCoroutine(UnloadScene(SceneManager.GetActiveScene().buildIndex));
             SceneManager.LoadScene(sceneName);
         }
+    }
+
+    private IEnumerator UnloadScene(int sceneIndex)
+    {
+        AsyncOperation asyncUnloadLevel = SceneManager.UnloadSceneAsync(sceneIndex);
+        while (!asyncUnloadLevel.isDone)
+            yield return null;
     }
 
 }

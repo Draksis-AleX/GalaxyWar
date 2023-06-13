@@ -58,6 +58,5 @@ public class GameManager : MonoBehaviour
         // Wait until the level finish loading
         while (!asyncLoadLevel.isDone)
             yield return null;
-        GameObject.Find("SceneInitier").GetComponent<FirstSceneInit>().Init();
     }
 }
