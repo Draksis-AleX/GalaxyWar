@@ -1,26 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSpawner : MonoBehaviour
 {
 
     [SerializeField] Transform spawnPoint;
+    [SerializeField] Transform spawnPointMagazzino;
+    private Transform sp;
 
     void Awake()
     {
 
-        PlayerManager.Instance.transform.position = spawnPoint.position;
-        PlayerManager.Instance.transform.rotation = spawnPoint.rotation;
+        if (GameManager.Instance.inMagazzino == true) sp = spawnPointMagazzino;
+        else sp = spawnPoint;
+
+        PlayerManager.Instance.transform.position = sp.position;
+        PlayerManager.Instance.transform.rotation = sp.rotation;
         Debug.Log("Player position: " + PlayerManager.Instance.transform.position);
+
+        if(SceneManager.GetActiveScene().name != "Magazzino")
+            GameManager.Instance.inMagazzino = false;
      
     }
 
     public void Respawn()
     {
-        PlayerManager.Instance.transform.position = spawnPoint.position;
-        PlayerManager.Instance.transform.rotation = spawnPoint.rotation;
+        if (GameManager.Instance.inMagazzino == true) sp = spawnPointMagazzino;
+        else sp = spawnPoint;
+
+        PlayerManager.Instance.transform.position = sp.position;
+        PlayerManager.Instance.transform.rotation = sp.rotation;
         Debug.Log("Player position: " + PlayerManager.Instance.transform.position);
+        if (SceneManager.GetActiveScene().name != "Magazzino")
+            GameManager.Instance.inMagazzino = false;
     }
 
 }

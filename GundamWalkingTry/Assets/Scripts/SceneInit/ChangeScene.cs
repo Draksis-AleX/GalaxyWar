@@ -9,10 +9,12 @@ public class ChangeScene : MonoBehaviour
 
     [SerializeField] string sceneName;
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
+        if (this.CompareTag("PortaMagazzino") && GameManager.Instance.tookPowerUp == true) return;
         if (other.CompareTag("Player"))
         {
+            if (sceneName == "Magazzino") GameManager.Instance.inMagazzino = true;
             PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = false;
             PlayerManager.Instance.gameObject.SetActive(false);
             //StartCoroutine(UnloadScene(SceneManager.GetActiveScene().buildIndex));

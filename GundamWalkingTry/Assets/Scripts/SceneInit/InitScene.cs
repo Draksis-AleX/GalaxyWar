@@ -8,25 +8,15 @@ using UnityEngine.AI;
 public class InitScene : MonoBehaviour
 {
 
-    [SerializeField] GameObject PropSpawnPoints;
-    [SerializeField] GameObject PropPrefab;
-    [SerializeField] int activePropsCount;
-    [SerializeField] NavMeshSurface navSurface;
+    [SerializeField] protected Animator upperDoor;
+    [SerializeField] protected Animator lowerDoor;
 
-    private void Start()
+    public void Start()
     {
         Debug.Log("ChangeSceneCoroutine::Start");
         StartCoroutine("Init");
-        if (PropSpawnPoints != null)
-        {
-            SpawnProps();
-            navSurface.BuildNavMesh();
-        }
-            
+        ResetShield();
     }
-
-    [SerializeField] Animator upperDoor;
-    [SerializeField] Animator lowerDoor;
 
     public IEnumerator Init()
     {
@@ -40,26 +30,9 @@ public class InitScene : MonoBehaviour
         Debug.Log("Ended Init Coroutine");
     }
 
-    void SpawnProps()
+    void ResetShield()
     {
-        int propSP_c = PropSpawnPoints.transform.childCount;
-        Debug.Log("PropsSP Counter: " + propSP_c);
-
-        bool[] propStatus = new bool[propSP_c];
-        int propID = 0;
-        for (int i = 0; i < activePropsCount; i++)
-        {
-            do
-            {
-                propID = Random.Range(0, propSP_c);
-            } while (propStatus[propID] == true);
-            propStatus[propID] = true;
-            //Debug.Log("PropSpawnPoint : " + propID);
-            int random_rotation = Random.Range(0, 8);
-            Vector3 rotation = PropPrefab.transform.rotation.eulerAngles;
-            rotation.y = 45 * random_rotation;
-            Instantiate(PropPrefab, PropSpawnPoints.transform.GetChild(propID).transform.position, Quaternion.Euler(rotation)); 
-        }
+        PlayerManager.Instance.GetComponent<PlayerShieldManager>().reset();
     }
 
 }

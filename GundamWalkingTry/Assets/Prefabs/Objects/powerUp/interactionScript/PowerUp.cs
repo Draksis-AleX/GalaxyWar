@@ -47,6 +47,7 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
     public bool Interact(Interactor interactor) {
 
         Debug.Log("take powerUp");
+        GameManager.Instance.tookPowerUp = true;
         this.gameObject.SetActive(false);
         interactor.takePowerUp(this);
         //mettere qualche effetto

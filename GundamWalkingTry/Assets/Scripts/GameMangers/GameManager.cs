@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public int nextScene = 2;
+    public bool tookPowerUp = false;
+    public bool inMagazzino = false;
 
     //====================================  SINGLETON  ==========================================
 
@@ -63,5 +65,11 @@ public class GameManager : MonoBehaviour
         // Wait until the level finish loading
         while (!asyncLoadLevel.isDone)
             yield return null;
+    }
+
+    //=================================================================================
+
+    public void EnteredArena() {
+        tookPowerUp = false;
     }
 }

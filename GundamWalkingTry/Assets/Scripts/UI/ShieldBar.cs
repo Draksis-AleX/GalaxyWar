@@ -34,4 +34,5 @@ public class ShieldBar : MonoBehaviour
 
         shieldSlider.value = Mathf.SmoothDamp(startHealth, targetHealth, ref currentVelocity, smoothSpeed * Time.deltaTime);
     }
+
 }

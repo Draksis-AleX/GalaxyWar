@@ -9,22 +9,24 @@ public class TriggerDoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (this.CompareTag("PortaMagazzino") && GameManager.Instance.tookPowerUp == true) return;
         if (other.CompareTag("Player"))
-        {
-            upperDoor.SetBool("Open", true);
-            lowerDoor.SetBool("Open", true);
-            Debug.Log("Trigger Door Enter");
-        }
+            {
+                upperDoor.SetBool("Open", true);
+                lowerDoor.SetBool("Open", true);
+                Debug.Log("Trigger Door Enter");
+            }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (this.CompareTag("PortaMagazzino") && GameManager.Instance.tookPowerUp == true) return;
         if (other.CompareTag("Player"))
-        {
-            upperDoor.SetBool("Open", false);
-            lowerDoor.SetBool("Open", false);
-            Debug.Log("Trigger Door Exit");
-        }
+            {
+                upperDoor.SetBool("Open", false);
+                lowerDoor.SetBool("Open", false);
+                Debug.Log("Trigger Door Exit");
+            }        
     }
 
 }
