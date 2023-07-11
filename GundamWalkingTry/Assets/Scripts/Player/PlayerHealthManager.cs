@@ -30,6 +30,8 @@ public class PlayerHealthManager : MonoBehaviour
         }
 
         currentHealth -= damage;
+        ScoreManager.Instance.lessScore(damage);
+
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
         if(currentHealth <= defaultHealth / 2)
         {
@@ -62,6 +64,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     private void Die()
     {
+        ScoreManager.Instance.resetScore();
         GameManager.Instance.runRestart();
     }
 

@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     {
         Debug.Log("Enemy health: " + healthPoints + " -> " + (healthPoints - damageAmount));
         healthPoints -= damageAmount;
+  
         transform.GetComponentInChildren<HealthBar>().setHealth(healthPoints);
 
         GetComponent<EnemySimpleMovement>().setTriggered();
@@ -26,8 +27,10 @@ public class EnemyHealth : MonoBehaviour
         if (healthPoints <= 0)
         {
             dropCoins();
+            ScoreManager.Instance.moreScore(defaultHealtPoints);
             EnemyWaveSpawner.Instance.EnemyDeath();
             Destroy(this.gameObject);
+
         }
     }
 
