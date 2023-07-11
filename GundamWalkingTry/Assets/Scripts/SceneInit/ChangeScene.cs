@@ -16,7 +16,8 @@ public class ChangeScene : MonoBehaviour
             PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = false;
             PlayerManager.Instance.gameObject.SetActive(false);
             //StartCoroutine(UnloadScene(SceneManager.GetActiveScene().buildIndex));
-            SceneManager.LoadScene(sceneName);
+            if (sceneName.Length > 0) SceneManager.LoadScene(sceneName);
+            else SceneManager.LoadScene(GameManager.Instance.nextScene);
         }
     }
 
