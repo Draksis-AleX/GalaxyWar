@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    public int nextScene = 2;
 
     //====================================  SINGLETON  ==========================================
 
