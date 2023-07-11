@@ -72,6 +72,7 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
         rarityUi.GetComponent<Image>().color = _base.GetComponent<Renderer>().materials[2].GetColor("_EmissionColor");
 
         panel.SetActive(true);
+        blurPanel.GetComponent<Canvas>().worldCamera = CameraManager.Instance.gameObject.GetComponent<Camera>();
         blurPanel.SetActive(true);
 
         PowerUpManager.Instance.LockPowerUp();

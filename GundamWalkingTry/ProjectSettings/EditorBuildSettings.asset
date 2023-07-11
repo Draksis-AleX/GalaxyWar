@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arena/Arena.unity
     guid: a6e28a9b2cb68014cb42d6b91aaeb242
+  - enabled: 1
+    path: Assets/Scenes/Magazzino/Magazzino.unity
+    guid: 848aa3cfa6ffdaa4598540ac44da7984
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 81af2977d73251644b095a5db31fd1c0, type: 2}
