@@ -39,8 +39,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
         public void Start() {
         
-            for (int i = 0; i < enemySpawner.Length; i++) {
-                //Random.Range(0, enemyType.Length);
+            for (int i = 0; i < enemySpawner.Length; i++) {;
                 Debug.Log(enemyType[Random.Range(0, enemyType.Length -1)]);
                 enemySpawner[i] = enemyType[0];
 
