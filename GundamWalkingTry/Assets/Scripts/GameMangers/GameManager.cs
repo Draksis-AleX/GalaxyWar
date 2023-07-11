@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,8 +41,11 @@ public class GameManager : MonoBehaviour
 
     public void runRestart()
     {
+        PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = false;
         StartCoroutine(LoadScene(1));
         resetLife();
+        Physics.SyncTransforms();
+        PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
     }
 
     void resetLife()

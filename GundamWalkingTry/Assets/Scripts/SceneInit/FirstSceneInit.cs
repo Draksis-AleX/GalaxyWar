@@ -23,6 +23,7 @@ public class FirstSceneInit : MonoBehaviour
         PlayerManager.Instance.GetComponent<Shooting>().initBulletArray();
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
         PlayerManager.Instance.gameObject.transform.position = spawnPoint.position;
+        PlayerManager.Instance.gameObject.transform.rotation = spawnPoint.rotation;
         Debug.Log("SceneInitialized.");
     }
 

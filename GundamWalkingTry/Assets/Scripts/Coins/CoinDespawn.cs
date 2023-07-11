@@ -35,6 +35,7 @@ public class CoinDespawn : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (!this.gameObject.scene.isLoaded) return;
         trail.transform.parent = null;
         trail.GetComponent<TrailRenderer>().autodestruct = true;
         trail = null;
