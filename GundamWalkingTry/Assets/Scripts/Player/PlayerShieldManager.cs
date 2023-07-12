@@ -13,9 +13,59 @@ public class PlayerShieldManager : MonoBehaviour
     Coroutine latestShieldCooldown;
     bool isRegenerating = false;
 
+    private void loadAll()
+    {
+
+        ShieldData d = new ShieldData();
+
+        if (d.loadData("shield") != null)
+        {
+            d = JsonUtility.FromJson<ShieldData>("shield");
+
+            maxShield  = d.maxShield;
+            currentShield = d.currentShield;
+            shieldCooldownTime =  d.shieldCooldownTime;
+            shieldCooldownTime =  d.regenerationTime;
+
+        }
+        else currentShield = maxShield;
+    }
+
+
+    private void loadPerm()
+    {
+        ShieldData d = new ShieldData();
+
+        if (d.loadData("shield") != null)
+        {
+            d = JsonUtility.FromJson<ShieldData>("shield");
+
+            maxShield = d.maxShield;
+            shieldCooldownTime = d.shieldCooldownTime;
+            shieldCooldownTime = d.regenerationTime;
+
+        }
+        currentShield = maxShield;
+
+    }
+
+    private void save()
+    {
+        ShieldData d = new ShieldData();
+
+        d.maxShield = maxShield;
+        d.currentShield = currentShield;
+        d.shieldCooldownTime = shieldCooldownTime;
+        d.shieldCooldownTime = regenerationTime;
+
+        d.saveData("shield");
+    }
+
     private void Start()
     {
-        currentShield = maxShield;
+
+        loadPerm();
+
         shieldBar = HUDManager.Instance.gameObject.transform.Find("Shield Bar").gameObject;
         shieldBar.GetComponent<ShieldBar>().setMaxShield(maxShield);
         shieldBar.GetComponent<ShieldBar>().setShield(maxShield);
@@ -94,4 +144,5 @@ public class PlayerShieldManager : MonoBehaviour
         }
         else yield return null;
     }
+
 }

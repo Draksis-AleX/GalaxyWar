@@ -111,4 +111,57 @@ public class Shooting : MonoBehaviour
     public float getVampirismPercentage() { return this.vampirismPercentage; }
 
     public void addVampirismPercentage(float percentage) { this.vampirismPercentage += percentage; }
+
+    private void loadAll()
+    {
+
+        BulletData d = new BulletData();
+
+        if (d.loadData("shield") != null)
+        {
+          d = JsonUtility.FromJson<BulletData>("bullet");
+
+          bulletForce = d.bulletForce;
+          coolDown = d.coolDown;
+
+          playerDamage = d.playerDamage;
+          playerCurrentDamage = d.playerCurrentDamage;
+          vampirismPercentage = d.vampirismPercentage;
+
+        }
+        else playerCurrentDamage = playerDamage;
+    }
+
+
+    private void loadPerm()
+    {
+        BulletData d = new BulletData();
+
+        if (d.loadData("bullet") != null)
+        {
+            d = JsonUtility.FromJson<BulletData>("bullet");
+
+            bulletForce = d.bulletForce;
+            coolDown = d.coolDown;
+            playerDamage = d.playerDamage;
+            vampirismPercentage = d.vampirismPercentage;
+
+        }
+        playerCurrentDamage = playerDamage;
+
+    }
+
+    private void save()
+    {
+        BulletData d = new BulletData();
+
+        d.bulletForce = bulletForce;
+        d.coolDown = coolDown;
+
+        d.playerDamage = playerDamage;
+        d.playerCurrentDamage = playerCurrentDamage;
+        d.vampirismPercentage = vampirismPercentage;
+
+        d.saveData("bullet");
+    }
 }

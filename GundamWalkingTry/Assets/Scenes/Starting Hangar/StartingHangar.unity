@@ -1876,8 +1876,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52777c56c958b1c42914d4f0da2fc024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arenaDefeated: 0
   nextScene: 2
   tookPowerUp: 1
+  inMagazzino: 0
+  wavesNumber: 0
+  wave_enemies_number: 0
 --- !u!4 &1824099770
 Transform:
   m_ObjectHideFlags: 0
@@ -1932,12 +1936,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1644292477, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
+      propertyPath: maxShield
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644292477, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
       propertyPath: shieldBar
       value: 
       objectReference: {fileID: 626879752}
     - target: {fileID: 1147621081567689579, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
       propertyPath: CdBar
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147621081567689579, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
+      propertyPath: playerDamage
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2367523451036765447, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
       propertyPath: m_Name
