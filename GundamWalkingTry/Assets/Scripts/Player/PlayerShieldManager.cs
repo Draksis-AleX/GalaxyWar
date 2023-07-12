@@ -20,7 +20,7 @@ public class PlayerShieldManager : MonoBehaviour
 
         if (d.loadData("shield") != null)
         {
-            d = JsonUtility.FromJson<ShieldData>("shield");
+            d = JsonUtility.FromJson<ShieldData>(d.loadData("shield"));
 
             maxShield  = d.maxShield;
             currentShield = d.currentShield;
@@ -38,7 +38,7 @@ public class PlayerShieldManager : MonoBehaviour
 
         if (d.loadData("shield") != null)
         {
-            d = JsonUtility.FromJson<ShieldData>("shield");
+            d = JsonUtility.FromJson<ShieldData>(d.loadData("shield"));
 
             maxShield = d.maxShield;
             shieldCooldownTime = d.shieldCooldownTime;
