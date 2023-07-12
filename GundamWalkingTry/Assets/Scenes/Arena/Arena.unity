@@ -840,6 +840,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5691410273244442770, guid: 882f02631737fab47bccd2b4dba3d1d3, type: 3}
+--- !u!114 &366399610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7629432060844712185, guid: fd7a54aca91453340a34be770efe11ea, type: 3}
+  m_PrefabInstance: {fileID: 8610981739594522709}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &385912710
 GameObject:
   m_ObjectHideFlags: 0
@@ -4366,7 +4377,7 @@ PrefabInstance:
     - target: {fileID: 9152012354697071322, guid: ed03657c7d8339a418a3f299041b86b7, type: 3}
       propertyPath: coinGui
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 366399610}
     - target: {fileID: 9152012354697071322, guid: ed03657c7d8339a418a3f299041b86b7, type: 3}
       propertyPath: my_coins
       value: 99999999
