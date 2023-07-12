@@ -27,7 +27,9 @@ public class Shooting : MonoBehaviour
     private void Awake()
     {
         firePoint = firePointSX;
-        playerCurrentDamage = 50;
+
+        loadPerm();
+
         initBulletArray();
     }
 
@@ -117,9 +119,9 @@ public class Shooting : MonoBehaviour
 
         BulletData d = new BulletData();
 
-        if (d.loadData("shield") != null)
+        if (d.loadData("bullet") != null)
         {
-          d = JsonUtility.FromJson<BulletData>("bullet");
+          d = JsonUtility.FromJson<BulletData>(d.loadData("bullet"));
 
           bulletForce = d.bulletForce;
           coolDown = d.coolDown;
@@ -139,7 +141,7 @@ public class Shooting : MonoBehaviour
 
         if (d.loadData("bullet") != null)
         {
-            d = JsonUtility.FromJson<BulletData>("bullet");
+            d = JsonUtility.FromJson<BulletData>(d.loadData("bullet"));
 
             bulletForce = d.bulletForce;
             coolDown = d.coolDown;

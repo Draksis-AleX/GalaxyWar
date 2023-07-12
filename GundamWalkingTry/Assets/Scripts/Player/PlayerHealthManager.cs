@@ -19,7 +19,7 @@ public class PlayerHealthManager : MonoBehaviour
 
         if (h.loadData("health") != null)
         {
-            h = JsonUtility.FromJson<HealthData>("health");
+            h = JsonUtility.FromJson<HealthData>(h.loadData("health"));
             defaultHealth = h.defaultHealth;
             PU_effect_multiplier = h.PU_effect_multiplier;
             damageIgnoreProbability = h.damageIgnoreProbability;
