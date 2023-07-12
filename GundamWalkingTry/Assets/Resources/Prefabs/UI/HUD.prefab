@@ -124,10 +124,10 @@ RectTransform:
   m_Father: {fileID: 6181792887758795273}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 52.80005, y: 259.5}
-  m_SizeDelta: {x: 78.97, y: 59.227}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 52.80005, y: -40.5}
+  m_SizeDelta: {x: 78.97, y: 59.22699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6181792886035762924
 CanvasRenderer:
@@ -575,10 +575,10 @@ RectTransform:
   m_Father: {fileID: 6181792887758795273}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -459.1, y: 240.82}
-  m_SizeDelta: {x: 13.9359, y: 13.9359}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 75, y: -59.8}
+  m_SizeDelta: {x: 13.935913, y: 13.935913}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7629432059399330709
 CanvasRenderer:
@@ -894,10 +894,10 @@ RectTransform:
   m_Father: {fileID: 6181792887758795273}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -371.31, y: 240.82}
-  m_SizeDelta: {x: 161.643, y: 12.183}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 162.78998, y: -59.800003}
+  m_SizeDelta: {x: 161.643, y: 12.183014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7629432060844712166
 CanvasRenderer:
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 7629432061056918899}
   - component: {fileID: 7629432060639411422}
   m_Layer: 5
-  m_Name: Energy Bar
+  m_Name: Shield Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

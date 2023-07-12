@@ -34,20 +34,40 @@ public class EnemyWaveSpawner : MonoBehaviour
     //================================ WAVE CLASS ======================================
     [System.Serializable]
     public class Wave{
-        [SerializeField] [NonReorderable] GameObject[] enemyType;
-        [SerializeField] [NonReorderable] GameObject[] enemySpawner;
+        [SerializeField] [NonReorderable] public GameObject[] enemyType;
+        [SerializeField] [NonReorderable] public GameObject[] enemySpawner;
+
+        public Wave(int waveSize, int enemyTypes)
+        {
+            this.enemySpawner = new GameObject[waveSize];
+            this.enemyType = new GameObject[enemyTypes];
+            if (enemyType.Length == 2)
+            {
+                this.enemyType[0] = (GameObject)Resources.Load("Prefabs/Entities/aku");
+                this.enemyType[1] = (GameObject)Resources.Load("Prefabs/Entities/aku-verde");
+            }
+        }
 
         public void Start() {
         
             for (int i = 0; i < enemySpawner.Length; i++) {;
                 Debug.Log("filippo"+Random.Range(0, enemyType.Length));
                 enemySpawner[i] = enemyType[Random.Range(0, enemyType.Length)];
-
             }
             
         }
         public GameObject[] getEnemySpawnList(){
             return enemySpawner;
+        }
+
+        public void setWaveSize(int size)
+        {
+            enemySpawner = new GameObject[size];
+        }
+
+        public void setTypesSize(int size)
+        {
+            enemyType = new GameObject[size];
         }
     }
 
@@ -65,7 +85,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     void Start()
     {
-        SetWaves();
+        setupWaves();
         spawnWaves();
     }
 
@@ -99,20 +119,42 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     }
 
-    void SetWaves() {
-        for (int i = 0; i < waves.Length; i++) waves[i].Start();
-   
+    void setupWaves()
+    {
+        waves = new Wave[GameManager.Instance.wavesNumber];
+        int EnemyNumber = GameManager.Instance.wave_enemies_number * (int)Mathf.Ceil(GameManager.Instance.wavesNumber * 1.5f);
+        for (int i = 0; i < waves.Length; i++)
+        {
+            waves[i] = new Wave(EnemyNumber, 2);
+            EnemyNumber = (int)Mathf.Ceil(EnemyNumber * 1.5f);
+            if (EnemyNumber >= 20) EnemyNumber = 20;
+            Debug.Log(waves[i].ToString());
+            waves[i].Start();
+        }
     }
 
     public void EnemyDeath() {
 
         enemyKilled++;
 
-        if (enemyKilled >= waves[currentWave].getEnemySpawnList().Length && currentWave < waves.Length - 1)
+        if (enemyKilled >= waves[currentWave].getEnemySpawnList().Length)
         {
-            enemyKilled = 0;
-            currentWave++;
-            spawnWaves();
+            if(currentWave + 1 < waves.Length)
+            {
+                enemyKilled = 0;
+                currentWave++;
+                spawnWaves();
+            }
+            else
+            {
+                endWaves();
+            }
         }
+    }
+
+    void endWaves()
+    {
+        Debug.Log("Waves Ended");
+        GameManager.Instance.DefeatedArena();
     }
 }

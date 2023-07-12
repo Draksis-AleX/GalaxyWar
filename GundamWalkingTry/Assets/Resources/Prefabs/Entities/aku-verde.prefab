@@ -905,8 +905,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5632586147116938227}
   animator: {fileID: 2713492707644508417}
-  triggered: 0
-  minDistance: 10
+  triggered: 1
+  minDistance: 100
   updateRate: 0.1
   isAttacking: 0
 --- !u!1 &3071786449530958813

@@ -31,7 +31,7 @@ public class PowerUpManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            GameObject.DontDestroyOnLoad(this.gameObject);
+            //GameObject.DontDestroyOnLoad(this.gameObject);
         }
         else
         {

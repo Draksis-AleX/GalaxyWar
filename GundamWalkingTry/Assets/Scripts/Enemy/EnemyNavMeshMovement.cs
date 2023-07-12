@@ -10,7 +10,7 @@ public class EnemyNavMeshMovement : MonoBehaviour
     public NavMeshAgent agent;
     [SerializeField] Animator animator;
     public bool triggered;
-    [SerializeField] int minDistance = 10;
+    [SerializeField] int minDistance = 100;
     [SerializeField] float updateRate = 0.1f;
     public bool isAttacking;
 
@@ -53,7 +53,7 @@ public class EnemyNavMeshMovement : MonoBehaviour
             {
                 playerPosition = PlayerManager.Instance.gameObject.transform.GetChild(0).transform.position;
                 Vector3 destination = playerPosition - (playerPosition - transform.position).normalized * 0.5f;
-                Debug.Log(this.gameObject.name.ToString() + " :: " + destination);
+                //Debug.Log(this.gameObject.name.ToString() + " :: " + destination);
                 agent.SetDestination(destination);
             }
             yield return Wait;

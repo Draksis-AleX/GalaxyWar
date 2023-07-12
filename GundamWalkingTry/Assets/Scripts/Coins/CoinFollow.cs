@@ -37,11 +37,11 @@ public class CoinFollow : MonoBehaviour
     public void dropCoins(Vector3 dropPoint)
     {
         this.dropPoint = dropPoint;
-        Debug.Log("DropPoint: " + this.dropPoint);
+        //Debug.Log("DropPoint: " + this.dropPoint);
         this.dropPoint.y += 0.3f;
         this.dropPoint.x += Random.Range(-2f, 2f);
         this.dropPoint.z += Random.Range(-2f, 2f);
-        Debug.Log("DropPointRandom: " + this.dropPoint);
+        //Debug.Log("DropPointRandom: " + this.dropPoint);
         isDropping = true;
     }
 }
