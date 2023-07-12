@@ -36,7 +36,7 @@ public class PlayerHealthManager : MonoBehaviour
         if(currentHealth <= defaultHealth / 2)
         {
             double vignette_intensity = maxVignetteIntensity - ((((float)currentHealth)/((float)(defaultHealth+1)/2f))*maxVignetteIntensity);
-            Debug.Log(maxVignetteIntensity + " - (" + currentHealth + " / " + defaultHealth / 2 + ") * 0.4 = " + vignette_intensity);
+            //Debug.Log(maxVignetteIntensity + " - (" + currentHealth + " / " + defaultHealth / 2 + ") * 0.4 = " + vignette_intensity);
             VolumeManager.Instance.setVignetteIntensity((float)vignette_intensity);
             if(currentHealth <= 0)
             {

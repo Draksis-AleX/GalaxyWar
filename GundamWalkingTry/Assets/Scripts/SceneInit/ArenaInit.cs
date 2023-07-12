@@ -30,7 +30,7 @@ public class ArenaInit : InitScene
     void SpawnProps()
     {
         int propSP_c = PropSpawnPoints.transform.childCount;
-        Debug.Log("PropsSP Counter: " + propSP_c);
+        //Debug.Log("PropsSP Counter: " + propSP_c);
 
         bool[] propStatus = new bool[propSP_c];
         int propID = 0;

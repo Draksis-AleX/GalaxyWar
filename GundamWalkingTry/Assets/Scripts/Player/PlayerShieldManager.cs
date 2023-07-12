@@ -75,9 +75,9 @@ public class PlayerShieldManager : MonoBehaviour
     public IEnumerator shieldCooldown()
     {
         isRegenerating = false;
-        Debug.Log("Started Shield Cooldown");
+        //Debug.Log("Started Shield Cooldown");
         yield return new WaitForSeconds(shieldCooldownTime);
-        Debug.Log("Ended Shield Cooldown");
+        //Debug.Log("Ended Shield Cooldown");
         isRegenerating = true;
         StartCoroutine(regenerateShield());
     }

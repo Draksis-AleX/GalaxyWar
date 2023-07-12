@@ -26,7 +26,7 @@ public class EnemyHitCheck : MonoBehaviour
     {
         if (isColliding)
         {
-            Debug.Log("Player Hitted");
+            //Debug.Log("Player Hitted");
             return true;
         }
         else return false;

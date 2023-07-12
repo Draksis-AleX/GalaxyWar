@@ -14,21 +14,21 @@ public class InitScene : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("ChangeSceneCoroutine::Start");
+        //Debug.Log("ChangeSceneCoroutine::Start");
         StartCoroutine("Init");
         ResetShield();
     }
 
     public IEnumerator Init()
     {
-        Debug.Log("Started Init Coroutine");
+        //Debug.Log("Started Init Coroutine");
         
         upperDoor.Play("UpperClose");
         lowerDoor.Play("LowerClose");
         PlayerManager.Instance.gameObject.SetActive(true);
         yield return new WaitForSeconds(upperDoor.runtimeAnimatorController.animationClips[1].length);
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
-        Debug.Log("Ended Init Coroutine");
+        //Debug.Log("Ended Init Coroutine");
     }
 
     void ResetShield()
