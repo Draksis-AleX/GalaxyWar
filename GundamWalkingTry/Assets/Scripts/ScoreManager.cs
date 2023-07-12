@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] int score = 0;
     private static ScoreManager _instance;
+    ScoreInfo scoreInfo;
     //[SerializeField] TextMeshProUGUI scoreGUI;
 
     public static ScoreManager Instance
@@ -37,22 +38,30 @@ public class ScoreManager : MonoBehaviour
 
 
     void Start() {
+        scoreInfo = GameObject.Find("ScorePanel").GetComponent<ScoreInfo>();
         loadScore();
+        scoreInfo.updateScore(score);
     }
 
     public int getScore() { return score; }
 
     public void moreScore(int bonus) { 
         score += 5 * bonus;
+        scoreInfo.updateScore(score);
         saveScore();
     }
 
     public void lessScore(int malus){ 
         score -= 1*malus;
+        scoreInfo.updateScore(score);
         if (score < 0) score = 0;
     }
 
-    public void resetScore() { score = 0; }
+    public void resetScore() { 
+        score = 0;
+        scoreInfo.updateScore(score);
+        saveScore();
+    }
 
 
 

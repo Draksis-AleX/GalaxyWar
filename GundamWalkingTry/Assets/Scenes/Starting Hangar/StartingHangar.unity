@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 8754126835882949224, guid: 1140e88536195854a98f1e24b43dae53, type: 3}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 83bab1c9e682e5f4f9480ed71de8b340, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.010137382, g: 0.009158542, b: 0.00982688, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1880,6 +1880,7 @@ MonoBehaviour:
   nextScene: 2
   tookPowerUp: 1
   inMagazzino: 0
+  completedArena: 0
   wavesNumber: 0
   wave_enemies_number: 0
 --- !u!4 &1824099770
