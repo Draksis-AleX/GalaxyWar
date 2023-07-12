@@ -13,9 +13,55 @@ public class PlayerHealthManager : MonoBehaviour
 
     float maxVignetteIntensity = 0.4f;
 
+    private void loadAll() {
+
+        HealthData h = new HealthData();
+
+        if (h.loadData("health") != null)
+        {
+            h = JsonUtility.FromJson<HealthData>("health");
+            defaultHealth = h.defaultHealth;
+            PU_effect_multiplier = h.PU_effect_multiplier;
+            damageIgnoreProbability = h.damageIgnoreProbability;
+            currentHealth = h.currentHealth;
+
+        }
+        else currentHealth = defaultHealth;
+    }
+
+
+    private void loadPerm() {
+
+        HealthData h = new HealthData();
+
+        if (h.loadData("health") != null)
+        {
+            h = JsonUtility.FromJson<HealthData>(h.loadData("health"));
+            defaultHealth = h.defaultHealth;
+            PU_effect_multiplier = h.PU_effect_multiplier;
+            damageIgnoreProbability = h.damageIgnoreProbability;
+
+        }
+
+        currentHealth = defaultHealth;
+    }
+
+    private void save()
+    {
+        HealthData h = new HealthData();
+
+        h.defaultHealth = defaultHealth;
+        h.PU_effect_multiplier = PU_effect_multiplier;
+        h.damageIgnoreProbability = damageIgnoreProbability;
+        h.currentHealth = currentHealth;
+
+        h.saveData("health");
+    }
+
     private void Start()
     {
-        currentHealth = defaultHealth;
+        loadPerm();
+        
         healthBar = HUDManager.Instance.gameObject.transform.Find("Health Bar").gameObject;
         healthBar.GetComponent<HealthBar>().setMaxHealth(defaultHealth);
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
@@ -31,6 +77,8 @@ public class PlayerHealthManager : MonoBehaviour
 
         currentHealth -= damage;
         ScoreManager.Instance.lessScore(damage);
+
+        save();
 
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
         if(currentHealth <= defaultHealth / 2)

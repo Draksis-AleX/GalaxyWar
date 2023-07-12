@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<ScoreManager>();
-                if (_instance == null) Debug.LogError("No Coin Manager");
+                if (_instance == null) Debug.LogError("No score Manager");
             }
             return _instance;
         }
@@ -36,11 +36,16 @@ public class ScoreManager : MonoBehaviour
     }
 
 
-    void Start() { score = 0; }
+    void Start() {
+        loadScore();
+    }
 
     public int getScore() { return score; }
 
-    public void moreScore(int bonus) { score += 5 * bonus; }
+    public void moreScore(int bonus) { 
+        score += 5 * bonus;
+        saveScore();
+    }
 
     public void lessScore(int malus){ 
         score -= 1*malus;
@@ -51,5 +56,27 @@ public class ScoreManager : MonoBehaviour
 
 
 
-   
+    private void loadScore()
+    {
+
+        intSave i = new intSave();
+
+        if (i.loadIntData("score") != null)
+        {
+            i = JsonUtility.FromJson<intSave>(i.loadIntData("score"));
+            Debug.Log("score:" + i);
+            score = i.value;
+        }
+        else score = 0;
+
+
+
+    }
+
+    public void saveScore()
+    {
+        intSave i = new intSave();
+        i.saveIntData(score, "score");
+    }
+
 }
