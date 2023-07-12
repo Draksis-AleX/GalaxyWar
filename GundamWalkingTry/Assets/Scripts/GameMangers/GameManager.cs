@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int nextScene = 2;
     public bool tookPowerUp = false;
     public bool inMagazzino = false;
+    public bool completedArena = false;
 
     //====================================  SINGLETON  ==========================================
 
@@ -90,11 +91,13 @@ public class GameManager : MonoBehaviour
 
     public void EnteredArena() {
         tookPowerUp = false;
+        completedArena = false;
     }
 
     public void DefeatedArena()
     {
         arenaDefeated++;
         wavesNumber = (int)Mathf.Ceil(wavesNumber * 1.5f);
+        completedArena = true;
     }
 }

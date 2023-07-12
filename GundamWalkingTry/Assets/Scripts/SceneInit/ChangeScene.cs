@@ -11,6 +11,7 @@ public class ChangeScene : MonoBehaviour
 
     protected void OnTriggerEnter(Collider other)
     {
+        if (this.CompareTag("PortaArena") && GameManager.Instance.completedArena == false) return;
         if (this.CompareTag("PortaMagazzino") && GameManager.Instance.tookPowerUp == true) return;
         if (other.CompareTag("Player"))
         {

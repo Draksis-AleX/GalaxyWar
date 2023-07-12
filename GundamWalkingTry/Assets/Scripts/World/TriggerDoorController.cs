@@ -9,6 +9,7 @@ public class TriggerDoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (this.CompareTag("PortaArena") && GameManager.Instance.completedArena == false) return;
         if (this.CompareTag("PortaMagazzino") && GameManager.Instance.tookPowerUp == true) return;
         if (other.CompareTag("Player"))
             {
@@ -20,6 +21,7 @@ public class TriggerDoorController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (this.CompareTag("PortaArena") && GameManager.Instance.completedArena == false) return;
         if (this.CompareTag("PortaMagazzino") && GameManager.Instance.tookPowerUp == true) return;
         if (other.CompareTag("Player"))
             {

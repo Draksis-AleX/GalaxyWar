@@ -53,8 +53,5 @@ public class PowerUpManager : MonoBehaviour
         powerUp.GetComponent<Animator>().enabled = false;
         powerUp.GetComponent<Renderer>().material = offMat;
         powerUp.layer = 0;
-
-
-
     }
 }

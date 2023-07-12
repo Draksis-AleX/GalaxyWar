@@ -78,25 +78,27 @@ public class EnemyWaveSpawner : MonoBehaviour
     private static EnemyWaveSpawner _instance;
     [SerializeField] private GameObject effect;
     [SerializeField] float dist;
-
+    [SerializeField] WaveInfo WaveInfoPanel;
 
     int currentWave = 0;
     int enemyKilled = 0;
 
     void Start()
     {
+        WaveInfoPanel = GameObject.Find("WaveInfoPanel").GetComponent<WaveInfo>();
         setupWaves();
         spawnWaves();
     }
 
     void spawnWaves(){
 
-
         int SpawnCounter = _EnemySpawnPoints.transform.childCount;
         Debug.Log("PropsSP Counter: " + SpawnCounter);
 
         bool[] spawnStatus = new bool[SpawnCounter];
         int enemyID = 0;
+
+        StartCoroutine(WaveInfoPanel.setWave(currentWave));
 
         for (int i = 0; i < waves[currentWave].getEnemySpawnList().Length; i++){
 
@@ -122,6 +124,7 @@ public class EnemyWaveSpawner : MonoBehaviour
     void setupWaves()
     {
         waves = new Wave[GameManager.Instance.wavesNumber];
+        WaveInfoPanel.setMaxWave(GameManager.Instance.wavesNumber);
         int EnemyNumber = GameManager.Instance.wave_enemies_number * (int)Mathf.Ceil(GameManager.Instance.wavesNumber * 1.5f);
         for (int i = 0; i < waves.Length; i++)
         {
@@ -156,5 +159,6 @@ public class EnemyWaveSpawner : MonoBehaviour
     {
         Debug.Log("Waves Ended");
         GameManager.Instance.DefeatedArena();
+        StartCoroutine(WaveInfoPanel.setWave(currentWave + 1));
     }
 }
