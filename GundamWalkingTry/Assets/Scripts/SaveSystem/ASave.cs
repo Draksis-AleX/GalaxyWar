@@ -30,7 +30,7 @@ public abstract class ASave
 
         string sdata = File.ReadAllText(filepath);
 
-        Debug.Log(sdata);
+        //Debug.Log(sdata);
 
         return sdata;
 

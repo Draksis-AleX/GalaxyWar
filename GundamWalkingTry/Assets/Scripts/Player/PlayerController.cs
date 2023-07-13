@@ -59,14 +59,14 @@ public class PlayerController : MonoBehaviour
 
         if(this.GetComponent<PlayerInput>().actions["Aiming"].WasPressedThisFrame())
         {
-            Debug.Log("Lower Speed");
+            //Debug.Log("Lower Speed");
             speed = default_speed * 0.5f;
             _animator.speed = 0.5f;
         }
 
         if (this.GetComponent<PlayerInput>().actions["Aiming"].WasReleasedThisFrame())
         {
-            Debug.Log("Reset Speed and Aiming");
+            //Debug.Log("Reset Speed and Aiming");
             ResetAiming();
             speed = default_speed;
             _animator.speed = 1f;

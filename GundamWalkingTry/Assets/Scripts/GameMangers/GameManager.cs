@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     public void EnteredArena() {
         tookPowerUp = false;
         completedArena = false;
+        ScoreManager.Instance.StartTimer();
     }
 
     public void DefeatedArena()
@@ -99,5 +100,6 @@ public class GameManager : MonoBehaviour
         arenaDefeated++;
         wavesNumber = (int)Mathf.Ceil(wavesNumber * 1.5f);
         completedArena = true;
+        ScoreManager.Instance.StopTimer();
     }
 }

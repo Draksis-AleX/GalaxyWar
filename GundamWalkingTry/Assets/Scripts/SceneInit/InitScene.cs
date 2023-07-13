@@ -21,7 +21,7 @@ public class InitScene : MonoBehaviour
 
     public IEnumerator Init()
     {
-        Debug.Log("Started Init Coroutine");
+        //Debug.Log("Started Init Coroutine");
         
         upperDoor.Play("UpperClose");
         lowerDoor.Play("LowerClose");

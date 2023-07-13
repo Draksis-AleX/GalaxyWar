@@ -51,7 +51,7 @@ public class CoinManager :  MonoBehaviour
         if (i.loadIntData("coins") != null)
         {
             i = JsonUtility.FromJson<intSave>(i.loadIntData("coins"));
-            Debug.Log("coin:" + i);
+            //Debug.Log("coin:" + i);
             my_coins = i.value;
         }
 

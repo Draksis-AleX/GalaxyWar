@@ -6,8 +6,12 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] int score = 0;
+    [SerializeField] int waveScore = 1000;
     private static ScoreManager _instance;
     ScoreInfo scoreInfo;
+    float timer = 0;
+    bool measureTime = false;
+    
     //[SerializeField] TextMeshProUGUI scoreGUI;
 
     public static ScoreManager Instance
@@ -43,6 +47,11 @@ public class ScoreManager : MonoBehaviour
         scoreInfo.updateScore(score);
     }
 
+    private void Update()
+    {
+        if (measureTime) timer += Time.unscaledDeltaTime;
+    }
+
     public int getScore() { return score; }
 
     public void moreScore(int bonus) { 
@@ -63,7 +72,19 @@ public class ScoreManager : MonoBehaviour
         saveScore();
     }
 
+    public void StartTimer()
+    {
+        measureTime = true;
+    }
 
+    public void StopTimer()
+    {
+        measureTime = false;
+        //Debug.Log("Completation Time: " + timer);
+        Debug.Log("Score added: " + (int)Mathf.Ceil((GameManager.Instance.wavesNumber * waveScore) / (timer / 100)));
+        moreScore((int)Mathf.Ceil((GameManager.Instance.wavesNumber * waveScore) / (timer / 100))) ;
+        timer = 0;
+    }
 
     private void loadScore()
     {
@@ -73,7 +94,7 @@ public class ScoreManager : MonoBehaviour
         if (i.loadIntData("score") != null)
         {
             i = JsonUtility.FromJson<intSave>(i.loadIntData("score"));
-            Debug.Log("score:" + i);
+            //Debug.Log("score:" + i);
             score = i.value;
         }
         else score = 0;

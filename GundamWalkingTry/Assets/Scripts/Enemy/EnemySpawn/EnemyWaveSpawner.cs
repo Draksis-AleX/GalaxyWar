@@ -51,7 +51,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         public void Start() {
         
             for (int i = 0; i < enemySpawner.Length; i++) {;
-                Debug.Log("filippo"+Random.Range(0, enemyType.Length));
+                //Debug.Log("RandEnemyType: "+Random.Range(0, enemyType.Length));
                 enemySpawner[i] = enemyType[Random.Range(0, enemyType.Length)];
             }
             
@@ -93,7 +93,7 @@ public class EnemyWaveSpawner : MonoBehaviour
     void spawnWaves(){
 
         int SpawnCounter = _EnemySpawnPoints.transform.childCount;
-        Debug.Log("PropsSP Counter: " + SpawnCounter);
+        //Debug.Log("PropsSP Counter: " + SpawnCounter);
 
         bool[] spawnStatus = new bool[SpawnCounter];
         int enemyID = 0;
@@ -115,7 +115,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
             Instantiate(effect, effecLoc , Quaternion.identity);
             Instantiate(waves[currentWave].getEnemySpawnList()[i], _EnemySpawnPoints.transform.GetChild(enemyID).transform.position, Quaternion.identity);
-            Debug.Log("distanza:" + Vector3.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position));
+            //Debug.Log("distanza:" + Vector3.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position));
             
         }
 
@@ -131,7 +131,6 @@ public class EnemyWaveSpawner : MonoBehaviour
             waves[i] = new Wave(EnemyNumber, 2);
             EnemyNumber = (int)Mathf.Ceil(EnemyNumber * 1.5f);
             if (EnemyNumber >= 20) EnemyNumber = 20;
-            Debug.Log(waves[i].ToString());
             waves[i].Start();
         }
     }

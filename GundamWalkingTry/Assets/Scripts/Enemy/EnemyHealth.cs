@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void takeDamage(int damageAmount)
     {
-        Debug.Log("Enemy health: " + healthPoints + " -> " + (healthPoints - damageAmount));
+        //Debug.Log("Enemy health: " + healthPoints + " -> " + (healthPoints - damageAmount));
         healthPoints -= damageAmount;
   
         transform.GetComponentInChildren<HealthBar>().setHealth(healthPoints);

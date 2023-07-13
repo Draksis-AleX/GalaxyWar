@@ -35,7 +35,7 @@ public class Shooting : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("InitBulletArray");
+        //Debug.Log("InitBulletArray");
         initBulletArray();
     }
 

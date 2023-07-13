@@ -1950,7 +1950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1147621081567689579, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
       propertyPath: playerDamage
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2367523451036765447, guid: 67771387c24e4a542bfbb89efae80d4f, type: 3}
       propertyPath: m_Name

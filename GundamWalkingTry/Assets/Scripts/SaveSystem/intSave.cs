@@ -12,7 +12,7 @@ public class intSave
     {
         value = data;
 
-        Debug.Log("value:" + value);
+        //Debug.Log("value:" + value);
 
         string sdata = JsonUtility.ToJson(this);
         string filepath = Application.persistentDataPath + "/" + namesave + ".json";
