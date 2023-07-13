@@ -12,7 +12,7 @@ public abstract class Window : MonoBehaviour
             this.gameObject.SetActive(false);
             other();
             //TimeStop(true);
-            Debug.Log("pause update dentro");
+            //Debug.Log("pause update dentro");
         }
 
     }

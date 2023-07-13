@@ -116,7 +116,6 @@ public class PlayerHealthManager : MonoBehaviour
 
     private void Die()
     {
-        ScoreManager.Instance.resetScore();
         GameManager.Instance.runRestart();
     }
 
