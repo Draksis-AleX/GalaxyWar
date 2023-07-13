@@ -98,8 +98,8 @@ public class GameManager : MonoBehaviour
     public void DefeatedArena()
     {
         arenaDefeated++;
+        ScoreManager.Instance.StopTimer(wavesNumber);
         wavesNumber = (int)Mathf.Ceil(wavesNumber * 1.5f);
         completedArena = true;
-        ScoreManager.Instance.StopTimer();
     }
 }

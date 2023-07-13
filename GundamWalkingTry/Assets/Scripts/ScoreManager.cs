@@ -6,8 +6,9 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] int score = 0;
-    [SerializeField] int waveScore = 1000;
+    [SerializeField] int base_waveScore = 100;
     private static ScoreManager _instance;
+    int waveScore = 0;
     ScoreInfo scoreInfo;
     float timer = 0;
     bool measureTime = false;
@@ -52,6 +53,8 @@ public class ScoreManager : MonoBehaviour
         if (measureTime) timer += Time.unscaledDeltaTime;
     }
 
+    //=======================================================================
+
     public int getScore() { return score; }
 
     public void moreScore(int bonus) { 
@@ -72,19 +75,30 @@ public class ScoreManager : MonoBehaviour
         saveScore();
     }
 
+    //=========================================== ARENA TIMER SCORE =============================
+
+    public void updateWaveScore(int n_enemies)
+    {
+        waveScore += n_enemies * base_waveScore;
+    }
+
     public void StartTimer()
     {
         measureTime = true;
     }
 
-    public void StopTimer()
+    public void StopTimer(int waves_number)
     {
         measureTime = false;
         //Debug.Log("Completation Time: " + timer);
-        Debug.Log("Score added: " + (int)Mathf.Ceil((GameManager.Instance.wavesNumber * waveScore) / (timer / 100)));
-        moreScore((int)Mathf.Ceil((GameManager.Instance.wavesNumber * waveScore) / (timer / 100))) ;
+        Debug.Log("Score: ((" + waves_number + " * 3) * " + waveScore + ")/(" + timer + "/100)");
+        Debug.Log("Score added: " + (int)Mathf.Ceil(((waves_number * 3) * waveScore) / (timer / 100)));
+        moreScore((int)Mathf.Ceil(((waves_number * 3) / (timer / 100)))) ;
+        waveScore = 0;
         timer = 0;
     }
+
+    //======================================= SAVE SCORE =====================================================
 
     private void loadScore()
     {

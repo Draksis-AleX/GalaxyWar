@@ -5780,7 +5780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  waveScore: 1000
+  base_waveScore: 200
 --- !u!4 &1921589656
 Transform:
   m_ObjectHideFlags: 0

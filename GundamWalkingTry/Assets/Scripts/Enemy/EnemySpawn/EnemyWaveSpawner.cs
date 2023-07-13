@@ -99,6 +99,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         int enemyID = 0;
 
         StartCoroutine(WaveInfoPanel.setWave(currentWave));
+        ScoreManager.Instance.updateWaveScore(waves[currentWave].getEnemySpawnList().Length);
 
         for (int i = 0; i < waves[currentWave].getEnemySpawnList().Length; i++){
 
