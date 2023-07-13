@@ -103,16 +103,16 @@ public class Shooting : MonoBehaviour
         else firePoint = firePointSX;
     }
 
-    public void addDamage(int amount) { this.playerDamage += amount; }
-    public void addCurrentDamage(int amount) { this.playerCurrentDamage += amount; }
+    public void addDamage(int amount) { this.playerDamage += amount; save(); }
+    public void addCurrentDamage(int amount) { this.playerCurrentDamage += amount; save();  }
 
     public int getDamage() { return this.playerDamage + this.playerCurrentDamage; }
 
-    public void reduceCooldown(float percentage){ coolDown -= coolDown * percentage;}
+    public void reduceCooldown(float percentage){ coolDown -= coolDown * percentage; save(); }
 
     public float getVampirismPercentage() { return this.vampirismPercentage; }
 
-    public void addVampirismPercentage(float percentage) { this.vampirismPercentage += percentage; }
+    public void addVampirismPercentage(float percentage) { this.vampirismPercentage += percentage; save(); }
 
     private void loadAll()
     {

@@ -6,6 +6,7 @@ public class PlayerShieldManager : MonoBehaviour
 {
 
     [SerializeField] int maxShield = 50;
+    [SerializeField] int bonusShield = 0;
     [SerializeField] int currentShield;
     [SerializeField] float shieldCooldownTime = 5f;
     [SerializeField] float regenerationTime = 1f;
@@ -23,12 +24,13 @@ public class PlayerShieldManager : MonoBehaviour
             d = JsonUtility.FromJson<ShieldData>(d.loadData("shield"));
 
             maxShield  = d.maxShield;
-            currentShield = d.currentShield;
+            bonusShield = d.bonusShield;
             shieldCooldownTime =  d.shieldCooldownTime;
-            shieldCooldownTime =  d.regenerationTime;
+            regenerationTime =  d.regenerationTime;
 
         }
-        else currentShield = maxShield;
+        maxShield += bonusShield;
+        reset();
     }
 
 
@@ -42,10 +44,11 @@ public class PlayerShieldManager : MonoBehaviour
 
             maxShield = d.maxShield;
             shieldCooldownTime = d.shieldCooldownTime;
-            shieldCooldownTime = d.regenerationTime;
+            regenerationTime = d.regenerationTime;
 
         }
-        currentShield = maxShield;
+        bonusShield = 0;
+        reset();
 
     }
 
@@ -53,20 +56,18 @@ public class PlayerShieldManager : MonoBehaviour
     {
         ShieldData d = new ShieldData();
 
-        d.maxShield = maxShield;
-        d.currentShield = currentShield;
+        d.maxShield = maxShield - bonusShield;
+        d.bonusShield = bonusShield;
         d.shieldCooldownTime = shieldCooldownTime;
-        d.shieldCooldownTime = regenerationTime;
+        d.regenerationTime = regenerationTime;
 
         d.saveData("shield");
     }
 
     private void Start()
     {
-
-        loadPerm();
-
         shieldBar = HUDManager.Instance.gameObject.transform.Find("Shield Bar").gameObject;
+        loadPerm();
         shieldBar.GetComponent<ShieldBar>().setMaxShield(maxShield);
         shieldBar.GetComponent<ShieldBar>().setShield(maxShield);
     }
@@ -80,9 +81,22 @@ public class PlayerShieldManager : MonoBehaviour
     public void addMaxShield(int amount)
     {
         maxShield += amount;
+
         shieldBar.GetComponent<ShieldBar>().setMaxShield(maxShield);
         if (latestShieldCooldown != null) StopCoroutine(latestShieldCooldown);
         latestShieldCooldown = StartCoroutine(shieldCooldown());
+        save();
+    }
+
+    public void addBonusShield(int amount)
+    {
+        bonusShield += amount;
+        maxShield += bonusShield;
+
+        shieldBar.GetComponent<ShieldBar>().setMaxShield(maxShield);
+        if (latestShieldCooldown != null) StopCoroutine(latestShieldCooldown);
+        latestShieldCooldown = StartCoroutine(shieldCooldown());
+        save();
     }
 
     public void takeDamage(int damage)
@@ -113,11 +127,13 @@ public class PlayerShieldManager : MonoBehaviour
     public void reduceRegenerationTime(float percentage)
     {
         regenerationTime = regenerationTime - (regenerationTime * percentage);
+        save();
     }
 
     public void reduceCooldownTime(float percentage)
     {
         shieldCooldownTime = shieldCooldownTime - (shieldCooldownTime * percentage);
+        save();
     }
 
     //============================ REGEN COROUTINES ===========================================

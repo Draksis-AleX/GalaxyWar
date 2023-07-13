@@ -15,6 +15,6 @@ public class ArmorPowerUp : PowerUp
 
     override public void SetPowerUp() {
         SetPanel("Armor");
-
+        PlayerManager.Instance.GetComponent<PlayerShieldManager>().addBonusShield(value);
     }
 }

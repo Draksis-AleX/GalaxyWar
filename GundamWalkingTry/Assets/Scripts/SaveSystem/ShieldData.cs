@@ -7,7 +7,7 @@ using UnityEngine;
 public class ShieldData : ASave
 {
      public int maxShield;
-     public int currentShield;
+     public int bonusShield;
      public float shieldCooldownTime;
      public float regenerationTime;
 

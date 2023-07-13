@@ -26,7 +26,7 @@ public class PlayerHealthManager : MonoBehaviour
             currentHealth = h.currentHealth;
 
         }
-        else currentHealth = defaultHealth;
+        else reset();
     }
 
 
@@ -43,7 +43,7 @@ public class PlayerHealthManager : MonoBehaviour
 
         }
 
-        currentHealth = defaultHealth;
+        reset();
     }
 
     private void save()
@@ -60,9 +60,11 @@ public class PlayerHealthManager : MonoBehaviour
 
     private void Start()
     {
-        loadPerm();
         
         healthBar = HUDManager.Instance.gameObject.transform.Find("Health Bar").gameObject;
+
+        loadPerm();
+
         healthBar.GetComponent<HealthBar>().setMaxHealth(defaultHealth);
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
     }
@@ -77,8 +79,6 @@ public class PlayerHealthManager : MonoBehaviour
 
         currentHealth -= damage;
         ScoreManager.Instance.lessScore(damage);
-
-        save();
 
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
         if(currentHealth <= defaultHealth / 2)
@@ -97,6 +97,8 @@ public class PlayerHealthManager : MonoBehaviour
     {
         defaultHealth += health;
         healthBar.GetComponent<HealthBar>().setMaxHealth(defaultHealth);
+
+        save();
     }
 
     public void heal(int health)
@@ -109,6 +111,8 @@ public class PlayerHealthManager : MonoBehaviour
         VolumeManager.Instance.setVignetteIntensity((float)vignette_intensity);
 
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
+
+        save();
     }
 
     public void setPUMultiplier(float multiplier){ this.PU_effect_multiplier = multiplier; }
