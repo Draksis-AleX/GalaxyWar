@@ -154,6 +154,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &46477716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5399454512883000439, guid: 015f02ec6a9bd2c4389669f403f13d98, type: 3}
+  m_PrefabInstance: {fileID: 8052654591071839151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &78236505 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7441837789106344532, guid: 545f048682e97684da9532e77adaee85, type: 3}
@@ -564,6 +569,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &573399233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6376536659511427203, guid: 015f02ec6a9bd2c4389669f403f13d98, type: 3}
+  m_PrefabInstance: {fileID: 8052654591071839151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &580918954 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 521193144432882372, guid: 7a6d03435bf458840a45b181de4c90de, type: 3}
@@ -1046,6 +1056,11 @@ MeshFilter:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2673542514465432265, guid: 7a6d03435bf458840a45b181de4c90de, type: 3}
   m_PrefabInstance: {fileID: 2673542514434933862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1348902977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3046029851716880766, guid: 015f02ec6a9bd2c4389669f403f13d98, type: 3}
+  m_PrefabInstance: {fileID: 8052654591071839151}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1374561755
 GameObject:
@@ -2144,6 +2159,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1409913199}
+--- !u!1 &1981714615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1257898553361045640, guid: 015f02ec6a9bd2c4389669f403f13d98, type: 3}
+  m_PrefabInstance: {fileID: 8052654591071839151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2023602595
 GameObject:
   m_ObjectHideFlags: 0
@@ -3971,5 +3991,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8052654592103904567, guid: 015f02ec6a9bd2c4389669f403f13d98, type: 3}
+      propertyPath: bulletTree
+      value: 
+      objectReference: {fileID: 1981714615}
+    - target: {fileID: 8052654592103904567, guid: 015f02ec6a9bd2c4389669f403f13d98, type: 3}
+      propertyPath: healthTree
+      value: 
+      objectReference: {fileID: 46477716}
+    - target: {fileID: 8052654592103904567, guid: 015f02ec6a9bd2c4389669f403f13d98, type: 3}
+      propertyPath: shieldTree
+      value: 
+      objectReference: {fileID: 573399233}
+    - target: {fileID: 8052654592103904567, guid: 015f02ec6a9bd2c4389669f403f13d98, type: 3}
+      propertyPath: SkillTreeFrame
+      value: 
+      objectReference: {fileID: 1348902977}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 015f02ec6a9bd2c4389669f403f13d98, type: 3}

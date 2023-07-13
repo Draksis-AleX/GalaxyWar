@@ -16,6 +16,12 @@ public class ShopManager : MonoBehaviour
     GameObject lastSkillGO;
     [SerializeField] List<int> ownedSkills;
 
+    [SerializeField] GameObject shieldTree;
+    [SerializeField] GameObject healthTree;
+    [SerializeField] GameObject bulletTree;
+
+
+
     private void OnEnable()
     {
         updateMyCoins();
@@ -86,7 +92,7 @@ public class ShopManager : MonoBehaviour
 
             //-------------------- Buy ----------------------------------------------
             
-            if(CoinManager.Instance.getCoins() >= currentSkill.getCost() && unlocked && !currentSkill.isOwned() && !alternativeBought)
+            if(CoinManager.Instance.getCoins() >= currentSkill.getCost() && unlocked && !currentSkill.isOwned() && !alternativeBought && (!ownedSkills.Contains(currentSkill.getId())))
             {
                 Debug.Log("Skill Bought - Skill ID:" + currentSkill.getId());
                 currentSkill.getSkillEffect().Apply(PlayerManager.Instance.gameObject);
@@ -114,8 +120,52 @@ public class ShopManager : MonoBehaviour
         {
             d = JsonUtility.FromJson<ShopData>(d.loadData("shop"));
             ownedSkills = d.ownedSkills;
-
+            colorOwned();
         }
+
+    }
+
+    private void colorOwned()
+    {
+
+        int n_skill = 8;
+
+        Transform shieldSkills = shieldTree.gameObject.transform.GetChild(1);
+        Transform healthSkills = healthTree.gameObject.transform.GetChild(1);
+        Transform bulletSkills = bulletTree.gameObject.transform.GetChild(1);
+
+        GameObject skill;
+
+        for (int j = 0; j < ownedSkills.Capacity; j++) { 
+            for (int i = 0; i < n_skill; i++)
+            {
+
+                if (ownedSkills[j] >= 0 && ownedSkills[j] <= 7)
+                {
+                    skill = shieldSkills.transform.GetChild(i).gameObject;
+
+                    if (skill.gameObject.GetComponent<Skill>().getId() == ownedSkills[j])
+                        skill.transform.GetChild(2).gameObject.GetComponent<Image>().color = Color.white;
+
+                }
+                else if (ownedSkills[j] >= 10 && ownedSkills[j] <= 17)
+                {
+                    skill = healthSkills.transform.GetChild(i).gameObject;
+
+                    if (skill.gameObject.GetComponent<Skill>().getId() == ownedSkills[j])
+                        skill.transform.GetChild(2).gameObject.GetComponent<Image>().color = Color.white;
+
+                }
+                else {
+
+                    skill = bulletSkills.transform.GetChild(i).gameObject;
+
+                    if (skill.gameObject.GetComponent<Skill>().getId() == ownedSkills[j])
+                        skill.transform.GetChild(2).gameObject.GetComponent<Image>().color = Color.white;
+                }
+            }
+        }
+
 
     }
 
@@ -125,6 +175,12 @@ public class ShopManager : MonoBehaviour
 
         d.ownedSkills  = ownedSkills;
 
+        d.saveData("shop");
+    }
+
+    private void resetSave()  //per debug
+    {
+        ShopData d = new ShopData();
         d.saveData("shop");
     }
 
