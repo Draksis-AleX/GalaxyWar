@@ -28,7 +28,8 @@ public class Shooting : MonoBehaviour
     {
         firePoint = firePointSX;
 
-        loadPerm();
+        if (SaveManager.Instance.whatLoad() == 0) loadAll();
+        else loadPerm();
 
         initBulletArray();
     }

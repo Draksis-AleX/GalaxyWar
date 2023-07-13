@@ -63,7 +63,8 @@ public class PlayerHealthManager : MonoBehaviour
         
         healthBar = HUDManager.Instance.gameObject.transform.Find("Health Bar").gameObject;
 
-        loadPerm();
+        if (SaveManager.Instance.whatLoad() == 0) loadAll();
+        else loadPerm();
 
         healthBar.GetComponent<HealthBar>().setMaxHealth(defaultHealth);
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);

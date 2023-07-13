@@ -67,7 +67,8 @@ public class PlayerShieldManager : MonoBehaviour
     private void Start()
     {
         shieldBar = HUDManager.Instance.gameObject.transform.Find("Shield Bar").gameObject;
-        loadPerm();
+        if (SaveManager.Instance.whatLoad() == 0) loadAll();
+        else loadPerm();
         shieldBar.GetComponent<ShieldBar>().setMaxShield(maxShield);
         shieldBar.GetComponent<ShieldBar>().setShield(maxShield);
     }

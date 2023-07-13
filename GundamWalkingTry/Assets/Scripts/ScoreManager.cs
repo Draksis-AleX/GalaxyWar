@@ -60,7 +60,6 @@ public class ScoreManager : MonoBehaviour
     public void moreScore(int bonus) { 
         score += 5 * bonus;
         scoreInfo.updateScore(score);
-        saveScore();
     }
 
     public void lessScore(int malus){ 
@@ -72,7 +71,7 @@ public class ScoreManager : MonoBehaviour
     public void resetScore() { 
         score = 0;
         scoreInfo.updateScore(score);
-        saveScore();
+        save();
     }
 
     //=========================================== ARENA TIMER SCORE =============================
@@ -117,7 +116,7 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    public void saveScore()
+    public void save()
     {
         intSave i = new intSave();
         i.saveIntData(score, "score");
