@@ -24,6 +24,7 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         updateMyCoins();
+        loadAll();
     }
 
     public void updateDescription(GameObject invoker)
@@ -94,6 +95,7 @@ public class ShopManager : MonoBehaviour
                 updateSkillColor(currentSkillGO, Color.white);
                 CoinManager.Instance.pay(currentSkill.getCost());
                 updateMyCoins();
+                save();
             }
         }
     }
@@ -101,6 +103,29 @@ public class ShopManager : MonoBehaviour
     void updateSkillColor(GameObject target, Color color)
     {
         target.GetComponent<Image>().color = color;
+    }
+
+    private void loadAll()
+    {
+
+        ShopData d = new ShopData();
+
+        if (d.loadData("shop") != null)
+        {
+            d = JsonUtility.FromJson<ShopData>(d.loadData("shop"));
+            ownedSkills = d.ownedSkills;
+
+        }
+
+    }
+
+    private void save()
+    {
+        ShopData d = new ShopData();
+
+        d.ownedSkills  = ownedSkills;
+
+        d.saveData("shop");
     }
 
 }
