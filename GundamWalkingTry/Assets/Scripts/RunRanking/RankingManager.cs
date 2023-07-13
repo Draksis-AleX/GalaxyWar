@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class RankingManager : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class RankingManager : MonoBehaviour
 
     //============================================================================================
 
+
+
+    [System.Serializable]
     struct RunEntry
     {
         public int id;
@@ -47,27 +51,42 @@ public class RankingManager : MonoBehaviour
         public int score;
     }
 
+    string filename = "ranking";
+
     int maxEntries;
-    [SerializeField] RunEntry[] rank;
+    RankingData rd;
+    int index;
     int current_id = 0;
 
     private void Start()
     {
-        rank = new RunEntry[maxEntries];
+        rd = new RankingData();
+        index = 0;
     }
 
     public void saveRun(string date, string time, int waves, int score, float time_played)
     {
-        RunEntry newEntry = new RunEntry();
+        RankingData.RunEntry newEntry = new RankingData.RunEntry();
         newEntry.id = current_id++;
         newEntry.date = date;
         newEntry.time = time;
         newEntry.waves = waves;
         newEntry.score = score;
+        newEntry.time_played = FormatTime(time_played);
 
-        Debug.Log("New Run Entry: [ #" + newEntry.id + " | " + newEntry.date + " | " + newEntry.time + " | " + newEntry.waves + " | " + newEntry.score + " | " + FormatTime(time_played) + " ] ");
+        //Debug.Log("New Run Entry: [ #" + newEntry.id + " | " + newEntry.date + " | " + newEntry.time + " | " + newEntry.waves + " | " + newEntry.score + " | " + FormatTime(time_played) + " ] ");
 
+        rd.addEntry(newEntry);
 
+        /*run_list.Add(newEntry);
+        run_list.Sort(SortByScore);
+
+        foreach(RunEntry run in run_list)
+        {
+            Debug.Log("Run Entry: [ #" + run.id + " | " + run.date + " | " + run.time + " | " + run.waves + " | " + run.score + " | " + run.time_played + " ] ");
+        }*/
+
+        //Debug.Log("Run_list: " + run_list);
     }
 
     string FormatTime(float time)
@@ -77,4 +96,8 @@ public class RankingManager : MonoBehaviour
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    static int SortByScore(RunEntry r1, RunEntry r2)
+    {
+        return r2.score.CompareTo(r1.score);
+    }
 }
