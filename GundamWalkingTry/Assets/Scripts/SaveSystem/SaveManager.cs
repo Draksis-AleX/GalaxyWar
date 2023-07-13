@@ -6,6 +6,9 @@ public class SaveManager : MonoBehaviour
 {
     [SerializeField] ScoreManager _ScoreManager;
     [SerializeField] CoinManager _CoinManager;
+    [SerializeField] PlayerHealthManager _PlayerHealthManager;
+    [SerializeField] PlayerShieldManager _PlayerShieldManager;
+    [SerializeField] Shooting _Shooting;
 
     private static SaveManager _instance;
     public static SaveManager Instance
@@ -32,6 +35,7 @@ public class SaveManager : MonoBehaviour
                 data = JsonUtility.FromJson<GameData>(data.loadData("game"));
             }
 
+            Debug.Log("Da cambiare");
             data.scene = "debug";
         }
         else
@@ -57,10 +61,15 @@ public class SaveManager : MonoBehaviour
 
     public void save() {
 
-        Debug.Log("Salvo solo le informazioni score e coin al momento ");
+        Debug.Log("savo informazioni");
+
+        data.scene = "Corridoio#1";
 
         _ScoreManager.save();
         _CoinManager.saveCoins();
+        _PlayerHealthManager.save();
+        _PlayerShieldManager.save();
+        _Shooting.save();
 
         data.saveData("game");
     }

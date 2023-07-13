@@ -52,7 +52,7 @@ public class PlayerShieldManager : MonoBehaviour
 
     }
 
-    private void save()
+    public void save()
     {
         ShieldData d = new ShieldData();
 

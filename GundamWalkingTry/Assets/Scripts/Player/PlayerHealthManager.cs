@@ -46,7 +46,7 @@ public class PlayerHealthManager : MonoBehaviour
         reset();
     }
 
-    private void save()
+    public void save()
     {
         HealthData h = new HealthData();
 

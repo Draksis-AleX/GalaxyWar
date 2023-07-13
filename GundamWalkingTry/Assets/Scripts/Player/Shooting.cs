@@ -154,7 +154,7 @@ public class Shooting : MonoBehaviour
 
     }
 
-    private void save()
+    public void save()
     {
         BulletData d = new BulletData();
 
