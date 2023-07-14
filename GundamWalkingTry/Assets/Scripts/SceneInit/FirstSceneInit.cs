@@ -15,6 +15,8 @@ public class FirstSceneInit : MonoBehaviour
 
     public void Init()
     {
+        PlayerManager.Instance.GetComponent<PlayerShieldManager>().reset();
+        ScoreManager.Instance.resetScore();
         Debug.Log("SceneInit...");
         Debug.Log("PlayerPos: " + PlayerManager.Instance.transform.position);
         pauseMenu = GameObject.FindObjectOfType<PauseMenuManager>(true);

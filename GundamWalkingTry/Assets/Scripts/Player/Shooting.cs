@@ -117,7 +117,7 @@ public class Shooting : MonoBehaviour
 
     public void addVampirismPercentage(float percentage) { this.vampirismPercentage += percentage; save(); }
 
-    private void loadAll()
+    public void loadAll()
     {
 
         BulletData d = new BulletData();

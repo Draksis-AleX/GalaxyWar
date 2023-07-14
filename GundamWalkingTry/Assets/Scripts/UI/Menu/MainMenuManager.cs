@@ -11,7 +11,6 @@ public class MainMenuManager : MonoBehaviour
 
         GameData d  = new GameData();
 
-
         if (d.loadData("game") == null) {
             SceneManager.LoadScene(sceneName);
         }

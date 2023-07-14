@@ -44,7 +44,7 @@ public class CoinManager :  MonoBehaviour
     [SerializeField] int my_coins = 0;
     [SerializeField] int MaxCoin = 999999999;
 
-    private void loadCoins() {
+    public void loadCoins() {
 
         intSave i = new intSave();
 

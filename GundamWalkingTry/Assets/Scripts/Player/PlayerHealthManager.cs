@@ -13,7 +13,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     float maxVignetteIntensity = 0.4f;
 
-    private void loadAll() {
+    public void loadAll() {
 
         HealthData h = new HealthData();
 

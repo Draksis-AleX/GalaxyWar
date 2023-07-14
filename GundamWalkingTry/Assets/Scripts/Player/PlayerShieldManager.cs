@@ -14,7 +14,7 @@ public class PlayerShieldManager : MonoBehaviour
     Coroutine latestShieldCooldown;
     bool isRegenerating = false;
 
-    private void loadAll()
+    public void loadAll()
     {
 
         ShieldData d = new ShieldData();

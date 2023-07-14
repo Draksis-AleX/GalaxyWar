@@ -38,8 +38,7 @@ public class GameManager : MonoBehaviour
         }
 
         Init();
-        //load();
-
+        load();
     }
 
     private void Init()
@@ -66,7 +65,6 @@ public class GameManager : MonoBehaviour
 
         RankingManager.Instance.saveRun(gameData.run_start_date, gameData.run_start_time, gameData.wavesCompleted, ScoreManager.Instance.getScore(), gameData.run_time);
 
-        ScoreManager.Instance.resetScore();
         gameData.count_time = false;
         gameData.run_time = 0;
         gameData.first_arena = true;

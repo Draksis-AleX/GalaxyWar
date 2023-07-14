@@ -58,6 +58,14 @@ public class SaveManager : MonoBehaviour
         _gameManager.save(SceneManager.GetActiveScene().name);
     }
 
-
+    public void load()
+    {
+        _scoreManager.loadScore();
+        _coinManager.loadCoins();
+        _playerHealthManager.loadAll();
+        _playerShieldManager.loadAll();
+        _shooting.loadAll();
+        _gameManager.load();
+    }
 
 }

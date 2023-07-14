@@ -62,6 +62,7 @@ public class PauseMenuManager : MonoBehaviour
         PlayerManager.Instance.StopAllCoroutines();
         PlayerManager.Instance.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
+        WindowManager.Instance.setDiplayEmpty(true);
     }
 
 

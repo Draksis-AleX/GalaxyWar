@@ -39,14 +39,12 @@ public class ScoreManager : MonoBehaviour
         {
             GameObject.Destroy(this.gameObject);
         }
-    }
 
-
-    void Start() {
         scoreInfo = GameObject.Find("ScorePanel").GetComponent<ScoreInfo>();
         loadScore();
         scoreInfo.updateScore(score);
     }
+
 
     private void Update()
     {
@@ -99,7 +97,7 @@ public class ScoreManager : MonoBehaviour
 
     //======================================= SAVE SCORE =====================================================
 
-    private void loadScore()
+    public void loadScore()
     {
 
         intSave i = new intSave();

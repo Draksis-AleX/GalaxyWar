@@ -11,6 +11,7 @@ public class InitScene : MonoBehaviour
     [SerializeField] protected Animator upperDoor;
     [SerializeField] protected Animator lowerDoor;
     WaveInfo waveInfo;
+    [SerializeField] GameObject pauseMenu;
 
     public void Start()
     {
@@ -22,7 +23,11 @@ public class InitScene : MonoBehaviour
     public IEnumerator Init()
     {
         //Debug.Log("Started Init Coroutine");
-        
+        if (pauseMenu != null)
+        {
+            pauseMenu.gameObject.SetActive(true);
+            pauseMenu.gameObject.SetActive(false);
+        }
         upperDoor.Play("UpperClose");
         lowerDoor.Play("LowerClose");
         PlayerManager.Instance.gameObject.SetActive(true);
