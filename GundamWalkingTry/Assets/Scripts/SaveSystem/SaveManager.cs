@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    [SerializeField] ScoreManager _ScoreManager;
-    [SerializeField] CoinManager _CoinManager;
-    [SerializeField] PlayerHealthManager _PlayerHealthManager;
-    [SerializeField] PlayerShieldManager _PlayerShieldManager;
-    [SerializeField] Shooting _Shooting;
+    [SerializeField] ScoreManager _scoreManager;
+    [SerializeField] CoinManager _coinManager;
+    [SerializeField] PlayerHealthManager _playerHealthManager;
+    [SerializeField] PlayerShieldManager _playerShieldManager;
+    [SerializeField] Shooting _shooting;
+    [SerializeField] GameManager _gameManager;
 
     private static SaveManager _instance;
     public static SaveManager Instance
@@ -29,14 +30,6 @@ public class SaveManager : MonoBehaviour
         {
             _instance = this;
             GameObject.DontDestroyOnLoad(this.gameObject);
-            data = new GameData();
-            if (data.loadData("game") != null)
-            {
-                data = JsonUtility.FromJson<GameData>(data.loadData("game"));
-            }
-
-            Debug.Log("Da cambiare");
-            data.scene = "debug";
         }
         else
         {
@@ -45,33 +38,24 @@ public class SaveManager : MonoBehaviour
 
     }
 
-    GameData data;
 
     private void Start()
     {
 
     }
 
-
-    public int whatLoad() {
-        if(data.scene == "Magazzino") return 0;
-        return 1;
-    }
-
-
     public void save() {
 
         Debug.Log("savo informazioni");
 
-        data.scene = "Corridoio#1";
+        GameManager.Instance.gameData.scene = "Checkpoint";
 
-        _ScoreManager.save();
-        _CoinManager.saveCoins();
-        _PlayerHealthManager.save();
-        _PlayerShieldManager.save();
-        _Shooting.save();
-
-        data.saveData("game");
+        _scoreManager.save();
+        _coinManager.saveCoins();
+        _playerHealthManager.save();
+        _playerShieldManager.save();
+        _shooting.save();
+        _gameManager.save();
     }
 
 

@@ -28,7 +28,7 @@ public class Shooting : MonoBehaviour
     {
         firePoint = firePointSX;
 
-        if (SaveManager.Instance.whatLoad() == 0) loadAll();
+        if (GameManager.Instance.gameData.scene == "Checkpoints") loadAll();
         else loadPerm();
 
         initBulletArray();

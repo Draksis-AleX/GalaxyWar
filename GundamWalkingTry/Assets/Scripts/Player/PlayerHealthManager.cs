@@ -63,7 +63,7 @@ public class PlayerHealthManager : MonoBehaviour
         
         healthBar = HUDManager.Instance.gameObject.transform.Find("Health Bar").gameObject;
 
-        if (SaveManager.Instance.whatLoad() == 0) loadAll();
+        if (GameManager.Instance.gameData.scene == "Checkpoints") loadAll();
         else loadPerm();
 
         healthBar.GetComponent<HealthBar>().setMaxHealth(defaultHealth);

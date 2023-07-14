@@ -248,13 +248,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52777c56c958b1c42914d4f0da2fc024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arenaDefeated: 0
-  nextScene: 2
-  tookPowerUp: 0
-  inMagazzino: 0
-  completedArena: 0
-  wavesNumber: 0
-  wave_enemies_number: 0
+  gameData:
+    scene: StartScene
+    arenaDefeated: 0
+    nextScene: 2
+    tookPowerUp: 0
+    inMagazzino: 0
+    completedArena: 0
+    first_arena: 1
+    run_start_date: 
+    run_start_time: 
+    run_time: 0
+    count_time: 0
+    wavesCompleted: 0
+    wavesNumber: 1
+    wave_enemies_number: 2
 --- !u!4 &169297361
 Transform:
   m_ObjectHideFlags: 0
@@ -598,6 +606,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbc68557ca5ff04caf37adeed2cb004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreManager: {fileID: 0}
+  _coinManager: {fileID: 0}
+  _playerHealthManager: {fileID: 0}
+  _playerShieldManager: {fileID: 0}
+  _shooting: {fileID: 0}
+  _gameManager: {fileID: 0}
 --- !u!4 &340551496
 Transform:
   m_ObjectHideFlags: 0
@@ -1680,6 +1694,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1239862552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1239862554}
+  - component: {fileID: 1239862553}
+  m_Layer: 0
+  m_Name: CheckPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1239862553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239862552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb4e908d3c8ffc48a4cb1d36afafb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1239862554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239862552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.1051483, y: 24.051722, z: -0.90748215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1247082032 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7629432060844712185, guid: fd7a54aca91453340a34be770efe11ea, type: 3}
@@ -1800,6 +1858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a167b3ebf566b549aaf2609015296fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DisplayEmpty: 0
 --- !u!4 &1314578374
 Transform:
   m_ObjectHideFlags: 0
