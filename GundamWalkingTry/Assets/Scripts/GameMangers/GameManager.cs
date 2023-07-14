@@ -6,17 +6,7 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] int arenaDefeated = 0;
-    public int nextScene = 2;
-    public bool tookPowerUp = false;
-    public bool inMagazzino = false;
-    public bool completedArena = false;
-    bool first_arena;
-    string run_start_date;
-    string run_start_time;
-    float run_time;
-    bool count_time;
-    public int wavesCompleted;
+    public GameData gameData;
 
     //====================================  SINGLETON  ==========================================
 
@@ -48,27 +38,25 @@ public class GameManager : MonoBehaviour
         }
 
         Init();
+        //load();
+
     }
 
     private void Init()
     {
-        wavesNumber = 1;
-        wave_enemies_number = 2;
-        first_arena = true;
-        wavesCompleted = 0;
-        run_time = 0;
-        count_time = false;
+        gameData = new GameData();
     }
 
     private void Update()
     {
-        if (count_time) run_time += Time.unscaledDeltaTime;
+        if (gameData.count_time) gameData.run_time += Time.unscaledDeltaTime;
     }
 
     //========================== RESTART RUN ==========================================
 
     public void runRestart()
     {
+        save("StartingHangar");
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = false;
         StartCoroutine(LoadScene(1));
         resetLife();
@@ -76,13 +64,13 @@ public class GameManager : MonoBehaviour
         Physics.SyncTransforms();
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
 
-        RankingManager.Instance.saveRun(run_start_date, run_start_time, wavesCompleted, ScoreManager.Instance.getScore(), run_time);
+        RankingManager.Instance.saveRun(gameData.run_start_date, gameData.run_start_time, gameData.wavesCompleted, ScoreManager.Instance.getScore(), gameData.run_time);
 
         ScoreManager.Instance.resetScore();
-        count_time = false;
-        run_time = 0;
-        first_arena = true;
-        wavesCompleted = 0;
+        gameData.count_time = false;
+        gameData.run_time = 0;
+        gameData.first_arena = true;
+        gameData.wavesCompleted = 0;
     }
 
     void resetLife()
@@ -94,8 +82,8 @@ public class GameManager : MonoBehaviour
 
     void resetWaves()
     {
-        wavesNumber = 1;
-        wave_enemies_number = 3;
+        gameData.wavesNumber = 1;
+        gameData.wave_enemies_number = 3;
     }
 
     private IEnumerator LoadScene(int sceneIndex)
@@ -109,28 +97,38 @@ public class GameManager : MonoBehaviour
 
     //=================================================================================
 
-    public int wavesNumber;
-    public int wave_enemies_number;
-
     public void EnteredArena() {
-        tookPowerUp = false;
-        completedArena = false;
+        gameData.tookPowerUp = false;
+        gameData.completedArena = false;
         ScoreManager.Instance.StartTimer();
-        if (first_arena)
+        if (gameData.first_arena)
         {
             Debug.Log("Starting New Run");
-            run_start_date = System.DateTime.Now.ToString("dd/MM/yyyy");
-            run_start_time = System.DateTime.Now.ToString("hh:mm");
-            first_arena = false;
-            count_time = true;
+            gameData.run_start_date = System.DateTime.Now.ToString("dd/MM/yyyy");
+            gameData.run_start_time = System.DateTime.Now.ToString("hh:mm");
+            gameData.first_arena = false;
+            gameData.count_time = true;
         }
     }
 
     public void DefeatedArena()
     {
-        arenaDefeated++;
-        ScoreManager.Instance.StopTimer(wavesNumber);
-        wavesNumber = (int)Mathf.Ceil(wavesNumber * 1.5f);
-        completedArena = true;
+        gameData.arenaDefeated++;
+        ScoreManager.Instance.StopTimer(gameData.wavesNumber);
+        gameData.wavesNumber = (int)Mathf.Ceil(gameData.wavesNumber * 1.5f);
+        gameData.completedArena = true;
+    }
+
+
+    public void save(string scene) {
+        gameData.scene = scene;
+        gameData.saveData("game");
+    }
+
+    public void load() {
+        if (gameData.loadData("game") != null)
+        {
+            gameData = JsonUtility.FromJson<GameData>(gameData.loadData("game"));
+        }
     }
 }

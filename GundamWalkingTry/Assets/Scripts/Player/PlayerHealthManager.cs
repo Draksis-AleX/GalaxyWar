@@ -63,7 +63,7 @@ public class PlayerHealthManager : MonoBehaviour
         
         healthBar = HUDManager.Instance.gameObject.transform.Find("Health Bar").gameObject;
 
-        if (SaveManager.Instance.whatLoad() == 0) loadAll();
+        if (GameManager.Instance.gameData.scene == "Checkpoints") loadAll();
         else loadPerm();
 
         healthBar.GetComponent<HealthBar>().setMaxHealth(defaultHealth);
@@ -119,6 +119,9 @@ public class PlayerHealthManager : MonoBehaviour
     public void setPUMultiplier(float multiplier){ this.PU_effect_multiplier = multiplier; }
     public void addDIProbability(int prob) { damageIgnoreProbability += prob; }
 
+    public int getDefaultHealth() {
+        return defaultHealth;
+    }
     private void Die()
     {
         GameManager.Instance.runRestart();

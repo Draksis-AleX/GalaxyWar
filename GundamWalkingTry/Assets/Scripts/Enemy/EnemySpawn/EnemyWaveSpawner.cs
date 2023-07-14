@@ -124,9 +124,9 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     void setupWaves()
     {
-        waves = new Wave[GameManager.Instance.wavesNumber];
-        WaveInfoPanel.setMaxWave(GameManager.Instance.wavesNumber);
-        int EnemyNumber = GameManager.Instance.wave_enemies_number * (int)Mathf.Ceil(GameManager.Instance.wavesNumber * 1.5f);
+        waves = new Wave[GameManager.Instance.gameData.wavesNumber];
+        WaveInfoPanel.setMaxWave(GameManager.Instance.gameData.wavesNumber);
+        int EnemyNumber = GameManager.Instance.gameData.wave_enemies_number * (int)Mathf.Ceil(GameManager.Instance.gameData.wavesNumber * 1.5f);
         for (int i = 0; i < waves.Length; i++)
         {
             waves[i] = new Wave(EnemyNumber, 2);
@@ -142,7 +142,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
         if (enemyKilled >= waves[currentWave].getEnemySpawnList().Length)
         {
-            GameManager.Instance.wavesCompleted++;
+            GameManager.Instance.gameData.wavesCompleted++;
             if(currentWave + 1 < waves.Length)
             {
                 enemyKilled = 0;

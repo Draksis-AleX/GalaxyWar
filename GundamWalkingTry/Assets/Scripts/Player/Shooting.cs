@@ -27,11 +27,13 @@ public class Shooting : MonoBehaviour
     private void Awake()
     {
         firePoint = firePointSX;
-
-        if (SaveManager.Instance.whatLoad() == 0) loadAll();
-        else loadPerm();
-
         initBulletArray();
+    }
+
+    private void Start()
+    {
+        if (GameManager.Instance.gameData.scene == "Checkpoints") loadAll();
+        else loadPerm();
     }
 
     private void OnEnable()

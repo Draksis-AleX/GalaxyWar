@@ -13,7 +13,7 @@ public class PlayerSpawner : MonoBehaviour
     void Awake()
     {
 
-        if (GameManager.Instance.inMagazzino == true) sp = spawnPointMagazzino;
+        if (GameManager.Instance.gameData.inMagazzino == true) sp = spawnPointMagazzino;
         else sp = spawnPoint;
 
         PlayerManager.Instance.transform.position = sp.position;
@@ -21,20 +21,20 @@ public class PlayerSpawner : MonoBehaviour
         Debug.Log("Player position: " + PlayerManager.Instance.transform.position);
 
         if(SceneManager.GetActiveScene().name != "Magazzino")
-            GameManager.Instance.inMagazzino = false;
+            GameManager.Instance.gameData.inMagazzino = false;
      
     }
 
     public void Respawn()
     {
-        if (GameManager.Instance.inMagazzino == true) sp = spawnPointMagazzino;
+        if (GameManager.Instance.gameData.inMagazzino == true) sp = spawnPointMagazzino;
         else sp = spawnPoint;
 
         PlayerManager.Instance.transform.position = sp.position;
         PlayerManager.Instance.transform.rotation = sp.rotation;
         Debug.Log("Player position: " + PlayerManager.Instance.transform.position);
         if (SceneManager.GetActiveScene().name != "Magazzino")
-            GameManager.Instance.inMagazzino = false;
+            GameManager.Instance.gameData.inMagazzino = false;
     }
 
 }

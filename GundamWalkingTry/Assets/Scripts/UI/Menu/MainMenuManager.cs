@@ -8,7 +8,20 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] string sceneName;
 
     public void PlayGame(){
-        SceneManager.LoadScene(sceneName);
+
+        GameData d  = new GameData();
+
+
+        if (d.loadData("game") == null) {
+            SceneManager.LoadScene(sceneName);
+        }
+        else {
+
+            d = JsonUtility.FromJson<GameData>(d.loadData("game"));
+            SceneManager.LoadScene(d.scene);
+
+        } 
+        
     }
 
     public void Quitgame(){
