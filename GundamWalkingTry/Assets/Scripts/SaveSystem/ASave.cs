@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 
 [System.Serializable]
-public abstract class ASave 
+public abstract class ASave
 {
 
     public void saveData(string namesave)
@@ -18,8 +18,6 @@ public abstract class ASave
         File.WriteAllText(filepath, sdata);
 
         Debug.Log("salvato" + namesave);
-
-
     }
 
     public string loadData(string namesave)

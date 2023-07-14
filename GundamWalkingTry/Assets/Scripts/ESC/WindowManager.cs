@@ -7,7 +7,7 @@ public class WindowManager : MonoBehaviour
 {
     public static WindowManager _instance;
 
-    bool DisplayEmpty;
+    [SerializeField] bool DisplayEmpty;
 
     public static WindowManager Instance
        {

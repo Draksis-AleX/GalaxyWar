@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shop : MonoBehaviour, IInteractable
+public class RankingPC : MonoBehaviour, IInteractable
 {
     public string InteractionPrompt => "Press E";
     [SerializeField] protected GameObject panel;
@@ -10,19 +10,19 @@ public class Shop : MonoBehaviour, IInteractable
 
     public void Action()
     {
-        OpenShop();
+        OpenRankingPanel();
     }
 
-    public void OpenShop() {
+    public void OpenRankingPanel()
+    {
 
         panel.SetActive(true);
         blurPanel.SetActive(true);
-
     }
 
     public bool Interact(Interactor interactor)
     {
-        interactor.OpenShop(this);
+        interactor.OpenRankingPanel(this);
         return true;
     }
 }

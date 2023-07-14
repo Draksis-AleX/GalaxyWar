@@ -11,6 +11,12 @@ public class GameManager : MonoBehaviour
     public bool tookPowerUp = false;
     public bool inMagazzino = false;
     public bool completedArena = false;
+    bool first_arena;
+    string run_start_date;
+    string run_start_time;
+    float run_time;
+    bool count_time;
+    public int wavesCompleted;
 
     //====================================  SINGLETON  ==========================================
 
@@ -48,6 +54,15 @@ public class GameManager : MonoBehaviour
     {
         wavesNumber = 1;
         wave_enemies_number = 2;
+        first_arena = true;
+        wavesCompleted = 0;
+        run_time = 0;
+        count_time = false;
+    }
+
+    private void Update()
+    {
+        if (count_time) run_time += Time.unscaledDeltaTime;
     }
 
     //========================== RESTART RUN ==========================================
@@ -60,6 +75,14 @@ public class GameManager : MonoBehaviour
         resetWaves();
         Physics.SyncTransforms();
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
+
+        RankingManager.Instance.saveRun(run_start_date, run_start_time, wavesCompleted, ScoreManager.Instance.getScore(), run_time);
+
+        ScoreManager.Instance.resetScore();
+        count_time = false;
+        run_time = 0;
+        first_arena = true;
+        wavesCompleted = 0;
     }
 
     void resetLife()
@@ -93,6 +116,14 @@ public class GameManager : MonoBehaviour
         tookPowerUp = false;
         completedArena = false;
         ScoreManager.Instance.StartTimer();
+        if (first_arena)
+        {
+            Debug.Log("Starting New Run");
+            run_start_date = System.DateTime.Now.ToString("dd/MM/yyyy");
+            run_start_time = System.DateTime.Now.ToString("hh:mm");
+            first_arena = false;
+            count_time = true;
+        }
     }
 
     public void DefeatedArena()
