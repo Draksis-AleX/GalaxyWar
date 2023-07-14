@@ -16,14 +16,18 @@ public class FirstSceneInit : MonoBehaviour
     public void Init()
     {
         Debug.Log("SceneInit...");
+        Debug.Log("PlayerPos: " + PlayerManager.Instance.transform.position);
         pauseMenu = GameObject.FindObjectOfType<PauseMenuManager>(true);
         pauseMenu.gameObject.SetActive(true);
         pauseMenu.gameObject.SetActive(false);
         PlayerManager.Instance.gameObject.SetActive(true);
         PlayerManager.Instance.GetComponent<Shooting>().initBulletArray();
-        PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
+        PlayerManager.Instance.GetComponent<CharacterController>().enabled = false;
         PlayerManager.Instance.gameObject.transform.position = spawnPoint.position;
         PlayerManager.Instance.gameObject.transform.rotation = spawnPoint.rotation;
+        PlayerManager.Instance.GetComponent<CharacterController>().enabled = true;
+        Debug.Log("PlayerPosReloc: " + PlayerManager.Instance.transform.position);
+        PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
         Debug.Log("SceneInitialized.");
     }
 

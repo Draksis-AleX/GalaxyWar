@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
     private void ApplyMovement()
     {
         motion = skewedInput * speed;
+        //Debug.Log("Motion: " + motion.magnitude);
         _characterController.Move(motion * Time.deltaTime);
         _animator.SetFloat("Speed", motion.magnitude - speed);
     }
