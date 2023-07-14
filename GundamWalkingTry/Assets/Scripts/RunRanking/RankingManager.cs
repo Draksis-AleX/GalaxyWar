@@ -55,13 +55,26 @@ public class RankingManager : MonoBehaviour
 
     int maxEntries;
     RankingData rd;
-    int index;
     int current_id = 0;
 
     private void Start()
     {
         rd = new RankingData();
-        index = 0;
+        string filepath = Application.persistentDataPath + "/" + filename + ".json";
+        if (!File.Exists(filepath)) return;
+
+        string json_string = File.ReadAllText(filepath);
+        rd = JsonUtility.FromJson<RankingData>(json_string);
+        int max_id = 0;
+
+        foreach (RankingData.RunEntry run in rd.run_list)
+        {
+            Debug.Log("Run Entry from Ranking Manager: [ #" + run.id + " | " + run.date + " | " + run.time + " | " + run.waves + " | " + run.score + " | " + run.time_played + " ] ");
+            if (run.id > max_id) max_id = run.id;
+        }
+
+        current_id = max_id + 1;
+
     }
 
     public void saveRun(string date, string time, int waves, int score, float time_played)

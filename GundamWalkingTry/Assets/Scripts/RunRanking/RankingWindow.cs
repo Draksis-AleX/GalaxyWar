@@ -14,6 +14,9 @@ public class RankingWindow : Window
 
     public void OnEnable()
     {
+        WindowManager.Instance.setDiplayEmpty(false);
+        Time.timeScale = 0f;
+
         string filepath = Application.persistentDataPath + "/" + filename + ".json";
         if (!File.Exists(filepath)) return;
 

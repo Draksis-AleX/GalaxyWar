@@ -20,28 +20,20 @@ public class RankingData
     string filename = "ranking";
     
     [SerializeField] public List<RunEntry> run_list;
-    int runlimit = 3;
+    int runlimit = 6;
 
     public RankingData()
     {
-        string filepath = Application.persistentDataPath + "/" + filename + ".json";
-        RankingData rd = null;
-        if (File.Exists(filepath))
-        {
-            string json_string = File.ReadAllText(filepath);
-            rd = JsonUtility.FromJson<RankingData>(json_string);
-        } 
-        if (rd.run_list != null) run_list = rd.run_list;
-        else run_list = new List<RunEntry>();
+        run_list = new List<RunEntry>();
     }
 
     public void addEntry(RunEntry entry)
     {
         if(run_list.Count >= runlimit)
         {
-            if(entry.score.CompareTo(run_list[runlimit].score) > 0)
+            if(entry.score.CompareTo(run_list[runlimit-1].score) >= 0)
             {
-                run_list.RemoveAt(runlimit);
+                run_list.RemoveAt(runlimit-1);
                 run_list.Add(entry);
             }
         }
