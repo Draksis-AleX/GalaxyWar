@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void runRestart()
     {
+        save("StartingHangar");
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = false;
         StartCoroutine(LoadScene(1));
         resetLife();
@@ -119,7 +120,8 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void save() {
+    public void save(string scene) {
+        gameData.scene = scene;
         gameData.saveData("game");
     }
 

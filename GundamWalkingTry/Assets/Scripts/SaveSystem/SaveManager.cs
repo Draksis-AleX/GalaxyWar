@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,14 +49,13 @@ public class SaveManager : MonoBehaviour
 
         Debug.Log("savo informazioni");
 
-        GameManager.Instance.gameData.scene = "Checkpoint";
-
         _scoreManager.save();
         _coinManager.saveCoins();
         _playerHealthManager.save();
         _playerShieldManager.save();
         _shooting.save();
-        _gameManager.save();
+
+        _gameManager.save(SceneManager.GetActiveScene().name);
     }
 
 

@@ -119,6 +119,9 @@ public class PlayerHealthManager : MonoBehaviour
     public void setPUMultiplier(float multiplier){ this.PU_effect_multiplier = multiplier; }
     public void addDIProbability(int prob) { damageIgnoreProbability += prob; }
 
+    public int getDefaultHealth() {
+        return defaultHealth;
+    }
     private void Die()
     {
         GameManager.Instance.runRestart();
