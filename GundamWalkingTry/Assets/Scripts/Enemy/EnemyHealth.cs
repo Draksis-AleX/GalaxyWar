@@ -48,4 +48,9 @@ public class EnemyHealth : MonoBehaviour
             coin.GetComponent<CoinFollow>().dropCoins(this.transform.position);
         }
     }
+
+    public void incHealt(int healt)
+    {
+        defaultHealtPoints += healt;
+    }
 }

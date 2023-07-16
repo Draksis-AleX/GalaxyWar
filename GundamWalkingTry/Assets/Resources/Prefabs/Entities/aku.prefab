@@ -2840,7 +2840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9925e63cacf6f41a5efdf89b30d649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultHealtPoints: 150
+  defaultHealtPoints: 200
   coinPrefab: {fileID: 8943592479230303936, guid: 108e4c7c4034d97468d3094405c0b78c, type: 3}
 --- !u!114 &7746952770109577728
 MonoBehaviour:

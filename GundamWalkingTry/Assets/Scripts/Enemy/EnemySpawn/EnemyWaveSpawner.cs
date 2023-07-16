@@ -79,6 +79,7 @@ public class EnemyWaveSpawner : MonoBehaviour
     [SerializeField] private GameObject effect;
     [SerializeField] float dist;
     [SerializeField] WaveInfo WaveInfoPanel;
+    [SerializeField] int enemy_count_limit = 30; 
 
     int currentWave = 0;
     int enemyKilled = 0;
@@ -111,14 +112,18 @@ public class EnemyWaveSpawner : MonoBehaviour
             spawnStatus[enemyID] = true;
 
             Vector3 effecLoc = _EnemySpawnPoints.transform.GetChild(enemyID).transform.position;
-            effecLoc.y = effecLoc.y+1;
+            effecLoc.y = effecLoc.y + 1;
             effecLoc.z = effecLoc.z + -1;
 
             Instantiate(effect, effecLoc , Quaternion.identity);
-            Instantiate(waves[currentWave].getEnemySpawnList()[i], _EnemySpawnPoints.transform.GetChild(enemyID).transform.position, Quaternion.identity);
+            GameObject new_enemy = Instantiate(waves[currentWave].getEnemySpawnList()[i], _EnemySpawnPoints.transform.GetChild(enemyID).transform.position, Quaternion.identity);
+            if (GameManager.Instance.gameData.arenaDefeated > 5)
+            {
+                new_enemy.GetComponent<EnemyHealth>().incHealt(25 * (GameManager.Instance.gameData.arenaDefeated - 5));
+            }
             //StartCoroutine(waves[currentWave].getEnemySpawnList()[i].GetComponent<EnemyNavMeshMovement>().trigger(effect.GetComponent<ParticleSystem>().main.duration));
             //Debug.Log("distanza:" + Vector3.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position));
-            
+
         }
 
     }
@@ -127,12 +132,13 @@ public class EnemyWaveSpawner : MonoBehaviour
     {
         waves = new Wave[GameManager.Instance.gameData.wavesNumber];
         WaveInfoPanel.setMaxWave(GameManager.Instance.gameData.wavesNumber);
-        int EnemyNumber = GameManager.Instance.gameData.wave_enemies_number * (int)Mathf.Ceil(GameManager.Instance.gameData.wavesNumber * 1.5f);
+        int EnemyNumber = GameManager.Instance.gameData.wave_enemies_number * (int)Mathf.Ceil(GameManager.Instance.gameData.wavesNumber * 0.8f);
+        if (EnemyNumber >= enemy_count_limit) EnemyNumber = enemy_count_limit;
         for (int i = 0; i < waves.Length; i++)
         {
             waves[i] = new Wave(EnemyNumber, 2);
-            EnemyNumber = (int)Mathf.Ceil(EnemyNumber * 1.5f);
-            if (EnemyNumber >= 20) EnemyNumber = 20;
+            EnemyNumber = (int)Mathf.Ceil(EnemyNumber * 1.2f);
+            if (EnemyNumber >= enemy_count_limit) EnemyNumber = enemy_count_limit;
             waves[i].Start();
         }
     }
