@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
         int variability = Mathf.CeilToInt(min_n_coins / 2);
         int n_coins = Random.Range(min_n_coins, min_n_coins + variability);
 
-        Debug.Log("Coins Dropped: " + n_coins);
+        //Debug.Log("Coins Dropped: " + n_coins);
 
         for(int i = 0; i < n_coins; i++)
         {

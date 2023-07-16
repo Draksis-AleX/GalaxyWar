@@ -20,7 +20,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] GameObject healthTree;
     [SerializeField] GameObject bulletTree;
 
-
+    [SerializeField] SaveUI savingUI;
 
     private void OnEnable()
     {
@@ -31,16 +31,17 @@ public class ShopManager : MonoBehaviour
     {
         updateMyCoins();
         loadAll();
+        savingUI = GameObject.Find("SavePanel").GetComponent<SaveUI>();
     }
 
     public void updateDescription(GameObject invoker)
     {
-        Debug.Log("updateDescription");
+        //Debug.Log("updateDescription");
 
         currentSkillGO = invoker;
         if (lastSkillGO != null) { 
             if(lastSkillGO.GetComponent<Image>().color != Color.white) updateSkillColor(lastSkillGO, Color.black);
-            Debug.Log(lastSkillGO.ToString());
+            //Debug.Log(lastSkillGO.ToString());
         }
         
         lastSkillGO = currentSkillGO;
@@ -65,7 +66,7 @@ public class ShopManager : MonoBehaviour
     {
         if(currentSkill != null)
         {
-            Debug.Log("Try Buy - Skill ID:" + currentSkill.getId());
+            //Debug.Log("Try Buy - Skill ID:" + currentSkill.getId());
             //--------------- Check if skill is unlocked ------------------------
             bool unlocked = false;
             if(currentSkill.getConnectedSkills().Length == 0)
@@ -172,10 +173,9 @@ public class ShopManager : MonoBehaviour
     private void save()
     {
         ShopData d = new ShopData();
-
         d.ownedSkills  = ownedSkills;
-
         d.saveData("shop");
+        savingUI.Show();
     }
 
     private void resetSave()  //per debug

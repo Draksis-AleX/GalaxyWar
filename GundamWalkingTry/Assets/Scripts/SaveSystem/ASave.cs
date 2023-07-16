@@ -17,7 +17,7 @@ public abstract class ASave
 
         File.WriteAllText(filepath, sdata);
 
-        Debug.Log("salvato" + namesave);
+        //Debug.Log("salvato" + namesave);
     }
 
     public string loadData(string namesave)

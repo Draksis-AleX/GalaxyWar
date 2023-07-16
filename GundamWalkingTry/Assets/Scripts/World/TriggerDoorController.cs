@@ -15,7 +15,7 @@ public class TriggerDoorController : MonoBehaviour
             {
                 upperDoor.SetBool("Open", true);
                 lowerDoor.SetBool("Open", true);
-                Debug.Log("Trigger Door Enter");
+                //Debug.Log("Trigger Door Enter");
             }
     }
 
@@ -27,7 +27,7 @@ public class TriggerDoorController : MonoBehaviour
             {
                 upperDoor.SetBool("Open", false);
                 lowerDoor.SetBool("Open", false);
-                Debug.Log("Trigger Door Exit");
+                //Debug.Log("Trigger Door Exit");
             }        
     }
 

@@ -18,8 +18,8 @@ public class FirstSceneInit : MonoBehaviour
         PlayerManager.Instance.GetComponent<PlayerShieldManager>().reset();
         ScoreManager.Instance.resetScore();
         if(GameManager.Instance.localData == false) SaveManager.Instance.load();
-        Debug.Log("SceneInit...");
-        Debug.Log("PlayerPos: " + PlayerManager.Instance.transform.position);
+        //Debug.Log("SceneInit...");
+        //Debug.Log("PlayerPos: " + PlayerManager.Instance.transform.position);
         pauseMenu = GameObject.FindObjectOfType<PauseMenuManager>(true);
         pauseMenu.gameObject.SetActive(true);
         pauseMenu.gameObject.SetActive(false);
@@ -29,9 +29,8 @@ public class FirstSceneInit : MonoBehaviour
         PlayerManager.Instance.gameObject.transform.position = spawnPoint.position;
         PlayerManager.Instance.gameObject.transform.rotation = spawnPoint.rotation;
         PlayerManager.Instance.GetComponent<CharacterController>().enabled = true;
-        Debug.Log("PlayerPosReloc: " + PlayerManager.Instance.transform.position);
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
-        Debug.Log("SceneInitialized.");
+        //Debug.Log("SceneInitialized.");
     }
 
 }

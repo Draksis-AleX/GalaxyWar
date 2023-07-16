@@ -45,6 +45,8 @@ public class EnemyNavMeshMovement : MonoBehaviour
 
     private IEnumerator FollowPlayer()
     {
+        yield return new WaitForSeconds(1);
+
         WaitForSeconds Wait = new WaitForSeconds(updateRate);
 
         while (enabled)

@@ -28,7 +28,7 @@ public class PauseMenuManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            Debug.Log("SetInstance");
+            //Debug.Log("SetInstance");
             GameObject.DontDestroyOnLoad(this.gameObject);
         }
         else

@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
     public void increaseDefaultSpeed(float percentage)
     {
         default_speed = default_speed + (float)(default_speed * (float) percentage);
-        Debug.Log("Increased default_speed to " + default_speed);
+        //Debug.Log("Increased default_speed to " + default_speed);
         speed = default_speed;
     }
 

@@ -6,7 +6,7 @@ public class EnemyHitDetection : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enemy hitted");
+        //Debug.Log("Enemy hitted");
         
     }
 }

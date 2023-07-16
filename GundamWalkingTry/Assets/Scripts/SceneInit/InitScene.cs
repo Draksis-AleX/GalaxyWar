@@ -15,7 +15,7 @@ public class InitScene : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("ChangeSceneCoroutine::Start");
+        //Debug.Log("ChangeSceneCoroutine::Start");
         StartCoroutine("Init");
         ResetShield();
         if(GameManager.Instance.localData == false) SaveManager.Instance.load();
@@ -35,7 +35,7 @@ public class InitScene : MonoBehaviour
         PlayerManager.Instance.gameObject.SetActive(true);
         yield return new WaitForSeconds(upperDoor.runtimeAnimatorController.animationClips[1].length);
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
-        Debug.Log("Ended Init Coroutine");
+        //Debug.Log("Ended Init Coroutine");
     }
 
     void ResetShield()

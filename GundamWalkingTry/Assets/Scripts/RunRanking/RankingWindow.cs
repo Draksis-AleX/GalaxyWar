@@ -23,14 +23,12 @@ public class RankingWindow : Window
         string json_string = File.ReadAllText(filepath);
         rd = JsonUtility.FromJson<RankingData>(json_string);
 
-        Debug.Log("JSON: " + json_string);
-
-        Debug.Log("run_list: " + rd.run_list);
+        //Debug.Log("run_list: " + rd.run_list);
         int index = 0;
 
         foreach (RankingData.RunEntry run in rd.run_list)
         {
-            Debug.Log("Run Entry from Ranking Window: [ #" + run.id + " | " + run.date + " | " + run.time + " | " + run.waves + " | " + run.score + " | " + run.time_played + " ] ");
+            //Debug.Log("Run Entry from Ranking Window: [ #" + run.id + " | " + run.date + " | " + run.time + " | " + run.waves + " | " + run.score + " | " + run.time_played + " ] ");
             runPanel.transform.GetChild(index).Find("ID").GetComponent<TextMeshProUGUI>().text = run.id.ToString();
             runPanel.transform.GetChild(index).Find("Data").GetComponent<TextMeshProUGUI>().text = run.date.ToString();
             runPanel.transform.GetChild(index).Find("Time").GetComponent<TextMeshProUGUI>().text = run.time.ToString();

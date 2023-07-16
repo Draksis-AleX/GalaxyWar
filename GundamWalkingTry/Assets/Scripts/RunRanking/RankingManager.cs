@@ -69,7 +69,7 @@ public class RankingManager : MonoBehaviour
 
         foreach (RankingData.RunEntry run in rd.run_list)
         {
-            Debug.Log("Run Entry from Ranking Manager: [ #" + run.id + " | " + run.date + " | " + run.time + " | " + run.waves + " | " + run.score + " | " + run.time_played + " ] ");
+            //Debug.Log("Run Entry from Ranking Manager: [ #" + run.id + " | " + run.date + " | " + run.time + " | " + run.waves + " | " + run.score + " | " + run.time_played + " ] ");
             if (run.id > max_id) max_id = run.id;
         }
 
@@ -87,7 +87,7 @@ public class RankingManager : MonoBehaviour
         newEntry.score = score;
         newEntry.time_played = FormatTime(time_played);
 
-        Debug.Log("New Run Entry: [ #" + newEntry.id + " | " + newEntry.date + " | " + newEntry.time + " | " + newEntry.waves + " | " + newEntry.score + " | " + FormatTime(time_played) + " ] ");
+        //Debug.Log("New Run Entry: [ #" + newEntry.id + " | " + newEntry.date + " | " + newEntry.time + " | " + newEntry.waves + " | " + newEntry.score + " | " + FormatTime(time_played) + " ] ");
 
         rd.addEntry(newEntry);
 

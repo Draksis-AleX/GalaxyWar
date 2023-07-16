@@ -21,7 +21,7 @@ public class intSave
 
         File.WriteAllText(filepath, sdata);
 
-        Debug.Log("salvato" + namesave);
+        //Debug.Log("salvato" + namesave);
 
     }
 

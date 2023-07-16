@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] SaveUI savingUI;
+
     private void Start()
     {
-        if(GameManager.Instance.localData == true) Save();
+        savingUI = GameObject.Find("SavePanel").GetComponent<SaveUI>();
+        if (GameManager.Instance.localData == true) Save();
     }
 
     public void Save()
     {
+        savingUI.Show();
         SaveManager.Instance.save();
-        Debug.Log("Checkpoint Saving");
+        //Debug.Log("Checkpoint Saving");
     }
 }

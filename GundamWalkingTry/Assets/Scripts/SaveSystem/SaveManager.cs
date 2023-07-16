@@ -47,7 +47,7 @@ public class SaveManager : MonoBehaviour
 
     public void save() {
 
-        Debug.Log("salvo informazioni");
+        //Debug.Log("salvo informazioni");
 
         _scoreManager.save();
         _coinManager.saveCoins();
@@ -59,7 +59,7 @@ public class SaveManager : MonoBehaviour
 
     public void load()
     {
-        Debug.Log("Loading data");
+        //Debug.Log("Loading data");
         _gameManager.load();
         _scoreManager.load();
         _coinManager.load();

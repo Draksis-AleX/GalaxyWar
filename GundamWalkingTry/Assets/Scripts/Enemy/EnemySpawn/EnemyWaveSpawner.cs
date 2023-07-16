@@ -116,6 +116,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
             Instantiate(effect, effecLoc , Quaternion.identity);
             Instantiate(waves[currentWave].getEnemySpawnList()[i], _EnemySpawnPoints.transform.GetChild(enemyID).transform.position, Quaternion.identity);
+            //StartCoroutine(waves[currentWave].getEnemySpawnList()[i].GetComponent<EnemyNavMeshMovement>().trigger(effect.GetComponent<ParticleSystem>().main.duration));
             //Debug.Log("distanza:" + Vector3.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position));
             
         }
@@ -158,7 +159,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     void endWaves()
     {
-        Debug.Log("Waves Ended");
+        //Debug.Log("Waves Ended");
         GameManager.Instance.DefeatedArena();
         StartCoroutine(WaveInfoPanel.setWave(currentWave + 1));
     }

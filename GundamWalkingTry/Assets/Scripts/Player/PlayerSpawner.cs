@@ -25,7 +25,7 @@ public class PlayerSpawner : MonoBehaviour
 
         PlayerManager.Instance.transform.position = sp.position;
         PlayerManager.Instance.transform.rotation = sp.rotation;
-        Debug.Log("Player position: " + PlayerManager.Instance.transform.position);
+        //Debug.Log("Player position: " + PlayerManager.Instance.transform.position);
         if (SceneManager.GetActiveScene().name != "Magazzino")
             GameManager.Instance.gameData.inMagazzino = false;
         PlayerManager.Instance.GetComponent<CharacterController>().enabled = true;

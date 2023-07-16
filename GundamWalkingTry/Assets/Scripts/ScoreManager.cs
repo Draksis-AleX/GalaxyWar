@@ -91,8 +91,8 @@ public class ScoreManager : MonoBehaviour
     {
         measureTime = false;
         //Debug.Log("Completation Time: " + timer);
-        Debug.Log("Score: ((" + waves_number + " * 3) * " + waveScore + ")/(" + timer + "/100)");
-        Debug.Log("Score added: " + (int)Mathf.Ceil(((waves_number * 3) * waveScore) / (timer / 100)));
+        //Debug.Log("Score: ((" + waves_number + " * 3) * " + waveScore + ")/(" + timer + "/100)");
+        //Debug.Log("Score added: " + (int)Mathf.Ceil(((waves_number * 3) * waveScore) / (timer / 100)));
         moreScore((int)Mathf.Ceil(((waves_number * 3) / (timer / 100)))) ;
         waveScore = 0;
         timer = 0;
