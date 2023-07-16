@@ -41,10 +41,14 @@ public class ScoreManager : MonoBehaviour
         }
 
         scoreInfo = GameObject.Find("ScorePanel").GetComponent<ScoreInfo>();
-        loadScore();
-        scoreInfo.updateScore(score);
     }
 
+    private void Start()
+    {
+        loadScore();
+        scoreInfo.updateScore(score);
+        Debug.LogError("Start Score Manager");
+    }
 
     private void Update()
     {
