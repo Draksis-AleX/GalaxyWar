@@ -17,7 +17,7 @@ public class RankingManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<RankingManager>();
-                if (_instance == null) Debug.LogError("No GameManager in scene");
+                if (_instance == null) Debug.LogError("No Ranking Manager in scene");
             }
             return _instance;
         }
@@ -87,19 +87,10 @@ public class RankingManager : MonoBehaviour
         newEntry.score = score;
         newEntry.time_played = FormatTime(time_played);
 
-        //Debug.Log("New Run Entry: [ #" + newEntry.id + " | " + newEntry.date + " | " + newEntry.time + " | " + newEntry.waves + " | " + newEntry.score + " | " + FormatTime(time_played) + " ] ");
+        Debug.Log("New Run Entry: [ #" + newEntry.id + " | " + newEntry.date + " | " + newEntry.time + " | " + newEntry.waves + " | " + newEntry.score + " | " + FormatTime(time_played) + " ] ");
 
         rd.addEntry(newEntry);
 
-        /*run_list.Add(newEntry);
-        run_list.Sort(SortByScore);
-
-        foreach(RunEntry run in run_list)
-        {
-            Debug.Log("Run Entry: [ #" + run.id + " | " + run.date + " | " + run.time + " | " + run.waves + " | " + run.score + " | " + run.time_played + " ] ");
-        }*/
-
-        //Debug.Log("Run_list: " + run_list);
     }
 
     string FormatTime(float time)

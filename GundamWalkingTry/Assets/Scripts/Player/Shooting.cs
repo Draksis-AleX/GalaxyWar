@@ -30,12 +30,6 @@ public class Shooting : MonoBehaviour
         initBulletArray();
     }
 
-    private void Start()
-    {
-        if (GameManager.Instance.gameData.scene == "Checkpoints") loadAll();
-        else loadPerm();
-    }
-
     private void OnEnable()
     {
         //Debug.Log("InitBulletArray");
@@ -117,7 +111,7 @@ public class Shooting : MonoBehaviour
 
     public void addVampirismPercentage(float percentage) { this.vampirismPercentage += percentage; save(); }
 
-    public void loadAll()
+    private void loadAll()
     {
 
         BulletData d = new BulletData();
@@ -155,6 +149,12 @@ public class Shooting : MonoBehaviour
         playerCurrentDamage = playerDamage;
 
     }
+    public void load()
+    {
+        if (GameManager.Instance.gameData.scene == "Corridoio #1") loadAll();
+        else loadPerm();
+    }
+
 
     public void save()
     {
