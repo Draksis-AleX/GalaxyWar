@@ -1,4 +1,3 @@
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,14 +22,6 @@ public class MainMenuManager : MonoBehaviour
         } 
         
     }
-    public void NewGame()
-    {
-        string path = Application.persistentDataPath;
-        if (Directory.Exists(path)) Directory.Delete(path, true);
-        Directory.CreateDirectory(path);
-        SceneManager.LoadScene(sceneName);
-    }
-
 
     public void Quitgame(){
         Application.Quit();
