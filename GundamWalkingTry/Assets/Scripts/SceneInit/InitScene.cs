@@ -18,6 +18,8 @@ public class InitScene : MonoBehaviour
         Debug.Log("ChangeSceneCoroutine::Start");
         StartCoroutine("Init");
         ResetShield();
+        if(GameManager.Instance.localData == false) SaveManager.Instance.load();
+        if (SceneManager.GetActiveScene().name == "Magazzino") GameManager.Instance.gameData.tookPowerUp = true;
     }
 
     public IEnumerator Init()

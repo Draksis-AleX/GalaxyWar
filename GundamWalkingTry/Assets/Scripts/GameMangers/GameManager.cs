@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     //====================================  SINGLETON  ==========================================
 
     private static GameManager _instance;
+    public bool localData = false;
 
     public static GameManager Instance
     {
@@ -36,9 +37,12 @@ public class GameManager : MonoBehaviour
         {
             GameObject.Destroy(this.gameObject);
         }
+    }
 
+    private void Start()
+    {
         Init();
-        load();
+        //load();
     }
 
     private void Init()
@@ -55,15 +59,12 @@ public class GameManager : MonoBehaviour
 
     public void runRestart()
     {
+        RankingManager.Instance.saveRun(gameData.run_start_date, gameData.run_start_time, gameData.wavesCompleted, ScoreManager.Instance.getScore(), gameData.run_time);
+        Init();
         save("StartingHangar");
-        PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = false;
         StartCoroutine(LoadScene(1));
         resetLife();
         resetWaves();
-        Physics.SyncTransforms();
-        PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
-
-        RankingManager.Instance.saveRun(gameData.run_start_date, gameData.run_start_time, gameData.wavesCompleted, ScoreManager.Instance.getScore(), gameData.run_time);
 
         gameData.count_time = false;
         gameData.run_time = 0;

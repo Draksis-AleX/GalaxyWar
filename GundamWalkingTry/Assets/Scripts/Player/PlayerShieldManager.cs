@@ -14,7 +14,7 @@ public class PlayerShieldManager : MonoBehaviour
     Coroutine latestShieldCooldown;
     bool isRegenerating = false;
 
-    public void loadAll()
+    private void loadAll()
     {
 
         ShieldData d = new ShieldData();
@@ -52,6 +52,14 @@ public class PlayerShieldManager : MonoBehaviour
 
     }
 
+    public void load()
+    {
+        if (GameManager.Instance.gameData.scene == "Corridoio #1") loadAll();
+        else loadPerm();
+        shieldBar.GetComponent<ShieldBar>().setMaxShield(maxShield);
+        shieldBar.GetComponent<ShieldBar>().setShield(maxShield);
+    }
+
     public void save()
     {
         ShieldData d = new ShieldData();
@@ -67,10 +75,8 @@ public class PlayerShieldManager : MonoBehaviour
     private void Start()
     {
         shieldBar = HUDManager.Instance.gameObject.transform.Find("Shield Bar").gameObject;
-        if (GameManager.Instance.gameData.scene == "Checkpoints") loadAll();
-        else loadPerm();
-        shieldBar.GetComponent<ShieldBar>().setMaxShield(maxShield);
-        shieldBar.GetComponent<ShieldBar>().setShield(maxShield);
+        //if (GameManager.Instance.gameData.scene == "Checkpoints") loadAll();
+        //else loadPerm();
     }
 
     public void reset()

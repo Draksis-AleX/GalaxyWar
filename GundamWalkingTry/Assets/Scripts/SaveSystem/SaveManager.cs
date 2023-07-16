@@ -47,25 +47,26 @@ public class SaveManager : MonoBehaviour
 
     public void save() {
 
-        Debug.Log("savo informazioni");
+        Debug.Log("salvo informazioni");
 
         _scoreManager.save();
         _coinManager.saveCoins();
         _playerHealthManager.save();
         _playerShieldManager.save();
         _shooting.save();
-
         _gameManager.save(SceneManager.GetActiveScene().name);
     }
 
     public void load()
     {
-        _scoreManager.loadScore();
-        _coinManager.loadCoins();
-        _playerHealthManager.loadAll();
-        _playerShieldManager.loadAll();
-        _shooting.loadAll();
+        Debug.Log("Loading data");
         _gameManager.load();
+        _scoreManager.load();
+        _coinManager.load();
+        _playerHealthManager.load();
+        _playerShieldManager.load();
+        _shooting.load();
+        GameManager.Instance.localData = true;
     }
 
 }

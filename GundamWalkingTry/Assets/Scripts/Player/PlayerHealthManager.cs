@@ -13,7 +13,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     float maxVignetteIntensity = 0.4f;
 
-    public void loadAll() {
+    private void loadAll() {
 
         HealthData h = new HealthData();
 
@@ -63,9 +63,14 @@ public class PlayerHealthManager : MonoBehaviour
         
         healthBar = HUDManager.Instance.gameObject.transform.Find("Health Bar").gameObject;
 
-        if (GameManager.Instance.gameData.scene == "Checkpoints") loadAll();
-        else loadPerm();
+        //if (GameManager.Instance.gameData.scene == "Checkpoints") loadAll();
+        //else loadPerm();
+    }
 
+    public void load()
+    {
+        if (GameManager.Instance.gameData.scene == "Corridoio #1") loadAll();
+        else loadPerm();
         healthBar.GetComponent<HealthBar>().setMaxHealth(defaultHealth);
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
     }

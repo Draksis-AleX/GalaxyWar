@@ -45,9 +45,8 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        loadScore();
+        //loadScore();
         scoreInfo.updateScore(score);
-        Debug.LogError("Start Score Manager");
     }
 
     private void Update()
@@ -101,7 +100,7 @@ public class ScoreManager : MonoBehaviour
 
     //======================================= SAVE SCORE =====================================================
 
-    public void loadScore()
+    public void load()
     {
 
         intSave i = new intSave();

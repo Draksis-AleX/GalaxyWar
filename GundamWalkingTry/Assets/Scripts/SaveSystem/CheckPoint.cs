@@ -7,13 +7,12 @@ public class CheckPoint : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        StartCoroutine(Save());
+        if(GameManager.Instance.localData == true) Save();
     }
 
-    public IEnumerator Save()
+    public void Save()
     {
-        yield return new WaitForSeconds(2);
-        Debug.Log("Checkpoint Saving");
         SaveManager.Instance.save();
+        Debug.Log("Checkpoint Saving");
     }
 }
