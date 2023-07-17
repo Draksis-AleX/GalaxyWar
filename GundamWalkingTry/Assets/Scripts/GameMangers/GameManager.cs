@@ -129,5 +129,6 @@ public class GameManager : MonoBehaviour
         {
             gameData = JsonUtility.FromJson<GameData>(gameData.loadData("game"));
         }
+        else Init();
     }
 }

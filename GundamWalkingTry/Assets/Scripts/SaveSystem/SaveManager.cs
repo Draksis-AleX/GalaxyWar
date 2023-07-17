@@ -42,7 +42,7 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void save() {
