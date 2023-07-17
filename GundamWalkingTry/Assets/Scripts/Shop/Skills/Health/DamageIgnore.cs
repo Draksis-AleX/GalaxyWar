@@ -10,7 +10,7 @@ public class DamageIgnore : SkillEffect
 
     public override void Apply(GameObject target)
     {
-        target.GetComponent<PlayerHealthManager>().addDIProbability(probability);
+        target.GetComponent<PlayerHealthManager>().setDIProbability(probability);
     }
 }
 

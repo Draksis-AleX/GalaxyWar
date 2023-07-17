@@ -122,7 +122,7 @@ public class PlayerHealthManager : MonoBehaviour
     }
 
     public void setPUMultiplier(float multiplier){ this.PU_effect_multiplier = multiplier; }
-    public void addDIProbability(int prob) { damageIgnoreProbability += prob; }
+    public void setDIProbability(int prob) { damageIgnoreProbability = prob; }
 
     public int getDefaultHealth() {
         return defaultHealth;
