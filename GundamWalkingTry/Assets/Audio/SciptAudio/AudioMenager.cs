@@ -5,7 +5,8 @@ using System;
 public class AudioMenager : MonoBehaviour
 {
 
-    public Sound[] sounds;
+    public Sound[] soundtrack;
+    public Sound[] sound_effects;
     public AudioMixer audioMixer;
     public static AudioMenager _instance;
 
@@ -34,7 +35,12 @@ public class AudioMenager : MonoBehaviour
             GameObject.Destroy(this.gameObject);
         }
 
-        foreach (Sound s in sounds)
+
+    }
+
+    private void InitAudioSources()
+    {
+        foreach (Sound s in soundtrack)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -44,15 +50,37 @@ public class AudioMenager : MonoBehaviour
             s.source.pitch = s.pitch;
 
             s.source.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Master")[0];
+            s.source.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Music")[0];
+        }
+
+        foreach (Sound s in sound_effects)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.loop = s.loop;
+
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+
+            s.source.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Master")[0];
+            s.source.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Effects")[0];
         }
     }
 
     private void Start() {
-        Play("Background");
+        InitAudioSources();
+        //Debug.Log("Play Music");
+        PlayMusic("BGSoundTrack");
     }
 
-    public void Play(string name){
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+    public void PlayMusic(string name){
+        Sound s = Array.Find(soundtrack, sound => sound.name == name);
+        s.source.Play();
+    }
+
+    public void PlayEffect(string name)
+    {
+        Sound s = Array.Find(sound_effects, sound => sound.name == name);
         s.source.Play();
     }
 

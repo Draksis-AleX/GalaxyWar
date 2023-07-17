@@ -29,6 +29,7 @@ public class CoinDespawn : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioMenager.Instance.PlayEffect("CoinPick");
             CoinManager.Instance.addCoins(1);
             Destroy(transform.parent.gameObject);
         }

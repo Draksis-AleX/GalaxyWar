@@ -23,6 +23,7 @@ public class EnemyAttack : MonoBehaviour
         {
             canAttack = false;
             GetComponent<EnemySimpleMovement>().triggered = false;
+            AudioMenager.Instance.PlayEffect("EnemySword");
             slashVFX.Play();
             StartCoroutine(checkHit(slashVFX.GetFloat("duration")));
             StartCoroutine(coolDown());

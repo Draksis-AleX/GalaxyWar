@@ -95,6 +95,7 @@ public class ShopManager : MonoBehaviour
             
             if(CoinManager.Instance.getCoins() >= currentSkill.getCost() && unlocked && !currentSkill.isOwned() && !alternativeBought && (!ownedSkills.Contains(currentSkill.getId())))
             {
+                AudioMenager.Instance.PlayEffect("Buy");
                 Debug.Log("Skill Bought - Skill ID:" + currentSkill.getId());
                 currentSkill.getSkillEffect().Apply(PlayerManager.Instance.gameObject);
                 ownedSkills.Add(currentSkill.getId());

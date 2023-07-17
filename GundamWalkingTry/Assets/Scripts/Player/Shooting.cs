@@ -24,6 +24,8 @@ public class Shooting : MonoBehaviour
     [SerializeField] int playerCurrentDamage = 50;
     [SerializeField] float vampirismPercentage = 0f;
 
+    
+
     private void Awake()
     {
         firePoint = firePointSX;
@@ -41,6 +43,7 @@ public class Shooting : MonoBehaviour
         if (context.started && canShoot && this.GetComponent<PlayerInput>().actions["Aiming"].IsPressed())
         {
             //Debug.Log("Shoot");
+            AudioMenager.Instance.PlayEffect("Blaster");
             for (int i = bulletCounter; i < bulletLength; i++)
             {
                 if (!bulletList[i].activeInHierarchy)

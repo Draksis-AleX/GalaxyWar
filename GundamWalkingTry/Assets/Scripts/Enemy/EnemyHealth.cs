@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int defaultHealtPoints = 100;
     int healthPoints;
     [SerializeField] GameObject coinPrefab;
+    [SerializeField] private GameObject effect;
 
     private void Start()
     {
@@ -26,6 +27,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (healthPoints <= 0)
         {
+            Instantiate(effect, this.transform.position, Quaternion.identity);
+            AudioMenager.Instance.PlayEffect("EnemyExplosion");
             dropCoins();
             ScoreManager.Instance.moreScore(defaultHealtPoints);
             EnemyWaveSpawner.Instance.EnemyDeath();

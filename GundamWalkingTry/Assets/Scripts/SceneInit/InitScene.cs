@@ -30,6 +30,7 @@ public class InitScene : MonoBehaviour
             pauseMenu.gameObject.SetActive(true);
             pauseMenu.gameObject.SetActive(false);
         }
+        AudioMenager.Instance.PlayEffect("CloseDoor");
         upperDoor.Play("UpperClose");
         lowerDoor.Play("LowerClose");
         PlayerManager.Instance.gameObject.SetActive(true);

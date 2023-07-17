@@ -49,10 +49,9 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
         //Debug.Log("take powerUp");
         this.gameObject.SetActive(false);
         interactor.takePowerUp(this);
-        //mettere qualche effetto
+        AudioMenager.Instance.PlayEffect("Buy");
 
         return true;  
-
     }
 
     public void Action()

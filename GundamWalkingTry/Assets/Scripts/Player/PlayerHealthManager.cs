@@ -118,7 +118,7 @@ public class PlayerHealthManager : MonoBehaviour
 
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
 
-        save();
+        //save();
     }
 
     public void setPUMultiplier(float multiplier){ this.PU_effect_multiplier = multiplier; }

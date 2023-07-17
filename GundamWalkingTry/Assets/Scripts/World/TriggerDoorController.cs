@@ -9,6 +9,7 @@ public class TriggerDoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        AudioMenager.Instance.PlayEffect("OpenDoor");
         if (this.CompareTag("PortaArena") && GameManager.Instance.gameData.completedArena == false) return;
         if (this.CompareTag("PortaMagazzino") && GameManager.Instance.gameData.tookPowerUp == true) return;
         if (other.CompareTag("Player"))
@@ -21,6 +22,7 @@ public class TriggerDoorController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        AudioMenager.Instance.PlayEffect("CloseDoor");
         if (this.CompareTag("PortaArena") && GameManager.Instance.gameData.completedArena == false) return;
         if (this.CompareTag("PortaMagazzino") && GameManager.Instance.gameData.tookPowerUp == true) return;
         if (other.CompareTag("Player"))

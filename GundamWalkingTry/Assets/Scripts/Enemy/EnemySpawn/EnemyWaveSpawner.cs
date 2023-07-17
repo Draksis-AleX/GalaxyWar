@@ -166,6 +166,7 @@ public class EnemyWaveSpawner : MonoBehaviour
     void endWaves()
     {
         //Debug.Log("Waves Ended");
+        AudioMenager.Instance.PlayEffect("EndWave");
         GameManager.Instance.DefeatedArena();
         StartCoroutine(WaveInfoPanel.setWave(currentWave + 1));
     }

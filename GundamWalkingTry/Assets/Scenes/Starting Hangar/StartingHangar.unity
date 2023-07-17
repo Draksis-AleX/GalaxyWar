@@ -11146,12 +11146,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3935a1b52424e64195aa568d6140eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - clip: {fileID: 8300000, guid: f9b43f577fe6e3d4398deaa9be8c0855, type: 3}
-    name: Background
+  soundtrack:
+  - clip: {fileID: 8300000, guid: 8feaac321ab60224f80d62b1c1210057, type: 3}
+    name: BGSoundTrack
     volume: 1
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  sound_effects:
+  - clip: {fileID: 8300000, guid: 6f4c7356a3b460747a83eeadbe48ebb4, type: 3}
+    name: Blaster
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 517cf6a4fc691ae4ea4659bb60a7adc8, type: 3}
+    name: OpenDoor
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 517cf6a4fc691ae4ea4659bb60a7adc8, type: 3}
+    name: CloseDoor
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 74d98f7fc2db19c46a93eaf059a3835b, type: 3}
+    name: EnemySword
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b092840bc0966e1438fd19e2a6b6c2cb, type: 3}
+    name: CoinPick
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 901de8dc6f9b4c44290de98d9327f612, type: 3}
+    name: Buy
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 333aa2c88cef2ee4ea6a4034cc1fafe9, type: 3}
+    name: EndWave
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 9beab40a508f16f4d828472f60b0fdb0, type: 3}
+    name: EnemyExplosion
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 96e8a091b3646b944ae367dc8a07c8cb, type: 2}
 --- !u!4 &6989596125514290677
@@ -11472,10 +11521,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2612570447616082504, guid: fe05aa0df969ff247809c06505c6a50a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181797087705424038, guid: fe05aa0df969ff247809c06505c6a50a, type: 3}
-      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
