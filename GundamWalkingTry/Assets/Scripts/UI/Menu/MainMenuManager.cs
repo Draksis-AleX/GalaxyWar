@@ -23,8 +23,6 @@ public class MainMenuManager : MonoBehaviour
         }
 
         WindowManager.Instance.setDiplayEmpty(true);
-        
-        
     }
 
     public void Quitgame(){

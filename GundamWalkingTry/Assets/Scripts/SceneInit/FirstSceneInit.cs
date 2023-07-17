@@ -31,6 +31,8 @@ public class FirstSceneInit : MonoBehaviour
         PlayerManager.Instance.gameObject.transform.rotation = spawnPoint.rotation;
         PlayerManager.Instance.GetComponent<CharacterController>().enabled = true;
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
+        if (GameManager.Instance.gameData.CommandsArrow == false) PlayerManager.Instance.GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay");
+        else PlayerManager.Instance.GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay #2");
         //Debug.Log("SceneInitialized.");
     }
 

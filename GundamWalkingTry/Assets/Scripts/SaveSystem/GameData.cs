@@ -18,7 +18,7 @@ public class GameData : ASave
     public float run_time;
     public bool count_time;
     public int wavesCompleted;
-
+    public bool CommandsArrow;
     public int wavesNumber;
     public int wave_enemies_number;
 
