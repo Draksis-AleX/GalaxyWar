@@ -92,8 +92,8 @@ public class ShopManager : MonoBehaviour
             else alternativeBought = false;
 
             //-------------------- Buy ----------------------------------------------
-            
-            if(CoinManager.Instance.getCoins() >= currentSkill.getCost() && unlocked && !currentSkill.isOwned() && !alternativeBought && (!ownedSkills.Contains(currentSkill.getId())))
+
+            if (CoinManager.Instance.getCoins() >= currentSkill.getCost() && unlocked && !currentSkill.isOwned() && !alternativeBought && (!ownedSkills.Contains(currentSkill.getId())))
             {
                 AudioMenager.Instance.PlayEffect("Buy");
                 Debug.Log("Skill Bought - Skill ID:" + currentSkill.getId());
@@ -105,6 +105,7 @@ public class ShopManager : MonoBehaviour
                 updateMyCoins();
                 save();
             }
+            else AudioMenager.Instance.PlayEffect("BuyError");
         }
     }
 

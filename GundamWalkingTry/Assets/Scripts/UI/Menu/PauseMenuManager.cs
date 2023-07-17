@@ -78,8 +78,6 @@ public class PauseMenuManager : MonoBehaviour
         else if (this.gameObject.activeSelf == true) {
             Resume();
         }
-        
-
 
     }
 }

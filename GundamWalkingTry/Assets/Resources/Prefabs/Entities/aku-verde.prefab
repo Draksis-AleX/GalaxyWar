@@ -835,7 +835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9925e63cacf6f41a5efdf89b30d649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultHealtPoints: 300
+  defaultHealtPoints: 150
   coinPrefab: {fileID: 8943592479230303936, guid: 108e4c7c4034d97468d3094405c0b78c, type: 3}
   effect: {fileID: 3776794528708536181, guid: 7154a205abbfb414db7260b8cf53344b, type: 3}
 --- !u!114 &2713492707644508418
@@ -2362,7 +2362,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 5632586148909952799}
   m_HandleRect: {fileID: 0}

@@ -20,6 +20,7 @@ public abstract class Window : MonoBehaviour
 
     private void OnEnable()
     {
+        AudioMenager.Instance.PlayEffect("OpenUI");
         WindowManager.Instance.setDiplayEmpty(false);
         Time.timeScale = 0f;
     }
