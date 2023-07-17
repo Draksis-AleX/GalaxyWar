@@ -52,10 +52,9 @@ public class CoinManager :  MonoBehaviour
         {
             i = JsonUtility.FromJson<intSave>(i.loadIntData("coins"));
             //Debug.Log("coin:" + i);
-            my_coins = i.value;
+            setCoins(i.value);
         }
-
-        coinGui.text = "" + my_coins;
+        else setCoins(0);
 
 
     }
