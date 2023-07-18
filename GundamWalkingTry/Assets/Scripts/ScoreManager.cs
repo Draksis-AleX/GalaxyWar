@@ -105,7 +105,6 @@ public class ScoreManager : MonoBehaviour
 
     public void load()
     {
-
         intSave i = new intSave();
 
         if (i.loadIntData("score") != null)
@@ -115,9 +114,7 @@ public class ScoreManager : MonoBehaviour
             score = i.value;
         }
         else score = 0;
-
-
-
+        scoreInfo.updateScore(score);
     }
 
     public void save()

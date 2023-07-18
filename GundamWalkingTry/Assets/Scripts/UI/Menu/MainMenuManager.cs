@@ -18,6 +18,10 @@ public class MainMenuManager : MonoBehaviour
         else {
 
             d = JsonUtility.FromJson<GameData>(d.loadData("game"));
+
+
+            GameManager.Instance.loadData = true;
+
             SceneManager.LoadScene(d.scene);
 
         }

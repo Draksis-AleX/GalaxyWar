@@ -130,6 +130,7 @@ public class PlayerHealthManager : MonoBehaviour
     private void Die()
     {
         GameManager.Instance.runRestart();
+        PlayerManager.Instance.GetComponent<PlayerController>().ResetAiming();
         PlayerManager.Instance.GetComponent<PlayerController>().ResetSpeed();
     }
 
