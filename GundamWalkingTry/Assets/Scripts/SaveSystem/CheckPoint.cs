@@ -9,6 +9,12 @@ public class CheckPoint : MonoBehaviour
     private void Start()
     {
         savingUI = GameObject.Find("SavePanel").GetComponent<SaveUI>();
+        if (GameManager.Instance.loadData)
+        {
+            Debug.Log("Loading Datas");
+            SaveManager.Instance.load();
+            GameManager.Instance.loadData = false;
+        }
         if (GameManager.Instance.localData == true) Save();
     }
 

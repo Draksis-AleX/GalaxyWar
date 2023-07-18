@@ -15,6 +15,11 @@ public class FirstSceneInit : MonoBehaviour
 
     public void Init()
     {
+        if (GameManager.Instance.loadData) 
+        {
+            ScoreManager.Instance.resetScore();
+            CoinManager.Instance.load();
+        } 
         PlayerManager.Instance.GetComponent<PlayerShieldManager>().reset();
         PlayerManager.Instance.GetComponent<PlayerHealthManager>().reset();
         if(GameManager.Instance.localData == false) SaveManager.Instance.load();

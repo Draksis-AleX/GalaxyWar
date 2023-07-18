@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
         if (this.GetComponent<PlayerInput>().actions["Aiming"].WasReleasedThisFrame())
         {
             //Debug.Log("Reset Speed and Aiming");
-            ResetAiming();
             ResetSpeed();
         }
 
@@ -86,6 +85,7 @@ public class PlayerController : MonoBehaviour
 
     public void ResetSpeed()
     {
+        ResetAiming();
         speed = default_speed;
         _animator.speed = 1f;
     }
@@ -196,7 +196,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ResetAiming()
+    public void ResetAiming()
     {
         var points = new Vector3[2];
         points[0] = Vector3.zero;

@@ -13,13 +13,13 @@ public class PlayerDeath : Window
         GameManager.Instance.runRestart();
     }
 
-    public void ShowUI()
+    public void ShowUI(int score, float run_time)
     {
         this.gameObject.SetActive(true);
         blur.GetComponent<CanvasGroup>().alpha = 1;
         HUDManager.Instance.gameObject.SetActive(false);
-        this.gameObject.transform.GetChild(0).GetChild(0).Find("RunInfo").Find("Values").Find("Score").GetComponent<TextMeshProUGUI>().text = ScoreManager.Instance.getScore().ToString("000000000");
-        this.gameObject.transform.GetChild(0).GetChild(0).Find("RunInfo").Find("Values").Find("TimePlayed").GetComponent<TextMeshProUGUI>().text = FormatTime(GameManager.Instance.gameData.run_time); 
+        this.gameObject.transform.GetChild(0).GetChild(0).Find("RunInfo").Find("Values").Find("Score").GetComponent<TextMeshProUGUI>().text = score.ToString("000000000");
+        this.gameObject.transform.GetChild(0).GetChild(0).Find("RunInfo").Find("Values").Find("TimePlayed").GetComponent<TextMeshProUGUI>().text = FormatTime(run_time); 
     }
 
     string FormatTime(float time)

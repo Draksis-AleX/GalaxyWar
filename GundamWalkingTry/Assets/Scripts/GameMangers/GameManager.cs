@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
     public bool localData = false;
+    public bool loadData = false;
 
     public static GameManager Instance
     {
@@ -67,7 +68,8 @@ public class GameManager : MonoBehaviour
     {
         RankingManager.Instance.saveRun(gameData.run_start_date, gameData.run_start_time, gameData.wavesCompleted, ScoreManager.Instance.getScore(), gameData.run_time);
         deathUI = GameObject.Find("DeathUI").transform.GetChild(0).gameObject;
-        deathUI.GetComponent<PlayerDeath>().ShowUI();
+        deathUI.GetComponent<PlayerDeath>().ShowUI(ScoreManager.Instance.getScore(), gameData.run_time);
+        Debug.Log("Score: " + ScoreManager.Instance.getScore() + " run_time: " + gameData.run_time);
         ScoreManager.Instance.resetScore();
         Init();
         save("StartingHangar");
