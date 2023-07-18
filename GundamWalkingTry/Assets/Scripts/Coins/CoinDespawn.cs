@@ -5,7 +5,7 @@ using UnityEngine;
 public class CoinDespawn : MonoBehaviour
 {
     GameObject trail;
-    float despawnTime = 60f;
+    [SerializeField] float despawnTime = 60f;
     public int nextScene = 2;
 
     private void Awake()
