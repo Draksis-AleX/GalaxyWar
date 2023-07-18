@@ -6,7 +6,7 @@ using UnityEngine.VFX;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] VisualEffect slashVFX;
-    [SerializeField] float hitDistance = 2;
+    [SerializeField] float hitDistance = 6;
     [SerializeField] float coolDownTime = 1f;
     [SerializeField] int damage = 50;
     bool canAttack = true;

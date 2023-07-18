@@ -207,9 +207,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a393d875acc3fd4687217c5bc5f4498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  minTimeModifier: 25
-  maxTimeModifier: 30
+  target: {x: 0, y: 0, z: 0}
+  dropPoint: {x: 0, y: 0, z: 0}
+  minTimeModifier: 20
+  maxTimeModifier: 25
 --- !u!1001 &8943592479633149958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -313,6 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2bbf0bb9cf5834893e13df9f1d289e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  despawnTime: 20
+  nextScene: 2
 --- !u!4 &8904949642146281453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 09ce2432b0da5c744a730f83c9cca9fd, type: 3}

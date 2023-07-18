@@ -68,8 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("Reset Speed and Aiming");
             ResetAiming();
-            speed = default_speed;
-            _animator.speed = 1f;
+            ResetSpeed();
         }
 
         if (this.GetComponent<PlayerInput>().actions["Aiming"].IsPressed())
@@ -84,6 +83,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // ======================================  MOVEMENT  ===================================================
+
+    public void ResetSpeed()
+    {
+        speed = default_speed;
+        _animator.speed = 1f;
+    }
 
     public void Move(InputAction.CallbackContext context)
     {
