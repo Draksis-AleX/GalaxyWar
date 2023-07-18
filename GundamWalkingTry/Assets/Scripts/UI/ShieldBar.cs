@@ -32,7 +32,7 @@ public class ShieldBar : MonoBehaviour
         float targetHealth = currentShield;
         float startHealth = shieldSlider.value;
 
-        shieldSlider.value = Mathf.SmoothDamp(startHealth, targetHealth, ref currentVelocity, smoothSpeed * Time.deltaTime);
+        shieldSlider.value = Mathf.SmoothDamp(startHealth, targetHealth, ref currentVelocity, smoothSpeed * Time.unscaledDeltaTime);
     }
 
 }

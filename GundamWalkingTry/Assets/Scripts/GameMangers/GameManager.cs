@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public GameData gameData;
+    GameObject deathUI;
 
     //====================================  SINGLETON  ==========================================
 
@@ -59,25 +60,18 @@ public class GameManager : MonoBehaviour
 
     public void runRestart()
     {
-        RankingManager.Instance.saveRun(gameData.run_start_date, gameData.run_start_time, gameData.wavesCompleted, ScoreManager.Instance.getScore(), gameData.run_time);
-        Init();
-        save("StartingHangar");
         StartCoroutine(LoadScene(1));
-        resetLife();
-        resetWaves();
-
-        gameData.count_time = false;
-        gameData.run_time = 0;
-        gameData.first_arena = true;
-        gameData.wavesCompleted = 0;
     }
 
-    public void runRestart(bool loadHangar)
+    public void restartRun()
     {
         RankingManager.Instance.saveRun(gameData.run_start_date, gameData.run_start_time, gameData.wavesCompleted, ScoreManager.Instance.getScore(), gameData.run_time);
+        deathUI = GameObject.Find("DeathUI").transform.GetChild(0).gameObject;
+        deathUI.GetComponent<PlayerDeath>().ShowUI();
+        ScoreManager.Instance.resetScore();
         Init();
         save("StartingHangar");
-        if(loadHangar) StartCoroutine(LoadScene(1));
+
         resetLife();
         resetWaves();
 
@@ -104,9 +98,12 @@ public class GameManager : MonoBehaviour
     {
         // Start loading the scene
         AsyncOperation asyncLoadLevel = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Single);
+
         // Wait until the level finish loading
         while (!asyncLoadLevel.isDone)
             yield return null;
+
+        restartRun();
     }
 
     //=================================================================================

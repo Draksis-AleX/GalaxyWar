@@ -2,35 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
-public class PlayerDeath : MonoBehaviour
+public class PlayerDeath : Window
 {
-    [SerializeField] GameObject deathUI;
-    GameObject blur;
+    [SerializeField] GameObject blur;
 
     public void Die()
     {
-        deathUI.SetActive(true);
-        blur = GameObject.Find("Blur");
-        blur.GetComponent<Canvas>().worldCamera = CameraManager.Instance.gameObject.GetComponent<Camera>();
+        GameManager.Instance.runRestart();
+    }
+
+    public void ShowUI()
+    {
+        this.gameObject.SetActive(true);
         blur.GetComponent<CanvasGroup>().alpha = 1;
+        HUDManager.Instance.gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(0).GetChild(0).Find("RunInfo").Find("Values").Find("Score").GetComponent<TextMeshProUGUI>().text = ScoreManager.Instance.getScore().ToString("000000000");
+        this.gameObject.transform.GetChild(0).GetChild(0).Find("RunInfo").Find("Values").Find("TimePlayed").GetComponent<TextMeshProUGUI>().text = FormatTime(GameManager.Instance.gameData.run_time); 
+    }
+
+    string FormatTime(float time)
+    {
+        int minutes = (int)time / 60;
+        int seconds = (int)time - 60 * minutes;
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void Restart()
     {
+        HUDManager.Instance.gameObject.SetActive(true);
         blur.GetComponent<CanvasGroup>().alpha = 0;
-        GameManager.Instance.runRestart();
-        deathUI.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
     public void Quit()
     {
+        HUDManager.Instance.gameObject.SetActive(true);
         blur.GetComponent<CanvasGroup>().alpha = 0;
-        GameManager.Instance.runRestart(false);
         SceneManager.LoadScene("Menu");
         PlayerManager.Instance.StopAllCoroutines();
         PlayerManager.Instance.gameObject.SetActive(false);
-        deathUI.SetActive(false);
+        this.gameObject.SetActive(false);
         WindowManager.Instance.setDiplayEmpty(false);
+    }
+
+    public override void other()
+    {
+        blur.GetComponent<CanvasGroup>().alpha = 0;
     }
 }

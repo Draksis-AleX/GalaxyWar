@@ -42,6 +42,6 @@ public class RankingWindow : Window
 
     override public void other()
     {
-        blur.SetActive(false);
+        blur.GetComponent<CanvasGroup>().alpha = 0;
     }
 }

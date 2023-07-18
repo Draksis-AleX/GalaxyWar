@@ -22,6 +22,7 @@ public abstract class Window : MonoBehaviour
     {
         AudioMenager.Instance.PlayEffect("OpenUI");
         WindowManager.Instance.setDiplayEmpty(false);
+        PlayerManager.Instance.GetComponent<PlayerInput>().enabled = false;
         Time.timeScale = 0f;
     }
 
@@ -30,6 +31,7 @@ public abstract class Window : MonoBehaviour
     {
         WindowManager.Instance.setDiplayEmpty(true);
         Time.timeScale = 1f;
+        PlayerManager.Instance.GetComponent<PlayerInput>().enabled = true;
     }
 
     abstract public void other();

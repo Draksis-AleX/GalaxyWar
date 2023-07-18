@@ -16,7 +16,7 @@ public class Shop : MonoBehaviour, IInteractable
     public void OpenShop() {
 
         panel.SetActive(true);
-        blurPanel.SetActive(true);
+        blurPanel.GetComponent<CanvasGroup>().alpha = 1;
 
     }
 

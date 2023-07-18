@@ -150,7 +150,7 @@ public class PlayerShieldManager : MonoBehaviour
     {
         isRegenerating = false;
         //Debug.Log("Started Shield Cooldown");
-        yield return new WaitForSeconds(shieldCooldownTime);
+        yield return new WaitForSecondsRealtime(shieldCooldownTime);
         //Debug.Log("Ended Shield Cooldown");
         isRegenerating = true;
         StartCoroutine(regenerateShield());
@@ -163,7 +163,7 @@ public class PlayerShieldManager : MonoBehaviour
             currentShield += 5;
             shieldBar.GetComponent<ShieldBar>().setShield(currentShield);
             if (currentShield > maxShield) currentShield = maxShield;
-            yield return new WaitForSeconds(regenerationTime);
+            yield return new WaitForSecondsRealtime(regenerationTime);
             if (currentShield < maxShield) StartCoroutine(regenerateShield());
         }
         else yield return null;

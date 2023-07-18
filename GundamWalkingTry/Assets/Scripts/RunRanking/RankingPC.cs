@@ -16,7 +16,7 @@ public class RankingPC : MonoBehaviour, IInteractable
     public void OpenRankingPanel()
     {
         panel.SetActive(true);
-        blurPanel.SetActive(true);
+        blurPanel.GetComponent<CanvasGroup>().alpha = 1;
     }
 
     public bool Interact(Interactor interactor)

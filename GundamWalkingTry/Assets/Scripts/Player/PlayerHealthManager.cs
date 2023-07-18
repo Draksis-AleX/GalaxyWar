@@ -129,7 +129,7 @@ public class PlayerHealthManager : MonoBehaviour
     }
     private void Die()
     {
-        this.GetComponent<PlayerDeath>().Die();
+        GameManager.Instance.runRestart();
     }
 
     public void reset()

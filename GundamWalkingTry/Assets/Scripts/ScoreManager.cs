@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
     ScoreInfo scoreInfo;
     float timer = 0;
     bool measureTime = false;
+    bool locked = false;
+    private int max_score = 999999999;
     
     //[SerializeField] TextMeshProUGUI scoreGUI;
 
@@ -58,15 +60,16 @@ public class ScoreManager : MonoBehaviour
 
     public int getScore() { return score; }
 
-    public void moreScore(int bonus) { 
+    public void moreScore(int bonus) {
+        if (score + bonus > max_score) return;
         score += 5 * bonus;
         scoreInfo.updateScore(score);
     }
 
-    public void lessScore(int malus){ 
-        score -= 1*malus;
+    public void lessScore(int malus){
+        score -= 1 * malus;
+        if (score <= 0) score = 0;
         scoreInfo.updateScore(score);
-        if (score < 0) score = 0;
     }
 
     public void resetScore() { 
