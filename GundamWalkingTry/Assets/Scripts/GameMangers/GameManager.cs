@@ -72,6 +72,21 @@ public class GameManager : MonoBehaviour
         gameData.wavesCompleted = 0;
     }
 
+    public void runRestart(bool loadHangar)
+    {
+        RankingManager.Instance.saveRun(gameData.run_start_date, gameData.run_start_time, gameData.wavesCompleted, ScoreManager.Instance.getScore(), gameData.run_time);
+        Init();
+        save("StartingHangar");
+        if(loadHangar) StartCoroutine(LoadScene(1));
+        resetLife();
+        resetWaves();
+
+        gameData.count_time = false;
+        gameData.run_time = 0;
+        gameData.first_arena = true;
+        gameData.wavesCompleted = 0;
+    }
+
     void resetLife()
     {
         PlayerManager.Instance.GetComponent<PlayerHealthManager>().reset();
