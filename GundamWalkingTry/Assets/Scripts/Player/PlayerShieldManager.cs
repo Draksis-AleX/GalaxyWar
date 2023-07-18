@@ -12,7 +12,7 @@ public class PlayerShieldManager : MonoBehaviour
     [SerializeField] float regenerationTime = 1f;
     [SerializeField] GameObject shieldBar;
     Coroutine latestShieldCooldown;
-    bool isRegenerating = false;
+    [SerializeField] bool isRegenerating = false;
 
     private void loadAll()
     {
@@ -83,6 +83,7 @@ public class PlayerShieldManager : MonoBehaviour
     {
         currentShield = maxShield;
         shieldBar.GetComponent<ShieldBar>().setShield(maxShield);
+        Debug.Log("ShieldReset");
     }
 
     public void addMaxShield(int amount)

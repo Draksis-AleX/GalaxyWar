@@ -1064,6 +1064,7 @@ MonoBehaviour:
     run_time: 0
     count_time: 0
     wavesCompleted: 0
+    CommandsArrow: 0
     wavesNumber: 1
     wave_enemies_number: 2
   localData: 0
@@ -4313,7 +4314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7441837789106344532, guid: 545f048682e97684da9532e77adaee85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7441837789106344535, guid: 545f048682e97684da9532e77adaee85, type: 3}
       propertyPath: m_Camera
@@ -4405,6 +4406,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 545f048682e97684da9532e77adaee85, type: 3}
+--- !u!1 &1173468154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7441837789106344532, guid: 545f048682e97684da9532e77adaee85, type: 3}
+  m_PrefabInstance: {fileID: 1173468153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1173468155
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173468154}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1190290500
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,6 +5112,7 @@ MonoBehaviour:
   effect: {fileID: 2042203657108287710, guid: d2ad5b0e38c9c7e468e918b3331ceb9a, type: 3}
   dist: 10
   WaveInfoPanel: {fileID: 0}
+  enemy_count_limit: 30
 --- !u!1 &1562782673
 GameObject:
   m_ObjectHideFlags: 0
@@ -5785,13 +5804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3935a1b52424e64195aa568d6140eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - clip: {fileID: 8300000, guid: f9b43f577fe6e3d4398deaa9be8c0855, type: 3}
-    name: Background
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
+  soundtrack: []
+  sound_effects: []
   audioMixer: {fileID: 24100000, guid: 96e8a091b3646b944ae367dc8a07c8cb, type: 2}
 --- !u!4 &1848007883
 Transform:
