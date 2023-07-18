@@ -9,28 +9,28 @@ public class TriggerDoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        AudioMenager.Instance.PlayEffect("OpenDoor");
         if (this.CompareTag("PortaArena") && GameManager.Instance.gameData.completedArena == false) return;
         if (this.CompareTag("PortaMagazzino") && GameManager.Instance.gameData.tookPowerUp == true) return;
         if (other.CompareTag("Player"))
-            {
-                upperDoor.SetBool("Open", true);
-                lowerDoor.SetBool("Open", true);
-                //Debug.Log("Trigger Door Enter");
-            }
+        {
+            AudioMenager.Instance.PlayEffect("OpenDoor");
+            upperDoor.SetBool("Open", true);
+            lowerDoor.SetBool("Open", true);
+            //Debug.Log("Trigger Door Enter");
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        AudioMenager.Instance.PlayEffect("CloseDoor");
         if (this.CompareTag("PortaArena") && GameManager.Instance.gameData.completedArena == false) return;
         if (this.CompareTag("PortaMagazzino") && GameManager.Instance.gameData.tookPowerUp == true) return;
         if (other.CompareTag("Player"))
-            {
-                upperDoor.SetBool("Open", false);
-                lowerDoor.SetBool("Open", false);
-                //Debug.Log("Trigger Door Exit");
-            }        
+        {
+            AudioMenager.Instance.PlayEffect("CloseDoor");
+            upperDoor.SetBool("Open", false);
+            lowerDoor.SetBool("Open", false);
+            //Debug.Log("Trigger Door Exit");
+        }        
     }
 
 }

@@ -10,6 +10,7 @@ public class PlayerHealthManager : MonoBehaviour
     [SerializeField] float PU_effect_multiplier = 1;
     [SerializeField] int damageIgnoreProbability = 0;
     [SerializeField] int currentHealth;
+    private bool died = false;
 
     float maxVignetteIntensity = 0.4f;
 
@@ -129,14 +130,19 @@ public class PlayerHealthManager : MonoBehaviour
     }
     private void Die()
     {
-        GameManager.Instance.runRestart();
-        PlayerManager.Instance.GetComponent<PlayerController>().ResetAiming();
-        PlayerManager.Instance.GetComponent<PlayerController>().ResetSpeed();
+        if (!died)
+        {
+            GameManager.Instance.runRestart();
+            PlayerManager.Instance.GetComponent<PlayerController>().ResetAiming();
+            PlayerManager.Instance.GetComponent<PlayerController>().ResetSpeed();
+            died = true;
+        }
     }
 
     public void reset()
     {
         currentHealth = defaultHealth;
         healthBar.GetComponent<HealthBar>().setHealth(currentHealth);
+        died = false;
     }
 }
