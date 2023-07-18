@@ -25,7 +25,7 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        value = Random.Range(1, 10) * 5;
+        value = Random.Range(0, 48);
 
         Material matCommon = Resources.Load<Material>("matirialCode/Common");
         Material matEpic = Resources.Load<Material>("matirialCode/Epic");
@@ -33,9 +33,18 @@ public abstract class PowerUp : MonoBehaviour, IInteractable
 
         Material[] _materials = _base.GetComponent<Renderer>().materials;
 
-        if (value <= 20) _materials[2] = matCommon;
-        else if (value > 20 && value <= 40) _materials[2] = matEpic;
-        else if (value > 40 && value <= 50) _materials[2] = matLegend;
+        if (value <= 35) {
+            _materials[2] = matCommon;
+            value = Random.Range(2, 3) * 5;
+        }
+        else if (value > 35 && value <= 45) {
+            _materials[2] = matEpic;
+            value = Random.Range(5, 6) * 5;
+        }
+        else if (value > 45 && value <= 48){
+           _materials[2] = matLegend;
+            value = Random.Range(9, 11) * 5;
+        } 
          
 
         _base.GetComponent<Renderer>().materials = _materials; 

@@ -34,6 +34,7 @@ public class MainMenuManager : MonoBehaviour
         string path = Application.persistentDataPath;
         if (Directory.Exists(path)) {
             Directory.Delete(path, true);
+            RankingManager.Instance.reset();
             GameManager.Instance.localData = false;
         }
         

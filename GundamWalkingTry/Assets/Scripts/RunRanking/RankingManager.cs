@@ -57,6 +57,11 @@ public class RankingManager : MonoBehaviour
     RankingData rd;
     int current_id = 0;
 
+    public void reset() {
+        rd = new RankingData();
+        current_id = 0;
+    }
+
     private void Start()
     {
         rd = new RankingData();
