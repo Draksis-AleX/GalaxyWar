@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
         deathUI.GetComponent<PlayerDeath>().ShowUI(ScoreManager.Instance.getScore(), gameData.run_time);
         Debug.Log("Score: " + ScoreManager.Instance.getScore() + " run_time: " + gameData.run_time);
         ScoreManager.Instance.resetScore();
+        CoinManager.Instance.load();
         Init();
         save("StartingHangar");
 

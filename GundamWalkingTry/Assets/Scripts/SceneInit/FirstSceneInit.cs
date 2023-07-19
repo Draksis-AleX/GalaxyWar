@@ -17,12 +17,12 @@ public class FirstSceneInit : MonoBehaviour
     {
         if (GameManager.Instance.loadData) 
         {
-            ScoreManager.Instance.resetScore();
-            CoinManager.Instance.load();
+            SaveManager.Instance.load();
+            GameManager.Instance.loadData = false;
         } 
         PlayerManager.Instance.GetComponent<PlayerShieldManager>().reset();
         PlayerManager.Instance.GetComponent<PlayerHealthManager>().reset();
-        if(GameManager.Instance.localData == false) SaveManager.Instance.load();
+        //if(GameManager.Instance.localData == false) SaveManager.Instance.load();
         //Debug.Log("SceneInit...");
         //Debug.Log("PlayerPos: " + PlayerManager.Instance.transform.position);
         pauseMenu = GameObject.FindObjectOfType<PauseMenuManager>(true);

@@ -41,10 +41,11 @@ public class EnemyWaveSpawner : MonoBehaviour
         {
             this.enemySpawner = new GameObject[waveSize];
             this.enemyType = new GameObject[enemyTypes];
-            if (enemyType.Length == 2)
+            if (enemyType.Length == 3)
             {
                 this.enemyType[0] = (GameObject)Resources.Load("Prefabs/Entities/aku");
                 this.enemyType[1] = (GameObject)Resources.Load("Prefabs/Entities/aku-verde");
+                this.enemyType[2] = (GameObject)Resources.Load("Prefabs/Entities/aku-blu");
             }
         }
 
@@ -117,9 +118,9 @@ public class EnemyWaveSpawner : MonoBehaviour
 
             Instantiate(effect, effecLoc , Quaternion.identity);
             GameObject new_enemy = Instantiate(waves[currentWave].getEnemySpawnList()[i], _EnemySpawnPoints.transform.GetChild(enemyID).transform.position, Quaternion.identity);
-            if (GameManager.Instance.gameData.arenaDefeated > 5)
+            if (GameManager.Instance.gameData.arenaDefeated > 3)
             {
-                new_enemy.GetComponent<EnemyHealth>().incHealt(25 * (GameManager.Instance.gameData.arenaDefeated - 5));
+                new_enemy.GetComponent<EnemyHealth>().incHealt(25 * (GameManager.Instance.gameData.arenaDefeated - 3));
             }
             //StartCoroutine(waves[currentWave].getEnemySpawnList()[i].GetComponent<EnemyNavMeshMovement>().trigger(effect.GetComponent<ParticleSystem>().main.duration));
             //Debug.Log("distanza:" + Vector3.Distance(_EnemySpawnPoints.transform.GetChild(enemyID).transform.position, PlayerManager.Instance.transform.position));
@@ -136,7 +137,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         if (EnemyNumber >= enemy_count_limit) EnemyNumber = enemy_count_limit;
         for (int i = 0; i < waves.Length; i++)
         {
-            waves[i] = new Wave(EnemyNumber, 2);
+            waves[i] = new Wave(EnemyNumber, 3);
             EnemyNumber = (int)Mathf.Ceil(EnemyNumber * 1.2f);
             if (EnemyNumber >= enemy_count_limit) EnemyNumber = enemy_count_limit;
             waves[i].Start();

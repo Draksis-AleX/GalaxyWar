@@ -31,7 +31,7 @@ public class GameData : ASave
         completedArena = false;
 
         wavesNumber = 1;
-        wave_enemies_number = 2;
+        wave_enemies_number = 3;
         first_arena = true;
         wavesCompleted = 0;
         run_time = 0;

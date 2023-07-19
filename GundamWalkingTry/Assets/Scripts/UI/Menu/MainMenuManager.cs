@@ -29,6 +29,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void NewGame()
     {
+        GameManager.Instance.loadData = true;
         string path = Application.persistentDataPath;
         if (Directory.Exists(path)) {
 
