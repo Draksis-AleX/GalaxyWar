@@ -11,21 +11,15 @@ public class MainMenuManager : MonoBehaviour
     public void PlayGame(){
 
         GameData d  = new GameData();
+        GameManager.Instance.loadData = true;
 
         if (d.loadData("game") == null) {
             SceneManager.LoadScene(sceneName);
         }
         else {
-
             d = JsonUtility.FromJson<GameData>(d.loadData("game"));
-
-
-            GameManager.Instance.loadData = true;
-
             SceneManager.LoadScene(d.scene);
-
         }
-
         WindowManager.Instance.setDiplayEmpty(true);
     }
 
