@@ -37,12 +37,16 @@ public class MainMenuManager : MonoBehaviour
     {
         string path = Application.persistentDataPath;
         if (Directory.Exists(path)) {
-            Directory.Delete(path, true);
+
+            DirectoryInfo directory = new DirectoryInfo(path);
+            foreach (FileInfo file in directory.GetFiles()) {
+                if (file.Name != "Player.log") file.Delete();
+            }
             RankingManager.Instance.reset();
             GameManager.Instance.localData = false;
         }
         
-        //Directory.CreateDirectory(path);
+        Directory.CreateDirectory(path);
 
         
         SceneManager.LoadScene(sceneName);

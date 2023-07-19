@@ -1740,6 +1740,7 @@ MonoBehaviour:
     wavesNumber: 1
     wave_enemies_number: 2
   localData: 0
+  loadData: 0
 --- !u!4 &556558983
 Transform:
   m_ObjectHideFlags: 0
@@ -9523,8 +9524,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -2.5, y: -0.5}
-  m_SizeDelta: {x: -5, y: 1081}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0.50001}
+  m_SizeDelta: {x: 0.00024414, y: 1081}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3973034220148761231
 MonoBehaviour:
