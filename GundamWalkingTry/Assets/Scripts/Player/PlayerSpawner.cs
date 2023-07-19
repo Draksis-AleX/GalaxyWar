@@ -10,11 +10,9 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] Transform spawnPointMagazzino;
     private Transform sp;
 
-    void Awake()
+    private void Start()
     {
-
         Respawn();
-     
     }
 
     public void Respawn()

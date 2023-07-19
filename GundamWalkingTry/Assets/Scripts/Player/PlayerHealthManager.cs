@@ -14,6 +14,11 @@ public class PlayerHealthManager : MonoBehaviour
 
     float maxVignetteIntensity = 0.4f;
 
+    private void Awake()
+    {
+        Debug.Log("PlayerHealthManager Awake");
+    }
+
     private void loadAll() {
 
         HealthData h = new HealthData();

@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType<PlayerManager>();
+                //_instance = GameObject.FindObjectOfType<PlayerManager>();
                 if (_instance == null) Debug.LogError("No Player in scene");
             }
             return _instance;
@@ -21,6 +21,9 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
+
+        Debug.Log("Awake Player");
+
         if (_instance == null)
         {
             _instance = this;
@@ -28,6 +31,7 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("Destroyed Player");
             GameObject.Destroy(this.gameObject);
         }
     }

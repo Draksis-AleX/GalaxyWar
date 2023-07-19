@@ -10,6 +10,11 @@ public class ShieldBar : MonoBehaviour
     int currentShield;
     [SerializeField] float smoothSpeed = 25f;
 
+    private void Awake()
+    {
+        Debug.Log("ShieldBarUI Awake");
+    }
+
     public void setShield(int health)
     {
         currentShield = health;

@@ -14,6 +14,11 @@ public class PlayerShieldManager : MonoBehaviour
     Coroutine latestShieldCooldown;
     [SerializeField] bool isRegenerating = false;
 
+    private void Awake()
+    {
+        Debug.Log("PlayerShieldManager Awake");
+    }
+
     private void loadAll()
     {
 
