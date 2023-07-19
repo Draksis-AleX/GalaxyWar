@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -44,6 +45,13 @@ public class PlayerController : MonoBehaviour
     {
         SetupAimingLine();
         speed = default_speed;
+        SceneManager.activeSceneChanged += ChangedActiveScene;
+    }
+
+    void ChangedActiveScene(Scene current, Scene next)
+    {
+        ResetAiming();
+        ResetSpeed();
     }
 
     private void Awake()
@@ -67,6 +75,7 @@ public class PlayerController : MonoBehaviour
         if (this.GetComponent<PlayerInput>().actions["Aiming"].WasReleasedThisFrame())
         {
             //Debug.Log("Reset Speed and Aiming");
+            ResetAiming();
             ResetSpeed();
         }
 
@@ -85,7 +94,6 @@ public class PlayerController : MonoBehaviour
 
     public void ResetSpeed()
     {
-        ResetAiming();
         speed = default_speed;
         _animator.speed = 1f;
     }
@@ -194,6 +202,11 @@ public class PlayerController : MonoBehaviour
             points[1] = aimHit.point;
             aimLine.SetPositions(points);
         }
+    }
+
+    public void setAimingLineStatus(bool status)
+    {
+        this.gameObject.GetComponent<LineRenderer>().enabled = status;
     }
 
     public void ResetAiming()

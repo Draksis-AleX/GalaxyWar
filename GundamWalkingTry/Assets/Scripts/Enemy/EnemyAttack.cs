@@ -22,9 +22,9 @@ public class EnemyAttack : MonoBehaviour
         if((Vector3.Distance(playerPosition.position, transform.position) < hitDistance) && canAttack)
         {
             canAttack = false;
-            GetComponent<EnemySimpleMovement>().triggered = false;
             AudioMenager.Instance.PlayEffect("EnemySword");
             slashVFX.Play();
+            this.gameObject.transform.LookAt(PlayerManager.Instance.transform);
             StartCoroutine(checkHit(slashVFX.GetFloat("duration")));
             StartCoroutine(coolDown());
         }
