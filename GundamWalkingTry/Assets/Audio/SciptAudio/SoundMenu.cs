@@ -11,11 +11,10 @@ public class SoundMenu : MonoBehaviour
     [SerializeField] private Slider effectsSlider;
 
 
-    private void Awake()
+    private void Start()
     {
         if (PlayerPrefs.HasKey("Music")) LoadMusic();
         if (PlayerPrefs.HasKey("Effects")) LoadEffects();
-
     }
 
     public void SetVolume (float volume){
@@ -26,19 +25,30 @@ public class SoundMenu : MonoBehaviour
     {
         audioMixer.SetFloat("Effects", Mathf.Log10(volume)*20);
         PlayerPrefs.SetFloat("Effects",volume);
+
+        Debug.Log("settato mixer effects a:" + Mathf.Log10(volume) * 20);
     }
 
     public void SetVolumeMusic(float volume)
     {
         audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("Music", volume);
+
+        Debug.Log("settato mixer music a:" + Mathf.Log10(volume) * 20);
+
     }
 
     private void LoadMusic() {
         musicSlider.value = PlayerPrefs.GetFloat("Music");
+        //Debug.Log("slider music" + musicSlider.value);
+        //SetVolumeMusic(musicSlider.value);
+       
+
     }
     private void LoadEffects() {
         effectsSlider.value = PlayerPrefs.GetFloat("Effects");
+        //Debug.Log("slider music" + musicSlider.value);
+        //SetVolumeEffects(effectsSlider.value);
     }
 
 }
