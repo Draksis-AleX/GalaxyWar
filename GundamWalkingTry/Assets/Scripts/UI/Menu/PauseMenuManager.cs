@@ -53,6 +53,7 @@ public class PauseMenuManager : MonoBehaviour
         this.gameObject.SetActive(false);
         Time.timeScale = 1f;
         PlayerManager.Instance.GetComponent<PlayerInput>().enabled = true;
+        PlayerManager.Instance.GetComponent<PlayerController>().CheckCommands();
     }
 
     public void goMenu()

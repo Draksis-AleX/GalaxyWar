@@ -50,7 +50,7 @@ public class TutorialButtonScripts : MonoBehaviour
         tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/GAMEPLAY/TutorialShoot")).ConvertToSprite());
         tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/GAMEPLAY/TutorialCheckpoint")).ConvertToSprite());
 
-        string descrizione = "Your HUD is composed by:"
+        string descrizione = "Your HUD is composed by:\n"
                                 + "- Your Health(RED)\n- Your Shield(BLU)\n- Your Coins\n\n" +
 
                                 "To Move the Player use the WASD keys(you can switch to arrow keys in control settings)\n\n" +
@@ -94,13 +94,14 @@ public class TutorialButtonScripts : MonoBehaviour
         List<Sprite> tutorialImages = new List<Sprite>();
 
         tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/SCORE/TutorialScore")).ConvertToSprite());
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/GAMEPLAY/TutorialCheckpoint")).ConvertToSprite());
 
 
         string descrizione = "You can see your actual Run Score in the bottom-right corner of the HUD.\n"
                             +"You gain score killing enemies and completing waves.\n"
                             +"If you complete a wave faster you will gain more score.\n"
                             +"The score, as coins, is saved only reaching a CheckPoint in a corridor(look at the second screen).\n";
-        ShowTutorial("SCORE", descrizione, false, tutorialImages);
+        ShowTutorial("SCORE", descrizione, true, tutorialImages);
     }
     public void EnemyButton()
     {
@@ -149,7 +150,7 @@ public class TutorialButtonScripts : MonoBehaviour
     public void NextButton()
     {
         index++;
-        if (index > Showimages.Count) index = 0;
+        if (index > Showimages.Count - 1) index = 0;
 
         Debug.Log("index : " + index);
         tutorialImage.gameObject.GetComponent<Image>().sprite = Showimages[index % Showimages.Count];

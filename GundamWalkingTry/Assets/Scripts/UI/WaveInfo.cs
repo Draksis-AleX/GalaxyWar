@@ -64,7 +64,7 @@ public class WaveInfo : MonoBehaviour
             text.color = Color.green;
             text.text = wave + " Waves Completed";
         }
-        else text.text = "Wave " + this.wave + " / " + this.maxWave;
+        else text.text = "Wave " + (this.wave + 1) + " / " + this.maxWave;
         ShowUI();
         yield return new WaitForSeconds(3);
         HideUI();

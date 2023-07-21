@@ -16,14 +16,14 @@ public class SwitchCommands : MonoBehaviour
     public void SwitchArrows()
     {
         GameManager.Instance.gameData.CommandsArrow = true;
-        GameManager.Instance.save("StartingHangar");
+        GameManager.Instance.save();
         DisplaySelected();
     }
 
     public void SwitchWASD()
     {
         GameManager.Instance.gameData.CommandsArrow = false;
-        GameManager.Instance.save("StartingHangar");
+        GameManager.Instance.save();
         DisplaySelected();
     }
 

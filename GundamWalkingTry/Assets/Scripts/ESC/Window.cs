@@ -32,6 +32,7 @@ public abstract class Window : MonoBehaviour
         WindowManager.Instance.setDiplayEmpty(true);
         Time.timeScale = 1f;
         PlayerManager.Instance.GetComponent<PlayerInput>().enabled = true;
+        PlayerManager.Instance.GetComponent<PlayerController>().CheckCommands();
     }
 
     abstract public void other();

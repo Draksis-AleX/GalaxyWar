@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Init();
-        //load();
+        load();
     }
 
     private void Init()
@@ -136,6 +136,11 @@ public class GameManager : MonoBehaviour
 
     public void save(string scene) {
         gameData.scene = scene;
+        gameData.saveData("game");
+    }
+
+    public void save()
+    {
         gameData.saveData("game");
     }
 

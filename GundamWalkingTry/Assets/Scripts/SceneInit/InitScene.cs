@@ -36,6 +36,7 @@ public class InitScene : MonoBehaviour
         PlayerManager.Instance.gameObject.SetActive(true);
         yield return new WaitForSeconds(upperDoor.runtimeAnimatorController.animationClips[1].length);
         PlayerManager.Instance.gameObject.GetComponent<PlayerInput>().enabled = true;
+        PlayerManager.Instance.gameObject.GetComponent<PlayerController>().CheckCommands();
         //Debug.Log("Ended Init Coroutine");
     }
 

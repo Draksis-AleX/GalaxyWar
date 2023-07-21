@@ -172,4 +172,6 @@ public class Shooting : MonoBehaviour
 
         d.saveData("bullet");
     }
+
+    public void resetDamage() { playerCurrentDamage = playerDamage;  }
 }

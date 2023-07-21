@@ -92,6 +92,12 @@ public class PlayerController : MonoBehaviour
 
     // ======================================  MOVEMENT  ===================================================
 
+    public void CheckCommands()
+    {
+        if (GameManager.Instance.gameData.CommandsArrow == true) PlayerManager.Instance.GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay #2");
+        else PlayerManager.Instance.GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay");
+    }
+
     public void ResetSpeed()
     {
         speed = default_speed;

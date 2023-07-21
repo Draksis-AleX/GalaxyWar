@@ -91,6 +91,8 @@ public class PlayerShieldManager : MonoBehaviour
         Debug.Log("ShieldReset");
     }
 
+    public void resetMaxShield() { maxShield -= bonusShield; shieldBar.GetComponent<ShieldBar>().setMaxShield(maxShield); }
+
     public void addMaxShield(int amount)
     {
         maxShield += amount;

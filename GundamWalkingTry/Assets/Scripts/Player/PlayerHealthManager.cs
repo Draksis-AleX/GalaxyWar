@@ -137,6 +137,8 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if (!died)
         {
+            this.gameObject.GetComponent<Shooting>().resetDamage();
+            this.gameObject.GetComponent<PlayerShieldManager>().resetMaxShield();
             GameManager.Instance.runRestart();
             died = true;
         }
