@@ -28,10 +28,8 @@ public class TutorialButtonScripts : MonoBehaviour
 
         List<Sprite> tutorialImages = new List<Sprite>();
 
-        Debug.Log("" + Resources.Load("TutorialImage/Shop/TutorialOutsideShop").GetType());
-
-        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/Shop/TutorialOutsideShop")).ConvertToSprite());
-        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/Shop/TutorialShopMenu")).ConvertToSprite());
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/SHOP/TutorialOutsideShop")).ConvertToSprite());
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/SHOP/TutorialShopMenu")).ConvertToSprite());
 
         string descrizione = "To open the Shop Tab interact with the Shop Station in the starting hangar pressing E \n"
 
@@ -46,12 +44,11 @@ public class TutorialButtonScripts : MonoBehaviour
     {
         List<Sprite> tutorialImages = new List<Sprite>();
 
-        Debug.Log("" + Resources.Load("TutorialImage/Shop/TutorialOutsideShop").GetType());
-
         tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/GAMEPLAY/TutorialHUD")).ConvertToSprite());
         tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/GAMEPLAY/TutorialMove")).ConvertToSprite());
         tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/GAMEPLAY/TutorialAim")).ConvertToSprite());
         tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/GAMEPLAY/TutorialShoot")).ConvertToSprite());
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/GAMEPLAY/TutorialCheckpoint")).ConvertToSprite());
 
         string descrizione = "Your HUD is composed by:"
                                 + "- Your Health(RED)\n- Your Shield(BLU)\n- Your Coins\n\n" +
@@ -66,29 +63,68 @@ public class TutorialButtonScripts : MonoBehaviour
     }
     public void PUButton()
     {
-        string descrizione = "Se li prendi sei piuù forte";
-        //ShowTutorial("PUWERUPS", descrizione , true);
+        List<Sprite> tutorialImages = new List<Sprite>();
+
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/POWERUPS/TutorialOutsidePowerUps")).ConvertToSprite());
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/POWERUPS/TutorialPowerUPsRoom")).ConvertToSprite());
+
+        string descrizione = "In each corridor is present a door for a PowerUP Room.\n"
+                                + "You can enter in a certain PowerUP Room only ONE TIME.\n"
+                                + "In these rooms you will find three PowerUPs of various rarities.\n"
+                                + "You can choose only ONE oh these three PowerUPs.\n"
+                                +"These PowerUPs are effective only in the actual Run and are NOT PERMANENT.\n";
+
+        ShowTutorial("POWERUPS", descrizione, true, tutorialImages);
     }
     public void CoinButton()
     {
-        string descrizione = "Piu ne hai più sei felice ";
-        //ShowTutorial("COINS", descrizione, true);
+        List<Sprite> tutorialImages = new List<Sprite>();
+
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/COINS/TutorialCoins")).ConvertToSprite());
+
+
+        string descrizione = "Each enemy you kill drops a certain amount of coins.\n"
+                            +"Use these coins in the Shop.\n"
+                            +"The coins you earn are saved only after you've reached a CheckPoint in a corridor (look at the second screen).\n";
+        ShowTutorial("COINS", descrizione, false, tutorialImages);
     }
 
     public void ScoreButton()
     {
-        string descrizione = "Più ne fai più sei felice";
-        //ShowTutorial("SCORE", descrizione, true);
+        List<Sprite> tutorialImages = new List<Sprite>();
+
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/SCORE/TutorialScore")).ConvertToSprite());
+
+
+        string descrizione = "You can see your actual Run Score in the bottom-right corner of the HUD.\n"
+                            +"You gain score killing enemies and completing waves.\n"
+                            +"If you complete a wave faster you will gain more score.\n"
+                            +"The score, as coins, is saved only reaching a CheckPoint in a corridor(look at the second screen).\n";
+        ShowTutorial("SCORE", descrizione, false, tutorialImages);
     }
     public void EnemyButton()
     {
-        string descrizione = "quello blu si chima IlKiller";
-        //ShowTutorial("ENEMIES", descrizione, true);
+        List<Sprite> tutorialImages = new List<Sprite>();
+
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/ENEMY/TutorialEnemies")).ConvertToSprite());
+
+        string descrizione = "There are three types of enemies in the game:\n"
+                            +"-Base Aku(RED): he is the basic enemy of the game.\n"
+                            +"-Bulk Aku(GREEN): he has more life then a normal aku and he inflicts more damage.\n"
+                            +"- Killer Aku: he is faster then a normal aku but he inflicts less damage. (Be afraid of them)\n";
+        ShowTutorial("ENEMIES", descrizione, false, tutorialImages);
     }
     public void RunHistory()
     {
-        string descrizione = "Se vuoi vedere che hai fatto nell vita guardalo ";
-        //ShowTutorial("RUN RANKING", descrizione, true);
+        List<Sprite> tutorialImages = new List<Sprite>();
+
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/RUN/TutorialOutisdeRankingPC")).ConvertToSprite());
+        tutorialImages.Add(((Texture2D)Resources.Load("TutorialImage/RUN/TutorialRankingMenu")).ConvertToSprite());
+
+        string descrizione = "In the lower left area of the starting hangar you will find the Run Ranking PC.\n"
+                                +"This PC stores the best 6 runs you have completed ordered by score.\n"
+                                +"Look at the second screen for a Run Ranking Tab description \n";
+        ShowTutorial("RUN RANKING", descrizione, true, tutorialImages);
     }
 
 
@@ -112,15 +148,20 @@ public class TutorialButtonScripts : MonoBehaviour
 
     public void NextButton()
     {
-        Debug.Log("index" + index + " count:" + Showimages.Count);
         index++;
-        tutorialImage.gameObject.GetComponent<Image>().sprite = Showimages[Mathf.Abs(index) % Showimages.Count];
+        if (index > Showimages.Count) index = 0;
+
+        Debug.Log("index : " + index);
+        tutorialImage.gameObject.GetComponent<Image>().sprite = Showimages[index % Showimages.Count];
     }
 
     public void PrevButton()
     {
         index--;
-        tutorialImage.gameObject.GetComponent<Image>().sprite = Showimages[Mathf.Abs(index) % Showimages.Count];
+        if (index < 0) index = Showimages.Count -1;
+
+        Debug.Log("index : " + index);
+        tutorialImage.gameObject.GetComponent<Image>().sprite = Showimages[index % Showimages.Count];
     }
 
 }
