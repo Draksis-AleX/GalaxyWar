@@ -23,12 +23,4 @@ public class ChangeScene : MonoBehaviour
             else SceneManager.LoadScene(GameManager.Instance.gameData.nextScene);
         }
     }
-
-    private IEnumerator UnloadScene(int sceneIndex)
-    {
-        AsyncOperation asyncUnloadLevel = SceneManager.UnloadSceneAsync(sceneIndex);
-        while (!asyncUnloadLevel.isDone)
-            yield return null;
-    }
-
 }
